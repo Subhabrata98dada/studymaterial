@@ -1,0 +1,2474 @@
+Why java is not fully object oriented programminglanguage
+----------------------------------------------------------
+*because main reason java still using primitive data , there fore programmer missing utility method
+ features in primitive data.
+* multiple inheritence not allowed
+* operator overloading not allowed on programmer level. The only overloaded operatoe in java 
+  is + , + operator can do both addition and concatination but this feature implemented on 
+  jvm level, programmer can not configure the operator overloading.
+
+because of these reasons java is not fully object oriented programming language
+
+Wrapper classes
+---------------------
+to remove the disadvange of using primitive data java provied corrosponding Wrpper class to provide
+object oriented feature on primitive data type. it contain the primitive data along with some
+utility methods. All the wrapper classes are present in java.lang .
+The range of each Wrapper class is same as corrosponding primitive data.
+
+primitive data          wrapper class
+-------------------------------------------
+int --------------------> Integer
+byte--------------------> Byte
+short-------------------> Short
+long--------------------> Long
+float-------------------> Float
+double------------------> Double
+char -------------------> Character
+boolean ----------------> Boolean
+
+AutoBoxing
+------------
+the converting primitive value into corrosponding wrpper class object is called autoboxing.
+for auto boxing the required code automtically written compiler. Before java 1.5 the auto boxing
+need to be done through utility method, but from java 1.5 the autoboxing done automatically.
+from java 1.9 the utility methods also depricated.
+public class DemoWrapper1 {
+	public static void main(String[] args) {
+		Byte b=10; //autoboxing
+		Short s=20;
+		Integer i=30;
+		Long l=40l;
+		Float f=10.5f;
+		Double d=20.5;
+		Boolean b2=false;
+		Character c='A';
+		System.out.println(b);
+		System.out.println(s);
+		System.out.println(i);
+		System.out.println(l);
+		System.out.println(f);
+		System.out.println(d);
+		System.out.println(b2);
+		System.out.println(c);
+		
+	}
+
+}
+
+AutoUnboxing
+------------
+before java 1.5 to connvert wrapper class object to corrosponding primitive value the programmer
+need to write the code manually , but java 1.5 and after version the conversion become automatic 
+thatswhy it is known as auto unboxing. For auto unboxing the code written by compiler at compile
+time.
+
+public class DemoWrapper1 {
+	public static void main(String[] args) {
+		Integer i=10; //auto boxing
+		int pvalue=i; // auto unboxing
+		System.out.println(i);
+		System.out.println(pvalue);
+		
+		
+	}
+
+}
+
+
+Default value
+--------------------
+when the user does not assign any value to static and non static variable ,then the jvm going
+to assign the default value to that variable. The default value for static variable will
+assign ar Class loading time, and for non static variable at object creation time in heap 
+memory.
+
+data type           default-value
+---------------------------------
+byte,short,int,long---> 0
+flaot,double----------> 0.0
+Any non primitive-----> null
+
+Wrapper classes are non primitive data types thats why the default value for non primitive
+static, non static variable is null
+
+public class DefaultWrapper2 {
+	
+	static Integer i;
+	Integer j;
+
+	public static void main(String[] args) {
+		
+		DefaultWrapper2 d=new DefaultWrapper2();
+		System.out.println(d.j);
+		System.out.println(d.i);
+		
+	}
+
+}
+
+Note- in case of whole number from -128 to +127 the same object is used for multiple reference
+      but out of that range new object created for each declaration
+
+public class DefaultWrapper2 {
+	
+	
+
+	public static void main(String[] args) {
+		
+		Integer i1=20;
+		Integer i2=20;
+		System.out.println(i1==i2);   //true
+		
+		Integer i3=200;
+		Integer i4=200;
+		System.out.println(i3==i4);  //false
+		
+		
+	}
+
+}
+
+
+parseXxx(String s)
+---------------------
+this is a static method of wrapper classes used to convert string to primitive data.
+the parseXxx(String s) not available on Character class.
+
+public class DefaultWrapper2 {
+	
+	
+
+	public static void main(String[] args) {
+		
+		int i=Integer.parseInt("10");
+		float f=Float.parseFloat("10.5f");
+		boolean b=Boolean.parseBoolean("true");
+		System.out.println(i);
+		System.out.println(f);
+		System.out.println(b);
+		
+		
+		
+	}
+
+}
+
+
+use of wrapper class
+---------------------
+1. we can prevent the problem of primitive data type value.
+2. for most of database operations the wrpper class used because the dafault value is null,
+   thatwhy sometimes it provides safe insert operation while insert the value in database .-
+
+
+
+File handling
+-----------------
+the data type in java (primitive or non-primitive) is not permanent . the life span of a java 
+progrmming data is till the execution of a programm. the programm may be execute in server
+or local machine.
+the solution is persist storage. the meaning of persist storage is the life span of stored 
+data is not depending on the life cycle of programm execution. persist is a saperate permanent
+storage system. 
+there is 3 types of persist storage 
+1. file
+2. database
+3. data-warehouse
+
+in java there is so many classes and interfaces to communicate with file and database.
+before Database the file is used to be main source of permanent storage but now days only
+database is used in continusly growing project.
+
+
+File
+-------------------
+file is a interrelated data storage used to store small volume data for small business project
+like txt, word, pdf, csv file etc
+to handle the data in file java provides a package that is java.io pacakge
+
+Stream
+--------
+the meaning of stream is flow of group of data from data source to java app or from java app to
+data source
+
+when the data flows from data source to java app then it is known as input stream , in opposite
+when data flows from java app to data souce then it known as output stream
+
+Byte stream
+---------------
+when the data transfer byte by byte between java app and data source then it called byte stream.
+FileOutputStream - works on byte stream for transfer data from java app to file
+FileInputStream- works on byte stream for transfer data from data source to java app
+
+
+Character Stream
+---------------------
+when the data transfer character by character between java app and data source then it called
+charactre stream.
+InputStreamReader - works on character stream to transfer data from data source to java app.
+OutputStreamWriter- works on character stream to transfer data from java app to data source.
+
+
+java programm for writing operation by using byte stream
+---------------------------------------------------------------
+import java.io.FileOutputStream;
+import java.io.IOException;
+public class DemoFile1 {
+	public static void main(String[] args) throws IOException {
+		// byte stream write operation
+		FileOutputStream fos=new FileOutputStream("C:\\Users\\subha\\OneDrive\\Desktop\\demo.txt",true); 
+                 // true indiacates write without erase the data from file
+		//create FileOutputStream object by giving path location along with file name
+		String s="\nThis is java course";
+		byte b[] =s.getBytes();
+		fos.write(b);
+		fos.close();
+		System.out.println("Writing done sucessfully");
+	}
+
+}
+
+flow- 1. create connection with file
+2. take a input and convert then into byte array
+3. do writine operation
+4. close the connection with file.
+
+
+java program for reading operation from file by using byte stream
+-------------------------------------------------------------------
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class DemoFile2 {
+	public static void main(String[] args) throws IOException {
+		FileInputStream fis=new FileInputStream("C:\\Users\\subha\\OneDrive\\Desktop\\demo.txt");
+		int n=fis.read();
+		while(n!=-1)
+		{
+			System.out.print((char)n);
+			n=fis.read();
+		}
+		fis.close();
+	}
+
+}
+
+1. create connection with file
+2. read data in from of int and convert into charcater
+3. close the connection with file
+
+note- read() of FileInputStream returns unicode value of character one by one, and returns -1 if there
+is no more character left in the file
+
+reading operations by using character stream
+--------------------------------------------
+
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+
+public class DemoFile1 {
+	public static void main(String[] args) throws Exception{
+		FileInputStream fis=new FileInputStream("C:\\Users\\subha\\OneDrive\\Desktop\\demo.txt");
+		InputStreamReader isr=new InputStreamReader(fis);
+		int n=isr.read();
+		int count=0; //it tracks no of connectioin extablished between file and java program
+		while(n!=-1)
+		{
+			System.out.print((char)n);
+			n=isr.read();
+			count++;
+		}
+		isr.close();
+		fis.close();
+		System.out.println("\n"+count);
+	}
+
+}
+
+
+Writing operations by using character stream
+--------------------------------------------
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
+public class DemoFile2 {
+	public static void main(String[] args) throws IOException {
+		FileOutputStream fos=new FileOutputStream("C:\\Users\\subha\\OneDrive\\Desktop\\demo.txt",true);
+		OutputStreamWriter osw=new OutputStreamWriter(fos);
+		String s="\nToday is a national holiday";
+		osw.write(s);
+		osw.close();
+		fos.close();
+		System.out.println("Writing operation done");
+	}
+
+}
+
+
+the disadvantage of characcter and byte stream is that for each character the java programm need to
+establish the connection between the file and java program ,this reduces the efficiency of the program.
+for that we are using BufferedReader and BufferedWriter . The BufferedReader and BufferedWriter
+works on line by line of Strign mean for each String only one time  establishing connection needed.
+
+Reading data by using BufferedReader
+-----------------------------------------
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class DemoFile3 {
+	public static void main(String[] args) throws IOException {
+		FileReader fr=new FileReader("C:\\Users\\subha\\OneDrive\\Desktop\\demo.txt");
+		BufferedReader br=new BufferedReader(fr);
+		int count=0;
+		String s=br.readLine();
+		while(s!=null)
+		{
+			System.out.println(s);
+			s=br.readLine();
+			count ++;
+		}
+		
+		System.out.println(count);
+		br.close();
+		fr.close();
+	}
+
+}
+
+readLine() method returns null if there is no line exist to read from file
+while reading or writing the data by using BufferedReader or BufferedWriter internally using temorary 
+memory(buffer) is used to reduce the intraction betwenn file and java programm.
+
+Writing the data by using BUfferedWriter
+-----------------------------------------
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class DemoFile4 {
+	public static void main(String[] args) throws IOException {
+		FileWriter fw=new FileWriter("C:\\Users\\subha\\OneDrive\\Desktop\\demo.txt");
+		BufferedWriter bw=new BufferedWriter(fw);
+		String s="Today climate is very good";
+		bw.write(s);
+		bw.close();
+		fw.close();
+
+	}
+
+}
+
+Serialization
+------------
+when one object need to transfer through network between two or more System that time the object
+need to convert into byte oriented data format . mean the conversion of one java object into byte 
+stream data is called serialization. 
+The object which need to convert into byte stream should be Serializable type bean the class
+need to impliment Serialzable interface.
+
+
+the programm to convert object into byte stream
+---------------------------------------------------
+
+import java.io.Serializable;
+
+public class Mobile implements Serializable {
+	String name;
+	int ram;
+	int rom;
+	public Mobile(String name, int ram, int rom) {
+		super();
+		this.name = name;
+		this.ram = ram;
+		this.rom = rom;
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "Mobile [name=" + name + ", ram=" + ram + ", rom=" + rom + "]";
+	}
+	
+	
+}
+-----------------
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+public class DemoFile {
+	public static void main(String[] args) throws IOException {
+		Mobile m=new Mobile("Apple_Iphone_16", 8, 256);
+		System.out.println(m);
+		
+		FileOutputStream fos=new FileOutputStream("C:\\Users\\subha\\OneDrive\\Desktop\\serial.txt");
+		ObjectOutputStream oos=new ObjectOutputStream(fos);
+		oos.writeObject(m);
+		oos.close();
+		fos.close();
+		
+	}
+
+}
+
+Deserialzation
+-----------------
+deserialization mean the opposite of serialzation , mean the conversion of byte stream into one object
+is known as deserialzation
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+public class DemoFile2 {
+	public static void main(String[] args) throws ClassNotFoundException, IOException {
+		FileInputStream fis=new FileInputStream("C:\\Users\\subha\\OneDrive\\Desktop\\serial.txt");
+		ObjectInputStream ois=new ObjectInputStream(fis);
+		Mobile m=(Mobile)ois.readObject();
+		ois.close();
+		fis.close();
+		System.out.println(m);
+		System.out.println("After desialization the object");
+	}
+
+}
+
+transient keyword
+----------------------
+while doing serialzation if the programmer not want to tranfer the value of a particular property
+then mark the property as transient(keyword). if a property marked as transient then the value 
+not going to paricipate in serialze process
+
+import java.io.Serializable;
+
+public class Mobile implements Serializable {
+	transient String name;
+	int ram;
+	int rom;
+	public Mobile(String name, int ram, int rom) {
+		super();
+		this.name = name;
+		this.ram = ram;
+		this.rom = rom;
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "Mobile [name=" + name + ", ram=" + ram + ", rom=" + rom + "]";
+	}
+	
+	
+}
+
+
+
+
+                                  String
+---------------------------------------------------------------------------------
+CharSequence - CharSequence is an interface which is indiacates the collection of character in a sequence
+CharSequence have 3 implementation classes String,StringBuffer,StringBuilder
+
+String- String is a immutable,final class which is implementing CharSequence
+
+Constructor of String class
+---------------------------------
+* we can create String object by using many Constructor bu the commonly used process is String litrals that is like
+  String s="jspider"; // this is creation of String object without constructor
+
+length of String- the number of character present inside a string is known as length of the String
+
+
+public String()- this is used to create a String object with 0 length mean no character in String
+-----------------------------------------------------------------------------------------------------
+String s=new String();
+
+public String(String original) -this is used ti create a String object from another String object or litrals
+--------------------------------------------------------------------------------------------------------------
+String s=new String("hello");
+
+public String(Char[] ch)- used to create String object from character Array
+-------------------------------------------------------------
+                char ch[]= {'a','b','c','d','x'};
+		String s=new String(ch);
+		System.out.println(s);
+
+
+
+public String(StringBuffer sb)- used to create String object by using StringBuffer object
+-------------------------------------------------------------------------------------------
+		StringBuffer sb=new StringBuffer("jspider");
+		String s=new String(sb);
+		System.out.println(s);
+
+public String(byte[] b)- convert byte array to String as per their ascii/unicode value
+------------------------------------------------------------------------------------------
+		byte b[]= {65,67,98};
+		String s=new String(b);
+		System.out.println(s);
+
+public String(StringBuilder sb)- create String object from StringBuilder object
+---------------------------------------------------------------------------
+		StringBuilder sb=new StringBuilder("jspider");
+		String s=new String(sb);
+		System.out.println(s);
+
+Note- in String class equals() and toString(),hashcode()  method is already overridden .
+
+
+
+
+
+
+
+
+
+
+
+                                  Methods Of Strings
+---------------------------------------------------------------------------------
+
+1. public boolean equals(Object s)
+--------------------------------------
+if the string content is same then it is going to return true otherwise false
+
+2. public boolean equalsIgnorecase(String anotherString)
+----------------------------------------------------------
+going to comare two String without checking the letter is uppercase or lowercase
+
+		String s1="Hello";
+		String s2="hello";
+		System.out.println(s1.equals(s2)); //false
+		System.out.println(s1.equalsIgnoreCase(s2)); //true
+
+
+3. public int length()
+---------------------------
+it returns the number of character is present in a string
+
+4. public char charAt(int index);
+---------------------------------
+it returns the present character at the gien index(the index starts from 0) 
+
+		String s="jspider";
+		System.out.println(s.length());
+		System.out.println(s.charAt(3));
+
+
+
+5. public boolean isEmpty()
+-----------------------------------
+if the String is empty then the method going to return true otherwise false. if we call this method on null value then NullPointer
+Exception we are going to get
+
+6. public byte[] getBytes()
+--------------------------------
+returns String into byte array as per their unicode value
+
+                String s=""; // it is a empty string not null
+		System.out.println(s.isEmpty()); //true
+		
+		String s1="ABCD";
+		byte[] b=s1.getBytes();
+		System.out.println(Arrays.toString(b));
+
+7. public boolean stertsWith(String prefix)
+--------------------------------------------
+return true if the String starts like prefix otherwise return false
+
+8. public boolean endsWith(String suffix)
+--------------------------------------------
+return tre if the String ends like given suffix otherwise retuns false
+
+                String s="this is a beautiful city";
+		System.out.println(s.startsWith("this")); //true
+		System.out.println(s.endsWith("city"));   //true
+		
+		System.out.println(s.startsWith("that")); //false
+		System.out.println(s.endsWith("town"));   //false
+
+
+
+
+9. public int indexOf(char ch)
+   public int indexOf(String s)
+---------------------------------------------------
+this method going to return the index of a String or character given as input to ethod, if the given character or String not present
+then it is going to return -1 .this method starts compare from first(0th index) to last
+
+                String s="this is a beautiful city";
+		System.out.println(s.indexOf('z')); //-1 z is not present in s
+		System.out.println(s.indexOf("eau")); //11 the index a eau starts from 11
+
+10. public int lastIndexOf(char ch)
+    public int lastIndexOf(String s)
+----------------------------------------------------
+this method going to return the index of givn character or string by searching them from last to first. if not found then return -1
+
+		String s="thieas is a beautiful city";
+		System.out.println(s.lastIndexOf('i')); 
+		System.out.println(s.lastIndexOf("ea")); 
+
+11. public String substring(int begin);
+    public String substring(int begin, int end)
+-------------------------------------------------------
+
+		String s="hello wrold";
+		System.out.println(s.substring(3));   // from index 3 to rest of te string
+		System.out.println(s.substring(3,7)); // from index 3 to index 6(excluding 7)
+
+
+
+
+
+
+
+12. public String replace(char old,char new)
+    public String replase(String old,String new)
+-----------------------------------------------------------
+this method going to replace the old character or String into new character or String
+
+                String s1="hello wrold";
+		String s2="hello world";
+		
+		System.out.println(s1.replace('l', '@')); // replace l with @
+		System.out.println(s2.replace("hello", "hi")); // replace hello with hi
+
+13. public boolean containes(CharSequence seq)
+----------------------------------------------
+it is going to return true if the given sequence is present otherwise it is going to return false
+		String s1="hello wrold";
+		System.out.println(s1.contains("hello")); //true
+
+14. public String concat(String s)
+---------------------------------------------
+to current String it is going to concat one more given input Sting
+		String s1="hello wrold";
+		System.out.println(s1.concat(" this is a pleasent day"));
+
+
+
+15. public  String[] split
+--------------------------------------------
+this method breaks the Sting into multiple sub substring without include the given input String
+
+		String s1="hello wrold how are you";
+		String s[]=s1.split(" ");
+		System.out.println(Arrays.toString(s));
+
+
+
+16. public String toLowercase()
+------------------------------------
+convert all the uppercase character into lowercase character , without thouching other chatcter
+
+17. public String toUppercase()
+-------------------------------------
+converts all lowercase character into uppercase character , without touching other character
+
+18. public String trim()
+---------------------------------------
+removes extra space from start and end of a string , but not from miidle
+
+		String s1="Hell*0";
+		System.out.println(s1.toLowerCase());
+		
+		String s2="He** O";
+		System.out.println(s2.toUpperCase());
+		
+		String s3="       hello      world          ";
+		System.out.println(s3.trim());
+
+19. public char[] toCharArray()
+---------------------------------------------
+converts String to char array
+
+		String s="hello";
+		char[] ch=s.toCharArray();
+		System.out.println(Arrays.toString(ch));
+
+
+write a program to create one method which is going to reverse of a string
+-----------------
+public class DemoString1 {
+	public static void main(String[] args) {
+		String s="good morning";
+		String op=reverse(s);
+		System.out.println(op);
+	}
+	
+	static String reverse(String s)
+	{
+		String res="";
+		for(int i=s.length()-1;i>=0;i--)
+		{
+			char c=s.charAt(i);
+			res=res+c;
+		}
+		return res;
+	}
+}
+
+
+wriet a program to check a String is pallindrome or not
+-------------------------------------------------------------
+pallindrome String- the String which is equal to reverse of itself is caleed pallindrome String
+direct approach - 1. reverse the String 
+                  2. compare with original String
+
+public class DemoString1 {
+	public static void main(String[] args) {
+		String s="malayalam";
+		String op=reverse(s);
+		
+		if(s.equals(op))
+			System.out.println(s+ " is a Pallindrome String");
+		else
+			System.out.println(s+ " is  not a pallindrome String");
+		
+	}
+	
+	static String reverse(String s)
+	{
+		String res="";
+		for(int i=s.length()-1;i>=0;i--)
+		{
+			char c=s.charAt(i);
+			res=res+c;
+		}
+		return res;
+	}
+}
+
+
+wrte a programm to check a given character is present inside a String or not
+----------------------------------------------------------------------------
+public class DemoString1 {
+	public static void main(String[] args) {
+		
+		String s="java is easy";
+		char key='z';
+		int index= indexOf(s, key);
+		System.out.println(index);
+		
+	}
+	
+	static int indexOf(String s,char key)
+	{
+		for(int i=0;i<s.length();i++)
+		{
+			if(s.charAt(i)== key) return i;
+		}
+		
+		return -1;
+	}
+}
+
+
+write a program to find a given charater is present inside a String or not
+---------------------------------------------------------------------------
+public class DemoString1 {
+	public static void main(String[] args) {
+		
+		String s="java is easy";
+		char key='a';
+		boolean find=isPresent(s, key);
+		if(find)
+			System.out.println(key+ " is present inside the String "+s);
+		else
+			System.out.println(key+ " is not present inside the String "+s);
+		
+		
+	}
+	
+	static boolean isPresent(String s,char key)
+	{
+		for(int i=0;i<s.length();i++)
+		{
+			if(s.charAt(i) == key) return true;
+		}
+		
+		return false;
+	}
+}
+
+
+write a program to print A-Z
+----------------------------------
+public class DemoString1 {
+	public static void main(String[] args) {
+		
+		for(char ch='A'; ch<='Z';ch++)
+			System.out.println(ch);
+		
+	}
+	
+	
+}
+
+
+write a program to print the String in Uppdercase_lowercase_digit_specialCharacter
+----------------------------------------------------------------------------------------
+
+public class DemoString1 {
+	public static void main(String[] args) {
+		
+		String s="qdokwjo8291p101-0-SKLNLN94I3^&&@%NB";
+		String upper="";
+		String lower="";
+		String digit="";
+		String special="";
+		for(int i=0;i<s.length();i++)
+		{
+			char ch=s.charAt(i);
+			if(ch>='A' && ch<= 'Z') upper+=ch;
+			else if(ch>= 'a' && ch <= 'z') lower +=ch;
+			else if(ch >='0' && ch <='9') digit+=ch;
+			else special+=ch;
+		}
+		
+		String result= upper +lower + digit + special;
+		System.out.println(result);
+		
+		
+	}
+
+}
+
+write a program to print sum of all digis in a String
+---------------------------------------------------------
+public class DemoString1 {
+	public static void main(String[] args) {
+		String s="hel4l5 wor9l3d";
+		int sum=0;
+		for(int i=0;i<s.length();i++)
+		{
+			char ch=s.charAt(i);
+			if(ch>='0' && ch <= '9')
+				sum =sum + (ch - '0');  // sum = sum+ (ch- 48)
+		}
+		
+		System.out.println(sum);
+		
+	}
+	
+	
+}
+
+
+char array
+-------------------
+when need to store multiple character in a single variable then we should go for char array
+when we creates array one public variable length holds the no of element in array.
+in string length() is a method returns no of character, but in array length is a variable
+like String the index of Array is starts form 0 till noOfElement-1. to get one charcter from
+String programmer used charAt(int index) method , but to get a element the user used 
+arrayName[index]. String[] indicates array of String mean collection of multiple String in
+form of array
+
+public class DemoCharArray {
+	public static void main(String[] args) {
+		char ch[] =new char[7];
+		System.out.println(ch.length);
+		
+		char[] ch2= {'a','b','c','d'};
+		System.out.println(ch2.length);
+	}
+
+}
+
+write aprogram to find number of word in a String(sentence)
+-----------------------------------------------------------
+public class DemoCharArray {
+	public static void main(String[] args) {
+		String s="This is java full stack and testing course";
+		String st[]=s.split(" ");
+		System.out.println("Number of word in given String is : "+ st.length);
+	}
+
+}
+
+
+String is a immutable class mean any modification on String class object going to create a new 
+String object with updated content . thatswhy to some contest update operation first String is
+converted into char[] then update and again convert ro String.
+
+write a program to replace old char with given new char
+------------------------------------------------------------
+
+public class DemoCharArray {
+	public static void main(String[] args) {
+		String s="hello world";
+		char oldChar='o';
+		char newChar='*';
+		String op=replace(s, oldChar, newChar);
+		System.out.println(s +" -----------> "+op);
+	}
+	
+	static String replace(String s,char oldchar,char newchar)
+	{
+		char ch[]=s.toCharArray();
+		for(int i=0;i<ch.length;i++)
+		{
+			if(ch[i]== oldchar)
+				ch[i]=newchar;
+		}
+		
+		String s2=new String(ch);
+		return s2;
+	}
+	
+}
+
+
+write the program to find the vowels not present in a String
+---------------------------------------------------------------
+
+public class DemoCharArray {
+	public static void main(String[] args) {
+		String s="Hello world";
+		vowelNotFound(s);
+	}
+	
+	static void vowelNotFound(String s)
+	{
+		String demo="AEIOUaeiou";
+		for(int i=0;i<demo.length();i++)
+		{
+			char ch=demo.charAt(i);
+			if(s.indexOf(ch)== -1)
+				System.out.println(ch);
+		}
+	}
+	
+}
+
+
+write a programm to find all the vowel in a String
+----------------------------------------------------
+
+public class DemoCharArray {
+	public static void main(String[] args) {
+		String s="Hello world";
+		vowelFound(s);
+	}
+	
+	static void vowelFound(String s)
+	{
+		String demo="AEIOUaeiou";
+		for(int i=0;i<demo.length();i++)
+		{
+			char ch=demo.charAt(i);
+			if(s.indexOf(ch) != -1)
+				System.out.println(ch);
+		}
+	}
+	
+}
+
+write a programm to find the number of occurence of a given character in a String
+-----------------------------------------------------------------------------------
+first approach
+---------------
+public class DemoCharArray {
+	public static void main(String[] args) {
+		String s="This is java full stack course";
+		char ch='u';
+		int result= countNoOfOccurenceOfGivenCharacter(s, ch);
+		System.out.println(result);
+	}
+	
+	static int countNoOfOccurenceOfGivenCharacter(String s,char ch)
+	{
+		int count=0;
+		for(int i=0;i<s.length();i++)
+		{
+			if(s.charAt(i) == ch) count++;
+		}
+		
+		return count;
+	}
+	
+}
+
+second approach
+------------------
+public class DemoCharArray {
+	public static void main(String[] args) {
+		String s="This is java full stack course";
+		char ch='a';
+		int result= countNoOfOccurenceOfGivenCharacter(s, ch);
+		System.out.println(result);
+	}
+	
+	static int countNoOfOccurenceOfGivenCharacter(String s,char ch)
+	{
+		int original_length=s.length();
+		s=s.replace(ch+"", "");
+		int count= original_length - s.length();
+		return count;
+	}
+	
+}
+
+write a program to find occurence of each charater in a String
+-----------------------------------------------------------------
+
+public class DemoCharArray {
+	public static void main(String[] args) {
+		String s="hello world";
+		while(s.length()>0)
+		{
+			int prevCount=s.length();
+			char ch=s.charAt(0);
+			s=s.replace(ch+"", "");
+			int currentCount=s.length();
+			
+			int occurence= prevCount -currentCount;
+			
+			System.out.println(ch+" ---- "+occurence);
+		}
+	}
+	
+	
+	
+}
+
+
+write a program to find occurence of each char without replace method
+-------------------------------------------------------------------
+public class DemoString  {
+	public static void main(String[] args) {
+		String s="java is easy";
+		noOfOccurence(s);
+			
+	}
+	
+	static void noOfOccurence(String s)
+	{
+		char ch[]=s.toCharArray();
+		
+		for(int i=0;i<ch.length;i++)
+		{
+			if(ch[i]== '\u0000') continue;
+			int count =1;
+			for(int j=i+1; j<ch.length; j++)
+			{
+				if(ch[i] == ch[j]) {
+					count ++;
+					ch[j]='\u0000';
+				}
+			}
+			
+			System.out.println(ch[i]+ " ---"+ count);
+			ch[i]='\u0000';
+		}
+	}
+
+
+write  a program to cnvert the character from uppercase to lowercase and from lowercase to 
+uppercase
+-------------------------------------------------------------------------------------------
+
+public class DemoString1 {
+	public static void main(String[] args) {
+		
+		String s1="JsPidErS";
+		char ch[] = s1.toCharArray();
+		
+		for(int i=0;i<ch.length;i++)
+		{
+			if(ch[i] >= 'A' && ch[i] <= 'Z')
+			{
+				ch[i] =(char) (ch[i] + 32);
+			}
+			else if( ch[i] >='a' && ch[i] <= 'z')
+			{
+				ch[i] = (char) (ch[i] -32);
+			}
+			
+		}
+		
+		String s2= new String(ch);
+		System.out.println(s1 + " -------------> "+ s2);
+		
+	}
+	
+	
+}
+
+write a program to print all possible substring
+------------------------------------------------
+
+public class DemoString1 {
+	public static void main(String[] args) {
+		String s="malayalam";
+		for(int i=0;i<s.length();i++)
+		{
+			for(int j=i+1;j<=s.length();j++)
+			{
+				String s2=s.substring(i,j);
+				System.out.println(s2);
+			}
+		}
+		
+	}
+}
+
+
+print all possible pallindrome substring of a String and
+ the substring having minimum length  of 3
+-------------------------------------------------
+
+public class DemoString1 {
+	public static void main(String[] args) {
+		String s="malayalam";
+		for(int i=0;i<s.length();i++)
+		{
+			for(int j=i+3;j<=s.length();j++)
+			{
+				String s2=s.substring(i,j);
+				
+				if( isPallindrome(s2) )
+					System.out.println(s2);
+				
+			}
+		}
+		
+	}
+	
+	static boolean isPallindrome(String s)
+	{
+		int i=0;
+		int j=s.length()-1;
+		while(i<j)
+		{
+			if(s.charAt(i) != s.charAt(j)) return false;
+			i++;
+			j--;
+		}
+		return true;
+	}
+	
+}
+
+
+write a program to print biggest substring pallindrome number excluding the original string
+-------------------------------
+
+public class DemoString1 {
+	public static void main(String[] args) {
+		String s="malayalam";
+		String op="";
+		for(int i=0;i<s.length();i++)
+		{
+			for(int j=i+3;j< s.length();j++)
+			{
+				String s2=s.substring(i,j);
+				
+				if( isPallindrome(s2) && s2.length()> op.length() )
+					op=s2;
+				
+			}
+		}
+		
+		System.out.println(op);
+		
+	}
+	
+	static boolean isPallindrome(String s)
+	{
+		int i=0;
+		int j=s.length()-1;
+		while(i<j)
+		{
+			if(s.charAt(i) != s.charAt(j)) return false;
+			i++;
+			j--;
+		}
+		return true;
+	}
+	
+}
+
+
+reverse of each word in a Sentence
+-------------------------------------
+
+public class DemoString1 {
+	public static void main(String[] args) {
+		
+		String s="java is easy";
+		String s2[]=s.split(" ");
+		String op="";
+		for(int i=0; i<s2.length ;i++)
+		{
+			String temp = reverse(s2[i]);
+			op= op + temp;
+			if(i == s2.length-1 ) continue;
+			op = op+ " ";
+		}
+		
+		System.out.println(op);
+
+	}
+	
+	static String reverse(String s)
+	{
+		String s2="";
+		for(int i=s.length()-1 ; i>=0; i--)
+			s2 =s2 + s.charAt(i);
+		return s2;
+	}
+	
+}
+
+write a program to init cap (for each word the first character will be upper case)
+--------------------------------------------------------------------------------------
+
+public class DemoString1 {
+	public static void main(String[] args) {
+		String s="this is java full stack course";
+		char ch[]= s.toCharArray();
+		for(int i=1;i<s.length();i++)
+		{
+			if( ch[i-1]==' '  && (ch[i] >='a' && ch[i]<='z'))
+				ch[i]=(char)(ch[i]-32);
+		}
+		
+		if(ch[0] >='a' && ch[0]<='z')
+			ch[0]=(char)(ch[0]-32);
+		
+		String op =new String(ch);
+		System.out.println(op);
+	}
+	
+}
+ 
+
+immutability of object
+--------------------------------
+during program execution if any content modification happens on object that time without
+modify the current instance(object) creating new instance by JVM as per written 
+logic with modified new content and return the address.
+example String is immutable object;
+
+what is SCP(String constant pool)
+-------------------------------------
+String constant pool is a sub memory area of Heap area to Store the String type 
+litral content only. in scp only one copy of unique content is going to create . mean
+if multiple reference varable refers same content then same scp address going to be used.
+
+But if we create String object by using new keyword then the object created in main
+heap area again and again.
+
+
+Need of Scp
+-------------------
+by using scp the regorously used String content we can share among all object without any
+problem , in this approach we can save lot of spaces during run time of a programm , 
+because of proper apace or memory management we can improve performance of program
+because in real time project some String content is used and assigned again and again
+
+why String is immutable
+--------------------------------
+because String litarals in SCP is shared by many reference variable , if the content 
+is mutable(modifiable) then minimum changes in content is going to reflect to all
+refeence variable refering to current content , tatswhy String is immutable
+
+
+
+
+Disadvantages of normal variable
+--------------------------------
+in a normal variable we can store only one contebt at a time, if multiplele similar
+record need to store then programmer need to take multiplle variable at a time, which
+is not advisable, for that array is uded.
+
+Definition of array
+------------------------------------
+An array is a contigus memory allocation to store homogenious elements on the name
+of single variable. The homogenius means the same type of element . and the contigious 
+mean all element stores side by side memory location . mean if one int array have 60 
+element then one section of 240 bytes memory allocation at a time.
+
+charcater stics of array
+----------------------------
+1. array is homogenios mean only one type element is allowed in array
+2. array is contigious in memory allocation
+3. array is index or substricpt based (the default index is 0)
+4. array is fexed side mean we can not increse the size once we created the array.
+6. array does not provide any utility method to do some operation like String provides
+   eg - substring() , toCharArra() etc.
+7. array element can be access randomly directly using index.
+8. in java while create array a public final length varaible created for holding
+   the number of element or array size.
+9  in java array is a predefine class.
+10. in java array element has default value mean intiallly the int array have alll 
+    element as 0.
+
+declare an array in java
+----------------------------
+
+declaration then value assign
+int[] a=new[5] ot int a[]=new int[5];
+a[0]=3;
+a[1]=4;
+a[2]=3;
+a[3]= -200;
+a[4]= 2;
+
+
+decration while doing value assign
+------------------------------------
+int a[]={3,4,3,-200,2};
+
+travarse of array /access the array element
+------------------------------------------------
+visiting each element of array and doing some logical and mathmatical operation
+with array elements is known as travarse of array.
+travarse of array can be done in two approach 
+       1. normal loop
+       2. for each loop
+       3. direct access by using index
+
+
+
+
+
+
+1. normal loop
+------------------
+public class DemoArray1 {
+	public static void main(String[] args) {
+		int a[]= {2,4,6,1,2};
+		for(int i=0;i<a.length ;i++)
+		{
+			System.out.println(a[i]);
+		}
+	}
+
+}
+
+in normal loop we can do both read and write operation of the array
+
+2. for each loop
+-----------------------
+
+public class DemoArray1 {
+	public static void main(String[] args) {
+		int a[]= {2,4,6,1,2};
+		for(int x : a)
+		{
+			System.out.println(x);
+		}
+	}
+
+}
+
+we can do only read operation to that array not any write operation by using for 
+each loop.
+
+3. direct access by using index
+-------------------------------
+public class DemoArray1 {
+	public static void main(String[] args) {
+		int a[]= {2,4,6,1,2};
+		System.out.println(a[0]);
+		System.out.println(a[1]);
+		System.out.println(a[2]);
+		System.out.println(a[3]);
+		System.out.println(a[4]);
+		
+		//System.out.println(a[5]); ArrayIndexOutOfBoundException
+	}
+
+}
+
+
+ArrayIndexOutOfBoundException
+-------------------------------
+when we want to access one array element with a index which is not present then 
+the JVM going to create array index out of bound exception
+
+note- if no value assigned to the array then default value going to be assign as per their 
+respective data type.
+
+
+
+
+
+
+write a program to insert the array element dynamically
+----------------------------------------------------------
+import java.util.Scanner;
+public class DemoArray1 {
+	public static void main(String[] args) {
+		int a[]=new int[6];
+		
+		Scanner sc=new Scanner(System.in);
+		for(int i=0 ;i<a.length;i++)
+		{
+			System.out.println("Enter element numner "+ (i+1) );
+			int n=sc.nextInt();
+			a[i]=n;
+		}
+		
+		System.out.println("------------------------------------------");
+		for(int i=0;i<a.length;i++)
+			System.out.println(a[i]);
+	}
+
+}
+
+
+Arrays.toString()
+-------------------------
+it is a atatic method of Arrays class. Arrays class present in java.util package
+the prototype of Arrays.toString is public static String toString([]);
+it is a overloaded method designed to assept all types of array as input argument . the return 
+String contain all the element in form of String.
+
+import java.util.Arrays;
+
+public class DemoArray1 {
+	public static void main(String[] args) {
+		int a[]= {4,7,8,9,0,32,54};
+		
+		String s=Arrays.toString(a);
+		
+		System.out.println(s);
+	}
+
+}
+
+write a program to find min element in the array
+---------------------------------------------------
+public class DemoArray1 {
+	public static void main(String[] args) {
+		int a[]= {2,4,1,0,3,-1,5};
+		
+		int min=a[0];
+		for(int i=1; i< a.length ;i++)
+		{
+			if(a[i] < min)
+				min=a[i];
+		}
+		
+		System.out.println("The minmum element of the array is "+min);
+	}
+
+}
+
+write a program to find max element in a array
+------------------------------------------------------
+public class DemoArray1 {
+	public static void main(String[] args) {
+		int a[]= {2,4,1,0,3,-1,5};
+		
+		int max=a[0];
+		for(int i=1; i< a.length ;i++)
+		{
+			if(a[i] > max)
+				max=a[i];
+		}
+		
+		System.out.println("The maximum element of the array is "+max);
+	}
+
+}
+
+searching
+-------------
+searching is a procedure where the index of an an given element if found inside array
+if the given element not found then return -1.
+there is two types of searching 1. linear search, 2.binary search
+
+linear search
+-------------
+linerar mean one by one, from start to end one by one element going to be check
+wheather given element is present or not
+
+
+
+
+
+
+import java.util.Scanner;
+
+public class DemoArray1 {
+	public static void main(String[] args) {
+		int a[]= {2,4,1,0,3,-1,5,1,6};
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the element to be search in array");
+		int n=sc.nextInt();
+		int index=linearsearch(a, n);
+		if(index != -1)
+			System.out.println(n+" is found at index "+index);
+		else
+			System.out.println(n+ " is not found");
+	}
+	
+	static int linearsearch(int a[],int key)
+	{
+		for(int i=0;i<a.length;i++)
+		{
+			if(a[i]==key) return i;
+		}
+		
+		return -1;
+	}
+
+}
+
+Sorting
+------------
+Arranging the element in assending or decending order is known as soring
+1. bubble soert
+2. selection sort
+3. merge sort.
+4. quick sort.
+5. insertion sort
+
+
+bubble sort
+--------------------
+import java.util.Arrays;
+public class DemoArray1 {
+	public static void main(String[] args) {
+		int a[]= {2,6,8,4,1,7,5,9,3};
+		
+		for(int i=0;i< a.length-1 ;i++)
+		{
+			for(int j=0;j<a.length-1-i;j++)
+			{
+				if(a[j] > a[j+1])
+				{
+					int temp=a[j];
+					a[j]= a[j+1];
+					a[j+1]=temp;
+				}
+			}
+		}
+		System.out.println(Arrays.toString(a));
+	}
+
+}
+
+
+selection sort
+----------------
+
+import java.util.Arrays;
+public class DemoArray1 {
+	public static void main(String[] args) {
+		int a[]= {2,6,8,4,1,7,5,9,3};
+		
+		for(int i=0;i<a.length-1;i++)
+		{
+			int min =i;
+			for(int j=i+1;j<a.length;j++)
+			{
+				if(a[j] <a[min])
+					min=j;
+			}
+			
+			if(min !=i)
+			{
+				int temp =a[i];
+				a[i]=a[min];
+				a[min]= temp;
+			}
+		}
+		System.out.println(Arrays.toString(a));
+	}
+
+}
+
+inserstion sort
+------------------
+
+import java.util.Arrays;
+public class DemoArray1 {
+	public static void main(String[] args) {
+		int a[]= {2,6,8,4,1,7,5,9,3};
+		
+		for(int i=1;i<a.length;i++)
+		{
+			int key= a[i];
+			int j=i-1;
+			while(j>=0 && key < a[j])
+			{
+				a[j+1]= a[j];
+				j--;
+			}
+			a[j+1]=key;
+		}
+		System.out.println(Arrays.toString(a));
+	}
+
+}
+
+write a program to add all the elements in the int array
+--------------------------------------------------------
+
+Assignment
+
+
+merge sort
+---------------
+The merge(combine) of two sorted sub array into a single sub array is called merge sort.
+import java.util.*;
+public class DemoArray {
+
+	public static void main(String[] args) {
+        int a[]= {2,6,8,4,1,7,5,9,3};
+		sort(a);
+		
+		System.out.println(Arrays.toString(a));
+		
+
+	}
+	
+	public static void sort(int a[])
+	{
+		if(a.length == 1) return;
+		
+		int left[]=new int[a.length/2];
+		int right[]= new int[a.length - left.length];
+		for(int i=0;i<left.length ;i++)
+		{
+			left[i] = a[i];
+		}
+		for(int j=0;j<right.length;j++)
+		{
+			right[j]= a[left.length +j];
+		}
+		sort(left);
+		sort(right);
+		merge( left, right,a);
+	}
+	
+	
+	public static void merge(int a[],int b[], int c[]){
+		int i=0; // points to array a;
+		int j=0; // points to array b;
+		int k=0; // points to resultant array c;
+		while(i <a.length && j < b.length) {
+			if(a[i] < b[j])
+			{
+				c[k]= a[i];
+				k++;
+				i++;
+			}
+			else
+			{
+				c[k]= b[j];
+				k++;
+				j++;
+			}
+			
+			while(i< a.length) // if b array completed
+			{
+				c[k]=a[i];
+				i++;
+				k++;
+			}
+			
+			while(j< b.length) // if a array completed
+			{
+				c[k]=b[j];
+				k++;
+				j++;
+			}
+		}
+		
+	}
+
+}
+
+System.arrayCopy() method
+-----------------------------
+it is used to to copy one array element to another array by using 5 parameter
+1. source array
+2. source array starting element index
+3. destination array
+4. destination array starting element index.
+5. no of element need to be copy
+
+public class DemoArray {
+
+	public static void main(String[] args) {
+        int a[]= {2,6,8,4,1,7,5,9,3};
+		int b[]=new int[7];
+		System.out.println(Arrays.toString(b));
+		System.arraycopy(a /*source array*/, 2 /*source array start index*/,
+				b/*destination array*/, 1 /*destination array start index*/, 3/*no of element*/);
+		System.out.println(Arrays.toString(b));
+		
+	}
+
+}
+
+quicksort
+-------------
+import java.util.Arrays;
+
+public class DemoArray2 {
+	public static void main(String[] args) {
+		int a[]= {5,10,3,8,6,2,9,1,7};
+		
+		System.out.println(Arrays.toString(a));
+		sort(a, 0, a.length-1);
+		System.out.println(Arrays.toString(a));
+		
+		
+		
+	}
+
+
+
+	public static void sort(int a[],int start,int end)
+	{
+		if(start>end) return;
+		int i=start;
+		int j=end;
+		int pivort = a[(i+j)/2];
+		
+		while(i<=j)
+		{
+			while(a[i] < pivort) i++;
+			while(a[j] > pivort) j--;
+			if(i<=j)
+			{
+				int temp=a[i];
+				a[i]=a[j];
+				a[j]=temp;
+				i++;
+				j--;
+			}
+			
+		}
+		sort(a, start, j);
+		sort(a, i, end);
+	}
+
+}
+
+binary search
+-------------------
+prequisites- one sorted array.
+
+binary search in assending order array
+------------------------------------------
+step 1: check the element searched present in mid element or not. if the mid element is
+        the searched element then return the index. or go to step2
+step 2: if the searched element is lesser then mid element then search in left sub array of the
+        midelement or go to step 3
+step 3: if the searched element is greater then mid element then search in right sub array of 
+        the mid element or go to step 3
+step 4: if all avove steps not worked then the lement not present in the array ,return -1;
+
+
+
+
+
+
+public class DemoArray {
+
+	public static void main(String[] args) {
+       int a[]= {1,2,3,4,5,6,7,8,9};
+       int key=7;
+       int index= binarySearch(a, key);
+       System.out.println(index);
+	}
+	
+	public static int binarySearch(int a[],int key)
+	{
+		int start=0;
+		int end= a.length-1;
+		
+		while(start <= end)
+		{
+			int mid= (start+end)/2;
+			if(a[mid]== key) return mid;
+			else if(key < a[mid]) end=mid-1;
+			else start=mid+1;
+		}
+		return -1;
+	}
+
+}
+
+binary search using recursion
+------------------------------
+        static int binarySearchRecursion(int a[],int key,int start,int end)
+	{
+		if(start >end) return -1;
+		int mid= (start +end)/2;
+		if(a[mid] ==key) return mid;
+		else if( key< a[mid]) return binarySearchRecursion(a, key, start, mid-1);
+		else return binarySearchRecursion(a, key, mid+1, end);
+	}
+
+Arrays.sort()
+-------------------
+it is a predefined static method method present inside java.util package ,used to sort
+the lement in assending order , for all predefined data type and String the sort() is 
+already implemented
+
+import java.util.*;
+public class DemoArray {
+
+	public static void main(String[] args) {
+       int a[]= {3,1,5,2,7,9,2,5,6};
+       Arrays.sort(a);
+       System.out.println(Arrays.toString(a));
+       
+	}
+
+}
+
+
+                              RegularExpression
+                           ----------------------------
+client side validation- in web browser while take input from user or client that time the 
+checking of input data format is correct or not regular expression is used.
+In regular expression two classes is mainly used 1.Pttern 1.Matcher present in java.util.regex
+package.
+
+steps in pattern matching in a String
+---------------------------------------
+1. create one Pttern object for gievn expression
+2. create one Matcher object for String input by usingalready created pattern object
+3. use matcherObject.find() in loop to find the subString matching with expression.
+   find() returns true if the subString matched otherwise return false.
+4. matcherObject.group() returns the matched subString with expression
+
+
+
+
+
+
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="abcdabsubhaabbrxwhab";
+		String exp="ab";
+		int count=0;
+		//create a compiled object of expression that is apttern
+		Pattern p=Pattern.compile(exp);
+		
+		// create a matcher objecct for given input by pattern object
+		// non static method matcher()
+		Matcher m= p.matcher(input);
+		
+		while(m.find())
+		{
+			String res= m.group();
+			System.out.println(res);
+			count++;
+		}
+		
+		System.out.println(count);
+	}
+
+}
+
+quantifier
+-----------------
+in regular expression the quantifier mean "." , the quantifier indicates all possible
+character in the given input String.
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="AJKAsak113!@#KJS";
+		String exp="."; //quantifier
+		Pattern p= Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		int count=0;
+		while(m.find())
+		{
+			System.out.println(m.group());
+			count++;
+		}
+		
+		System.out.println(count+" "+ input.length());
+	}
+}
+
+write a regular expression programm to find 'a' followed by anything
+------------------------------------------------------------------
+// "a." indicates a regular expression a followed by anything
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="abslkaxlkda*72267373611a0ksakdaf6";
+		String exp="a.";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+
+
+
+regular expression anything followed by A (.a)
+------------------------------------------------
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="abslkaxlkda*72267373611a0ksakdaf6";
+		String exp=".a";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+write a regular expression to find . in a given input String
+--------------------------------------------------------------
+to find . the expression require "\\."
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="a.balks.wkwo%.&.&^";
+		String exp="\\.";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+character set regular expresion
+-------------------------------
+character set is wither one or more character in a squre brackate .
+[a] indicates match the character a.
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="a.balks.wkwo%.&.&^";
+		String exp="[a]"; //char set
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+regular expression 1 or a by using char set
+---------------------------------------------
+[a1] or [1a]  -> this is indicating the pattern going to match with a or 1
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="ajwkoo1klla13--*(*a";
+		String exp="[1a]";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+------------------------
+[abcd][ef]- any one from a,b,c,d followed by any one from e,f
+the possible combinations are ae,be,ce,de,af,bf,cf,df
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="aekaaabflalaf02209308cfq;l;de";
+		String exp="[abcd][ef]";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+
+regx= [abcd].
+------------------------
+a__ or b__ or c__ d__   __(any symbol)
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="a1kskjxb@qkq;sc9llolmd(";
+		String exp="[abcd].";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+
+characterset a-z--> [a-z]
+--------------------------
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="a1ksaSJAJKkjxb@qkq;sc9llKDKolmd(";
+		String exp="[a-z]";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+characterset A-Z--> [A-Z]
+-----------------------------
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="a1ksaSJAJKkjxb@qkq;sc9llKDKolmd(";
+		String exp="[A-Z]";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+characterset 0-9--> [0-9]
+-----------------------------
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="a1ksaSJAJKkjxb@qkq;sc9llKDKolmd(";
+		String exp="[0-9]";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+
+characterset between a to z or A to Z--> [A-Za-Z] or [a-zA-Z]
+--------------------------------------------------------------
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="a1ksaSJAJKkjxb@qkq;sc9llKDKolmd(";
+		String exp="[A-Za-z]";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+character set for alpha numerical
+--------------------------------------
+alpha numerical is a expression combination of alphabet and numbers
+[a-zA-Z0-9]
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="a1ksaSJAJKkjxb@qkq;sc9llKDKolmd(";
+		String exp="[A-Za-z0-9]";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+regular expression accept a-z ->[^a-z]
+---------------------------------------
+^ is known as negation or compliment character set
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="a1ksaSJAJKkjxb@qkq;sc9llKDKolmd(";
+		String exp="[^a-z]";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+regular expression for accept alphabet everything allowed
+-----------------------------------------------------------
+[^a-zA-Z]
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="a1ksaSJAJKkjxb@qkq;sc9llKDKolmd(";
+		String exp="[^a-zA-Z]";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+regular expression for special sumbol or without 
+alphe-numerical code [^a-zA-Z0-9]
+------------------------------------------------
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="a1ksaSJAJKkjxb@qkq;sc9llKDKolmd(";
+		String exp="[^a-zA-Z0-9]";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+regular expression a_,b_,c_,d_
+__ special symbol
+------------------------------------------
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="a1ksaSJAJKkjxb@qkq;sc9llKDKolmd(";
+		String exp="[a-c][^a-zA-Z0-9]";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+[a-c][^a-zA-Z0-9][0-9]
+-----------------------------------------------------
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="a*1ksaSJAJKkjxb@9qkq;sc9llKDKolmd(";
+		String exp="[a-c][^a-zA-Z0-9][0-9]";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+regular expression for a followed by n number of b
+-------------------------------------------------------
+"ab{n}"- after a , b repeats n times
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="abbbhhgccvvabbbggk";
+		String exp="ab{3}";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+ab{n1,n2}
+------------
+a followed by minimum n1 timem or max n2 times b repeted
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="abbbhhgccabbvvabbbbggk";
+		String exp="ab{2,4}";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+
+
+ab{n1,}
+-----------------
+a followed by minimum number of b is n1
+and their is no upperlimit of b
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="abbbhhgccabbvvabbbbggk";
+		String exp="ab{2,}";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+
+closure
+--------------
+there is three types of closure *,+,?
+
+ab*- a[b: number of b is 0 to infinity]
+------------------------------------------
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="abhhgaccabbvvabbbbggk";
+		String exp="ab*";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+ab+ - a[b: number of b is 1 to infinity]
+mean a followed by atleast one b or more
+--------------------------------------------
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="abhhgaccabbvvabbbbggk";
+		String exp="ab+";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+ab? - a[b : either 0 or one time of b]
+---------------------------------------
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		String input="abhhgaccabbvvabbbbggk";
+		String exp="ab?";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		while(m.find())
+		{
+			System.out.println(m.group());
+		}
+	}
+}
+
+
+matches() method of Matcher class
+---------------------------------
+this method returns true only if the whole input String matches with the expression.
+in opposite the find() returns true if the given input String having any sub string
+mathes with expression
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		
+		String input="139903ab3010";
+		String exp="ab";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		System.out.println(m.find());
+		System.out.println(m.matches());
+	}
+}
+
+(?=.*[a-z]) - it indicates atleast one character present in between a-z
+(?=.*[0-9]) - it indicates atleast one character present in between 0-9
+-------------------------------------------------------------------------
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		
+		String input="139903ab3010";
+		String exp="(?=.*[a-z])";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		System.out.println(m.find());
+		
+	}
+}
+
+write a program to validate indian mobile number
+---------------------------------------------------
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		
+		String input="9348542980";
+		String exp="[6789][0-9]{9}";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		if(m.matches())
+			System.out.println("valid mobile number");
+		else
+			System.out.println("invalid mobile id");
+		
+	}
+}
+
+write a program to validate gmail id
+--------------------------------------
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		
+		String input="jsp733@gmail.com";
+		String exp="[a-z][a-z0-9]{1,}[@][a-z]*gmail[.]com";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		if(m.matches())
+			System.out.println("valid gmail id");
+		else
+			System.out.println("invalid gmai id");
+		
+	}
+}
+
+use of regular expression
+-----------------------------
+1. clined side data validation
+2. manupulate String data
+3. pattern matching
+4. finding required sub string
+
+input- 12abcs42kak78%^%34
+output- 12+42+78+34 =166
+---------------------------------
+public class DemoRegularExpression {
+	public static void main(String[] args) {
+		
+		String input="12abcs42kak78%^%34";
+		String exp="[0-9]+";
+		Pattern p=Pattern.compile(exp);
+		Matcher m=p.matcher(input);
+		int sum=0;
+		while(m.find())
+		{
+			String s=m.group();
+			int temp=Integer.parseInt(s);
+			sum= sum +temp;
+		}
+		System.out.println("sum="+sum);
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+

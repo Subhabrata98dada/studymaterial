@@ -1,0 +1,2434 @@
+Relationship
+-------------------
+The creation of one object or destruction of one object in java depending on other object.
+relationship is two types in java 
+1. is a relation(inheritence)
+2. has a relation- multiple inheritence not allowed in java then for better code reusability
+   java provides a mechanism that is has a relation mean with out is a relationship code reusability
+   can possible.
+class A // Container class or target class
+{
+   B b1;
+}
+
+class B // component or dependent class
+{
+
+
+}
+
+
+
+
+
+
+
+
+there is two type of has a relation
+      a- composition(strongly connected between component and container object)
+mena the existence of component object depends on the container object. once container object deleted then 
+all the component object will deleted.
+example once university object deleted from jvm then all the depertment object will be delete from jvm.
+class Dept 
+{
+	String deptName;
+	Dept(String s)
+	{
+		deptName=s;
+	}
+}
+class University
+{
+	Dept d1=new Dept("CSE");
+	Dept d2=new Dept("ECE");
+	void details()
+	{
+		System.out.println(d1.deptName);
+		System.out.println(d2.deptName);
+	}
+}
+class Government 
+{
+	public static void main(String[] args) 
+	{
+		University u=new University();
+		u.details();
+		u=null;
+	}
+}
+
+
+      b- aggrigation- the exestence of compoent object is not totally dependent on container object
+even if the container object destroyed then also possibility that component object may live inside jvm
+eg- one teachear associated with multiple depertment then if one dept closed then also the teacher survived
+class Teachear 
+{
+	String name;
+	Teachear(String s)
+	{
+		name=s;
+	}
+}
+class Dept
+{
+	Teachear t1;
+	Teachear t2;
+	String dname;
+	Dept(String s)
+	{
+		dname=s;
+	}
+	void detaild()
+	{
+		System.out.println(t1.name);
+		System.out.println(t2.name);
+	}
+}
+
+
+class University 
+{
+	public static void main(String[] args) 
+	{
+		Teachear teachear1=new Teachear("ramesh");
+		Teachear teachear2=new Teachear("suresh");
+		Teachear teachear3=new Teachear("mahesh");
+		Dept d1=new Dept("cse");
+		Dept d2=new Dept("ece");
+		d1.t1=teachear1;
+		d1.t2=teachear2;
+
+		d2.t1=teachear2;
+		d2.t2=teachear3;
+
+		d1.detaild();
+		d2.detaild();
+
+		d2=null; // but teachear2 survived because of aggrigation
+		
+	}
+}
+
+
+Advantage of has a relation
+---------------------------------
+1. we can do code reusability without is a relationship
+2. avoid the disadvantages of not supporting multiplel inheritence
+3. dependency management
+
+decission between has a and is a relationship
+----------------------------------------------
+when we need all the property of a class then go for is a relationship
+when we need some of proprty of a class then go for has a relationship
+
+in real time project development has a relation ship mostly used , in form of
+depedency injection or dependency lookup
+
+problem with is A relationship
+------------------------------------
+1.multiple inheritence not supported
+2.possibility of code break down( frazile code)
+3.testing is difficult in real time environment
+
+
+IDE-integrated development environment
+IDE is a tool which helps developers to create and manage different kind of program in a singlr
+software project (database code,java code, html code, xml code)
+eclipse is one of the popular IDE used for create and maintain java project
+
+create java project in eclipse
+----------------------------------
+file(upper left corner)->new->java project->give name->finish
+
+create packge in eclipse
+----------------------------
+right click on src-->new-->package-->name of package(in pop up window)-->finish
+
+create class in a package
+----------------------------
+right click on package--> new -->class-->name of the class(in pop up window)-->finish
+
+execute the program
+-----------------------
+right clack on program--> run as--> java application
+
+inside src file in eclipse java project we can create multiple java package ,
+ there is no limitation on number of creation of package
+ in normal setting package having class shows grey in color, and the empty 
+ package shows white in color
+
+Access modifier
+---------------------
+one java componant like class,interface,methods,variable where we can use or call or access 
+that depends upon the acess modifier used on that componant
+
+invoke- calling one method during program execution call invoke.
+ the static method can be invoke by using class name, object reference ,or directly inside same class
+ the non static method can be invoke using object reference only.
+ for constructor auto invocation happen-> contructor is a auto invoked method .
+
+
+
+
+call back method
+-------------------
+the method call and execute automatically by virtual machine or container ,this type of method known as 
+call back method.
+eg- main() method in java
+    Constructor() in java
+    service() in servlet call automatically by web container
+
+
+-
+
+Types of access modifiers
+--------------------------------
+1. private(more secure and less access)
+2.default or package
+3.protected
+4.public  (less secure but more access)
+
+Note- when we need atleast one class from remote or another package then programmer need to import that package
+
+------------------------------------------------
+package com.jsp.main; // class Driver present in
+                      // com.jsp.main package
+                      // this is called package statement
+
+//stating of import statement
+import java.util.Scanner; //import only Scanner class from java.util
+                          //rest of the classes remain un imported
+
+import com.jsp.pack1.*; //import of pack1 to use pack 1 classes
+                        // all the classes of pack 1 ready to use
+public class Driver {
+	public static void main(String[] args) {
+		Parent p=new Parent();
+		Scanner sc=new Scanner(System.in);
+		
+	}
+
+}
+-----------------------------------------------------
+** if any remote package class acting as Super class then also we need to import that package or specific
+class.
+package com.jsp.pack2; //current package
+import com.jsp.pack1.Parent; //import super class from com.jsp.pack1
+public class Child extends Parent {
+
+}
+
+
+
+
+private
+-------------------
+The component declared with private keyword is known private componant of a class
+private is a class level access modifier , mean a private component only allows to access inside class
+outside access of the private component will give compile time error.
+a method , variable, constrctor , inner class can be private , both static and non static component can be
+private there is no  restriction.
+
+
+
+public class Demo {
+      public static void main(String[] args) {
+    	  Demo2 d=new Demo2();
+		//System.out.println(d.i); CTE
+    	//d.m1() CTE
+    	d.m2();
+	}
+}
+
+class Demo2
+{
+	private static int i=50;
+	private void m1() {
+	}
+	public void m2() {
+		System.out.println(i); //access inside same class
+	}
+}
+
+default/package
+-----------------------------------------------------------------
+during declaration of any java component if any access modifier not specified then compiler consider
+as default/package level accessability.
+inside same package anywhere the component is accessable but out side of the package is not alowed
+thatwhy it isi known as package level modifier
+default can be a normal class,method,variable,inner class, constructor
+
+
+public class Demo {
+      public static void main(String[] args) {
+    	  Demo2 d=new Demo2();
+    	  System.out.println(d.i);
+    	  d.m1();
+		
+	}
+}
+
+class Demo2 //default clss can not create object out side of package
+{
+	int i=50;  //default or package
+	void m1()
+	{
+		
+	}
+}
+
+
+protected
+-------------------------------------
+A java component declared with protected known as projected component.
+the protected component can be access out side of package but inside subclass which is outside of the 
+package
+public class Demo {
+     protected int i; //outside of package only subclass can access
+      protected void m1() {
+      }
+      public void m2()
+      {
+    	  
+      }
+}
+
+public
+--------------------------------------
+any where , any class ,any method can access the public memeber.
+and it is the widest access modifier
+
+Note- A normal class either default or public 
+      A constrcuctor can be private,default,protected,public
+      In case of private constructor outside of the class object creation not posiible
+      In case of default access constructor outside of the package object creation not possible
+      In case of protected contrctor outside of the package inside subclass only object creation possible
+      In case of public constrcuctor object creation possible at any place
+
+RMI(remote method invocation)
+-----------------------------------
+when two independant application connecected and one is calling the method of another software is called
+remote method invocation. and the independant softwares are executin on different machine
+
+API
+---
+Application programming interface is a common mechanism to connect to remote application
+or combination of multiple utility classes is known as api
+
+
+Coupling
+------------------------------------------------------------
+if two indepandend module of code sharing data,logic to each other is called coupling
+or the degree of relationship between to section of is called coupling
+coupling is two type
+a- tightly coupled code
+b- loosely coupled code
+
+
+
+
+
+
+
+Thightly coupled code
+------------------------------------------
+when two section code indepandent on each other ,so that one section of code changes mean 
+on immediate basis the other code need to be change is called tightly coupled
+
+public class CarDriver {
+	
+	void drive(Audi a)
+	{
+		a.start();
+		a.move();
+		a.stop();
+	}
+	void drive(BMW a)
+	{
+		a.start();
+		a.move();
+		a.stop();
+	}
+	void drive(Toyota a)
+	{
+		a.start();
+		a.move();
+		a.stop();
+	}
+}
+in the above code if any new car came in market then again we have  to overload driver() of 
+class CarDriver, The solution for tightly coupled is Upcasting in java
+
+Upcasting
+-----------
+Creating object of child type, then assign to parent type reference variable is called upcasing
+
+public class Parent {
+        void m1()
+	{
+		System.out.println("m1 of parent");
+	}
+}
+public class Child1 extends Parent{
+        void m1()
+	{
+		System.out.println("m1 of Child1");
+	}
+
+}
+public class Child2 extends Parent{
+        void m1()
+	{
+		System.out.println("m1 of Child2");
+	}
+
+}
+
+main class
+--------------
+Parent c1=new Child1(); //upcasting
+Parent c2=new Child2(); //upcasting
+c1.m1(); //Child1 method will execute
+c2.m1(); //Child2 method will execute
+
+Loosely coupled code
+-------------------------
+If two section of code indepandent to each other mean if one section of code is modified
+then another section code not needed to modify that is called loosely coupled code
+Upcasting is used to achive loosely couple code
+
+public class Car {
+	void start()
+	{	
+	}
+	void stop()
+	{	
+	}
+}
+
+public class Audi extends Car{
+	void start()
+	{
+		
+	}
+	void stop()
+	{
+		
+	}
+}
+public class BMW extends Car{
+	void start()
+	{
+		
+	}
+	void stop()
+	{
+		
+	}
+
+}
+public class CarDriver {
+	void drive(Car c)
+	{
+		c.start();
+		c.stop();
+	}
+	public static void main(String[] args) {
+		CarDriver cd=new CarDriver();
+		Car c1=new BMW();
+		Car c2=new Audi();
+		cd.drive(c1); //drive BMW car
+		cd.drive(c2); //drive audi car
+	}
+	
+}
+** if any new car came in market then we just need to extend the super class Car
+
+1. If parent class method not overridden in sub class then in terms of upcasting the parent class method will
+   execute by inherite the method to sub class
+2. If Parent class method is overridden in sub class then in terms of upcasting the child class over ridden
+   method will execute even there are multiple child exest
+3. If parent and child both dont have a particular method then on this case accessing that method will give
+   compile time error
+4. If a method not present in Parent class but present in child class then while call that method in case of 
+   upcasting will give CTE becase avalability will check base ob reference type not the object type
+5. During upcasing the child specific property , that not declared in parent will give compile time error if
+   we want to access using parent type reference
+
+public class Parent {
+	
+	public void m1()
+	{
+		System.out.println("The parent class method m1()");
+	}
+
+}
+public class Child extends Parent{
+	public void m1()
+	{
+		System.out.println("The child class method m1()");
+	}
+	public void m2()
+	{
+		System.out.println("this child class method m2()");
+	}
+
+}
+public class Driver {
+	public static void main(String[] args) {
+		Parent p=new Child();
+		p.m1();
+		p.m2(); //CTE because child specific property not not alloed to access by
+                        //using parent type reference (disadvange of upcasting)
+	}
+
+}
+6. The method resoloution during upcasting in case of static method will solve based
+   on the reference type not based on object type mean parent class static method will execute.
+
+public class Parent {
+	
+	public static void m1()
+	{
+		System.out.println("The parent class static method m1()");
+	}
+
+}
+public class Child extends Parent{
+	public static void m1()
+	{
+		System.out.println("The child class static method m1()");
+	}
+
+}
+public class Driver {
+	public static void main(String[] args) {
+		Parent p=new Child();
+		p.m1(); // parent class m1() will execute because m1() is static
+	}
+
+}
+
+7. in case of any type variable , during upcasting the variable resoloution will be
+   based on reference type mean the parent class variable will call
+
+public class Parent {
+	static int i=9;
+	int j=10;
+}
+public class Child extends Parent{
+	static int i=99;
+	int j=100;
+
+}
+public class Driver {
+	public static void main(String[] args) {
+		Parent p=new Child();
+		System.out.println(p.i); //9 parent class static variable
+		System.out.println(p.j); //10 parent class non static variable
+	}
+
+}
+
+advantage of upcasting
+--------------------------
+1. loosely coupled code can be written by using upcasting
+2. we can generalize the code by using upcasting
+3. easily maintainable
+4. The upcating is implisit we do't need to do upcasting manually ,automaticlly 
+   compiler will handle.
+
+disadvantage
+---------------------------
+1. child class specific property and behavour we can not access by using parent class
+   reference -so the soltion is downcasting
+
+Downcasting
+---------------------------
+converting parent type reference into specific child type reference is called down casting.
+Downcasting is not implisit, mean down casting is explisit , programmer forced=fully need 
+to do downcasting.
+For downcasting it is mandatery to do upcasting first , then do downcast
+
+public class Animal {
+	void eat()
+	{System.out.println("animal eating");
+	}
+
+}
+public class Dog extends Animal{
+	void eat()
+	{
+		System.out.println("dog eating");
+	}
+	void bark()//specific to dog
+	{
+		System.out.println("dog barking");
+	}
+
+}
+public class Driver {
+	public static void main(String[] args) {
+		Animal a=new Dog(); //upcasting
+		//a.bark(); CTE
+		Dog d=(Dog)a; //downcasting Animal->Dog
+		d.eat();
+		d.bark(); //specific to Dog only
+	}
+}
+
+** variable will always resolutu as per parent type it may bbe upcasting or down casting
+public class Parent {
+	static int i=9;
+	int j=10;
+}
+public class Child extends Parent{
+	static int i=99;
+	int j=100;
+}
+public class Driver {
+	public static void main(String[] args) {
+		Parent p=new Child();
+		System.out.println(p.i); //9 (parent type )
+		System.out.println(p.j); //10 (parent type)
+		Child c=(Child)p;
+		System.out.println("----------------");
+		System.out.println(c.i); //99 child type
+		System.out.println(c.j); //100 child type
+	}
+}
+
+note-With out upcasting if we want to do downcasting then we will get class cast exception
+public class Driver {
+	public static void main(String[] args) {
+		Parent p=new Parent();
+		Child c=(Child)p; //ClassCastException
+		                  //without upcating ,downcast
+		                  //not possible
+	}
+
+}
+
+LOOP HOLES IN OVER RIDE and METHOD HIDE
+---------------------------------------------
+1. when both parent and child class method is non static then over ride will happen
+public class Parent {
+	public void m1()
+	{
+		System.out.println("m1 method() of parent");
+	}
+}
+public class Child extends Parent{
+	public void m1()
+	{
+		System.out.println("m1 method() of child");
+	}
+}
+
+2. during override parent class static method can not change to non static in child class
+public class Parent {
+	public static void m1()
+	{
+		System.out.println("m1 method() of parent");
+	}
+}
+public class Child extends Parent{
+	public void m1() //CTE can not convert static to non static
+	{
+		System.out.println("m1 method() of child");
+	}
+}
+3. during override parent class non static method can not change to static in child class
+public class Parent {
+	public void m1()
+	{
+		System.out.println("m1 method() of parent");
+	}
+}
+public class Child extends Parent{
+	public static void m1() //CTE can not convert static to non static
+	{
+		System.out.println("m1 method() of child");
+	}
+}
+4. one parent class static method can be reimplement in child class as static method is 
+known as method hiding
+public class Parent {
+	public static void m1()
+	{
+		System.out.println("m1 method() of parent");
+	}
+}
+public class Child extends Parent{
+	public static void m1() //method hiding=
+	{
+		System.out.println("m1 method() of child");
+	}
+}
+
+*why the name override?
+--------------------------------
+once the parent class non static method is reimplemented in child class then at any cost
+may be by the parent class reference or child class reference it does not matter.
+child class reimplementation will always execute thats why method override
+mean ,old implementation totaly removed by new implementation in case of child type object
+
+public class Parent {
+	public void m1()
+	{
+		System.out.println("non static method of parent");
+	}
+
+}
+public class Child extends Parent{
+	public void m1()
+	{
+		System.out.println("non static method of child");
+	}
+
+}
+public class Driver {
+	public static void main(String[] args) {
+		Parent p=new Child();
+		p.m1(); //child class m1() will execute
+		Child c=(Child)p;
+		c.m1(); //child class m1() will execute
+	}
+
+}
+** why the name method hiding
+--------------------------------
+the static method ececutes as per reference variable type, not as the object type.
+so we can execute any class static method(parent or child) by changing the refence
+either with upcasting  or by downcasting.mean the implementation is hidden we have to 
+invoke it.
+
+public class Parent {
+	public static void m1()
+	{
+		System.out.println("static method of parent");
+	}
+
+}
+public class Child extends Parent{
+	public static void m1()
+	{
+		System.out.println("static method of child");
+	}
+
+}
+public class Driver {
+	public static void main(String[] args) {
+		Parent p=new Child();
+		p.m1();// parent class m1 will execute
+		Child c=(Child)p;
+		c.m1();//child class m1 will execute
+	}
+
+}
+Direct upcasting
+---------------------
+during the object creation od child type assign the object to parent type reference is
+ called direct upcasting.
+Indirect Upcasting
+------------------------
+First child type object creation and assign to child type reference, then after assign to 
+parent type reference from child type reference is called indirect upcasting
+
+public class Driver {
+	public static void main(String[] args) {
+		Parent p=new Child();//direct upcasting
+		
+		Child c=new Child();
+		Parent p1=c;//indirect upcasting
+	}
+
+}
+
+** The Object class is the supermost class of any java classes. mean any java classes
+   is the sub class of Object class is direcly or indirectly
+
+Covarience return type
+------------------------
+during override we can not change the return type in case of primitive data type.
+but in case of non primitive type ,mean if parent class non static method return type
+is any non primitive type then during overirde in sub class the return type should be same
+or any sub class type is called covarience return type
+
+public class Parent {
+	public Object m1()
+	{
+		Object o=new Object();
+		return o;
+	}
+
+}
+public class Child extends Parent{
+	public String m1() //change return type parent to child(co varience)
+	{
+		String s="hello";
+		return s;
+	}
+
+}
+
+null value- reference variable store the reference address of a object stored in heap
+            memory. One reference variable stores null value mean it not indicating 
+            any object in heap memory.
+
+** when there is a chance between generalize and specific type method argument
+   then in case of null value it will select more specific argument.
+
+public class Driver {
+	public static void main(String[] args) {
+		Object o=new Object();
+		String s=new String();
+		m1(o); //m1(Object)
+		m1(s); //m1(String)
+		m1(null); //m1(String)
+	}
+	
+	
+	static void m1(Object o)
+	{
+		System.out.println("m1(Object)");
+	}
+	static void m1(String s)
+	{
+		System.out.println("m1(String)");
+	}
+
+
+}
+
+
+** when there is confusion between two specific non primitive argument then because of
+   ambiguity there is Compile time error
+
+public class Driver {
+	public static void main(String[] args) {
+		m1(null); //CTE ambiguity between m1(String),m1(Execption)
+	}
+	
+	
+	static void m1(Object o)
+	{
+		System.out.println("m1(Object)");
+	}
+	static void m1(String s)
+	{
+		System.out.println("m1(String)");
+	}
+	static void m1(Exception e)
+	{
+		System.out.println("m1(Exception)");
+	}
+
+
+}
+
+
+
+concrete method
+-----------------------
+along with method declaration if method contain medthod definition or block is known as
+conctrete method.
+public class Demo {
+	
+	public void m1() //concrete method
+	{
+		
+	}
+
+}
+** A concrete method have no statement but it have open and closed curly braces mean
+it known as concrete method.
+
+native method
+----------------
+the method which is already well defined in somem other programming language but we want to
+use inside java code , then it is better to borrow the method from other programming language
+and add this in our java library is called native method
+
+eg- clone() in Object class.
+protected native Object clone(); //each native method having no body , it can be 
+override, navite method declared with native modifier
+
+abstract method
+----------------------
+the method declared with abstract keyword and do't have any method body or imeplementation
+is called abstract method.
+*abstract method always ended with semicolon(;)
+*each abstact method should be override in side sub class or child class otherwise compile
+time error in child class.
+* if a class having atleast one abstract method then , mandatory to declare the class
+  as abstract class.
+public abstract class Car {
+	
+	public abstract void seatBelt();
+
+}
+public class BMW extends Car{
+	
+	public void seatBelt()
+	{
+		System.out.println("seatbelt feature enabled in BMW");
+	}
+
+}
+public class Driver {
+	public static void main(String[] args) {
+		Car c=new BMW();
+		c.seatBelt();
+	}
+
+}
+
+* inside subclass if do not implement or override the super class abstract method then it 
+  is mandatory to declare that sub class as abstract class otherwise compile time error
+public abstract class Car {
+	
+	public abstract void seatBelt();
+
+}
+public abstract class BMW extends Car{
+	
+	
+
+}
+* the abstract method can not be private,native,static,final otherwise we will get CTE
+* abstract method can be public,protected,default
+
+Abstract class
+-------------------
+* when a class contain atleast one abstract method then we are calling this class
+  as abstract class or a class declared with abstract keyword is known as abstact
+  class.
+* One abstract may or may not have abstract method.
+* The abstract class indicates immature class in java programm , mean we can not create
+  object for abstract class.
+public abstract class Car {
+	
+}
+public class Driver {
+	public static void main(String[] args) {
+		Car c=new Car(); //CTE because Car is a abstract class
+	}
+
+}
+
+* one abstract class can have any number of static variable,non static variable, static
+ method ,non static method, abstract method
+public abstract class Car {
+	int i=10;
+	static int j=30;
+	public void m1()
+	{
+	
+	}
+	public static void m2()
+	{
+		
+	}
+	abstract void seatBelt();
+}
+
+* The abstract class have constructor(default, user defined) , to initialize
+  the  variable of abstract class and maintain the child to parent construuctor chaining
+
+*The abstract class can have both static and non static block.(to initialze the data
+ members and library register)
+* To prevent the call of abstract method the object creation not aloowed for abstract class.
+  if we try to create object of abstract class then we will get compile time error
+
+Use of Abstract class
+-----------------------
+1.partial implementation of common logic(common logic impemented inside abstart class
+  and the specific loigic indicated by abstract method)
+
+public abstract class Car {
+	public abstract void seatBelt();
+	public abstract void engine();
+}
+public abstract class BMW extends Car{
+//partial implemented class
+	@Override //we can use while override method
+	public void seatBelt() {
+		System.out.println("common seatbelt");	
+	}
+
+
+}
+public class Q3 extends BMW{
+
+	@Override
+	public void engine() {
+		System.out.println("3 cylender engine");
+		
+	}
+
+}
+public class Q4 extends BMW{
+
+	@Override
+	public void engine() {
+		System.out.println("4 cylender engine");
+		
+	}
+
+}
+public class Driver {
+	public static void main(String[] args) {
+		Car c1=new Q3();
+		Car c2=new Q4();
+		c1.seatBelt();
+		c1.engine();
+		c2.seatBelt();
+		c2.engine();
+	}
+
+}
+
+
+
+
+
+public abstract class BMW {
+
+	public void seatBelt() {
+		System.out.println("common seatbelt");	
+	}
+	public abstract void engine();
+
+
+}
+public class Q3 extends BMW{
+
+	@Override
+	public void engine() {
+		System.out.println("3 cylender engine");
+		
+	}
+
+}
+public class Q4 extends BMW{
+
+	@Override
+	public void engine() {
+		System.out.println("4 cylender engine");
+		
+	}
+
+}
+public class Driver {
+	public static void main(String[] args) {
+		BMW c1=new Q3();
+		BMW c2=new Q4();
+		c1.seatBelt();
+		c1.engine();
+		c2.seatBelt();
+		c2.engine();
+	}
+
+}
+
+2.abstract class along with abstract method provides rules and regulation to sub classes
+  which feature or behavour need to implement mandatory.
+  mean an abstract method need to override in sub classes.
+3.astract class can be used as data type in java, in abstract class reference variable we can
+  store the implementation class object to achive upcasting and loosely coupled program
+  that is generalization.
+
+4. if we prevent the object creation for a class then we have to go for abstract declaration
+   of class(may be class contain all static method then no need to object creation)
+   eg-public abstract class HttpServlet extends GenericServlet
+      {
+      }
+5.** to achive parital abstraction in java we are using abstact class.
+
+@Overirde
+--------------
+it is annotaion ,informs the compiler that method is overridden to current class
+
+Abstracttion
+------------------------
+only providing the functional feature without providing the background process or work or
+ implementation is called abstraction.
+In abstracttion the client is not bother about the backgrount code implementation of the software
+ product , clinet only bother if the features are working properly or not.
+
+abstraction are two type- partial abstraction(achived by abstract class)
+                          complete(100%) abstraction(achived by interface)
+
+
+
+
+
+
+
+
+
+one simple example of abstrcation
+-----------------------------------
+public abstract class AbstractmediaPlayer {
+	
+	public abstract void playAndPause();
+	public abstract void next();
+	public abstract void previous();
+}
+public class MediaPlayer extends AbstractmediaPlayer{
+	
+	public void playAndPause()
+	{
+		System.out.println("play and pause");
+	}
+	public void next()
+	{
+		System.out.println("next video");
+	}
+	public void previous()
+	{
+		System.out.println("previous video");
+	}
+
+}
+public class Client {
+	public static void main(String[] args) {
+		AbstractmediaPlayer ab=new MediaPlayer();
+		ab.playAndPause();
+		ab.next();
+		ab.previous();
+	}
+
+}
+
+Why we can not achive fully abstraction in by using abstract class
+----------------------------------------------------------------------
+because abstract class mamy have partial implementation mean some concrete method may present in 
+abstract class, if we share the immature class as end product of software then client may got
+idea about implementation thats why abstract class not recomanded to achive abstraction
+public abstract class Mercedes {
+	
+	public abstract void engine();
+	public void fogLamp() // partial implementaion
+	{
+		System.out.println("foglamp lightling");
+	}
+
+}
+
+to achive 100 % abstarction we are using interface in java.
+
+
+interface
+--------------------------
+Interface is a mediator between client and software vendor or
+interface is a non primitive data type declared with keyword "interface" which having only 
+abstract method(till java 7).
+*any method declaring in interface cosider as public abstarct non static method.
+*any variable declared inside interface by dafault public,static,final variable and it is madatory 
+to initialize during declaration time because intrface does not have any static or non static block.
+* interface con not have any constructor,static block,non static blockbecasu there is non variable
+  present to be initialize.
+* evry class have a supermost class called Object class but in case of interface there is no 
+  supermost interface.
+* interface can have zero or more abstract method thatswhy we can not create object for interface
+
+
+public interface UniversityInterface {
+	
+	//attendance
+	void attendance();
+	//exam
+	void exam();
+	//result
+	void result();
+	
+	int a=10; // final public static int a=10;
+}
+
+How we can use interface
+------------------------------
+* to use interface we need to create one class who is implementing the interface by using the keyword
+  "implements"
+*the class implements interface is calles implementation class and the interface is known as super
+ type interface.
+*programmer need to override the abstarct method otherwise compile time error. if we want to avoide
+ compile time error then we have to make the imeplemtation class as abstract class(we can not create
+ object of that abstract class)
+* interface can be used as non primitive data type to store the object of concrete implementation
+  classes to achive loosely coupled code and generalize the code and upcasting.
+
+public interface DemoInterface1 {
+	
+	void m1(); // public abstract (non static) void m1();
+
+}
+public class ImplementInterface implements DemoInterface1{
+	
+	@Override
+	public void m1()
+	{
+		System.out.println("impelementation of m1 in implementation class");
+	}
+
+}
+public class Driver {
+	public static void main(String[] args) {
+		//normal object creation
+		ImplementInterface i1=new ImplementInterface(); 
+		i1.m1();
+		
+		//up casting object creation by using interface
+		DemoInterface1 i2=new ImplementInterface();
+		i2.m1();
+	}
+
+}
+
+java 8 feature(default method)
+---------------------------------
+in a running project if we add a new abstrarct method as a feature to impllementation class
+then developeer need to override the method immediately ,or need to make all implementation classes
+as abstarct. once the implemetation class become abstract then all the object created for that
+class will give compile time error. To avoid this kind of situation in java 1.8(java 8) one new feature
+added that called default method in interface.
+default method mean one concrete method declared with default keyword inside interface and it is
+not mandatory to override the method in implementstion classes.
+if programmer not overirde the default method then the default implementation will execute, 
+and if progammer overirde the default method then the overridden form will execute
+
+public interface DemoInterface1 {
+	
+	void m1(); // public abstract (non static) void m1();
+	default void m2() {
+		System.out.println("default method in interface");
+	}
+
+}
+public class ImplementInterface implements DemoInterface1{
+	
+	@Override
+	public void m1()
+	{
+		System.out.println("impelementation of m1 in implementation class");
+	}
+	
+	@Override
+	public void m2()
+	{
+		System.out.println("impelementation of m1 in implementation class of default method");
+	}
+
+}
+public class Driver {
+	public static void main(String[] args) {
+		//up casting object creation by using interface
+		DemoInterface1 i2=new ImplementInterface();
+		i2.m1();
+		i2.m2();
+	}
+
+}
+
+use of default method
+------------------------
+1. providing optional to implementation classes the method need to be override or not.
+2. prevent crackdown of implementation classes while adding new feature to interface in form
+   of new method.
+
+static method in interface (java 8 feature)
+--------------------------------------------
+form java 8 we can add one static method in interface , and this static method not inherits to
+implementation classes. the only approach to call this static method by using interface name.
+the static method in interface gives rule and regulation to implementation classes
+
+public interface DemoInterface1 {
+	public static void m1()
+	{
+		System.out.println("static method in interface");
+	}
+}
+public class ImplementInterface implements DemoInterface1{
+	
+}
+public class Driver {
+	public static void main(String[] args) {
+		//up casting object creation by using interface
+		DemoInterface1 i2=new ImplementInterface();
+		// i2.m1(); CTE
+		//ImplementInterface.m1(); CTE
+		the static method of interface not inherites to implementaion classes*/
+		DemoInterface1.m1();
+	}
+
+}
+
+* in java 9 we can add one private method to interface, in this case the private method
+only accessable by defaut method in interface.
+public interface DemoInterface {
+	private void m1()
+	{
+		System.out.println("PRIVATE METHOD OF INTERFACE");
+	}
+	
+	default public void m2()
+	{
+		m1();
+	}
+
+}
+
+* can we write  main method inside interface
+-----------------------------------------------
+yes we can write a manin method inside interface, because from java 8 static method allowed
+inside interface , but this is not recomamnded to write main() in interface
+public interface DemoInterface {
+	public static void main(String[] args)
+	{
+		System.out.println("hello world");
+	}
+	
+
+}
+
+* one implement class can implement more than one interface at a time because more than one 
+nterface may have abstract method with same method signature , just because then are not 
+implemented thatswhy no ambiguity error.(the return type should be same in both abstract
+ method indide interface)
+
+*if two super interface having a method same signature one is abstarct and another one is default
+then it is mandatory to override the method ,otherwise compile time error
+
+public interface I1 {
+	void m1();
+
+}
+public interface I2 {
+	void m1();
+
+}
+public class Implementation implements I1,I2 {
+
+	@Override
+	public void m1() { 
+	 //impleent both I1 and I2 interface m1(); meethod	
+		
+	}
+
+}
+
+* one interface can borrow property from anotheer interface mean inheritence allowed
+  in terms of interface (one interface can extend another interface by using extends keyword)
+* if a interface(I2) having m2() method extending interface(I1) having m1() method then the 
+implementation classes class of(I2) need to provide implement for both m1() and m2() method.
+public interface I1 {
+    void m1();
+}
+public interface I2 extends I1{
+    void m2();
+}
+public class Implementation implements I2{
+
+	@Override
+	public void m1() {
+		
+	}
+
+	@Override
+	public void m2() {
+		
+	}
+
+}
+
+
+
+* A class can extends a class and implements multiple interface at a time, first extends statement
+ followed by implements statement(Otherwise we will get compile time error)
+public class A {
+
+}
+public interface I {
+
+}
+public class DriverClass extends A implements I{
+
+}
+
+
+
+** if a class extending and implementing at a time and interface have a abstract method having
+   same method signature like a concrete method in parent class, then the abstarct method no need to
+   override in implementation classes, bacause the concrete method will be inherite from parent class.
+   the parent class may be abstract or concrete class not a matter.
+
+public interface I {
+     void m1();//public , abstaract
+}
+public abstract class A {
+	 public void m1()
+	 {
+		 System.out.println("parent class implementatin");
+	 }
+}
+public class DriverClass extends A implements I {
+    public static void main(String[] args) {
+		DriverClass d=new DriverClass();
+		d.m1(); //parent class implementation will call
+	}
+}
+
+
+** if a class extending and implementing at a time and interface have a default method having
+   same method signature like a concrete method in parent class, then the abstarct method no need to
+   override in implementation classes, bacause the concrete method will be inherite from parent class.
+   the parent class may be abstract or concrete class not a matter.
+
+public interface I {
+     public default void m1() {
+		System.out.println("default implementation");
+	}
+}
+public abstract class A {
+	 public void m1()
+	 {
+		 System.out.println("parent class implementatin");
+	 }
+}
+public class DriverClass extends A implements I {
+    public static void main(String[] args) {
+		DriverClass d=new DriverClass();
+		d.m1(); //parent class implementation will call
+	}
+}
+
+*achive 100 % abstarction by using interface
+public interface Car {
+	void engine();
+	void airbag();
+}
+public abstract class AbstractCar {
+	public void airbag() {
+		System.out.println("more then 6 airbag");
+	}
+}
+public class Audi extends AbstractCar implements Car{
+	@Override
+	public void engine() {
+		System.out.println("v10 petrol engin");
+	}
+}
+public class Driver {
+	public static void main(String[] args) {
+		Car c=new Audi();
+		c.airbag();
+		c.engine();
+	}
+}
+
+
+
+
+instenceof -operator
+--------------
+it is a operator used to find a object belong one class or not.
+but we can use instanceof inside one family structure , outside of family structure it will give
+compile time error
+public interface I {
+}
+public class A implements I{
+}
+public class B extends A{
+
+}
+public class D {
+
+}
+public class Driver {
+	public static void main(String[] args) {
+		B b1=new B();
+		boolean flag=b1 instanceof B;
+		System.out.println(flag); //true
+		System.out.println(b1 instanceof A); //true
+		System.out.println(b1 instanceof I); //true
+		System.out.println(b1 instanceof Object); //true
+		//System.out.println(b1 instanceof D); CTE
+		//because D is outside of family tree
+		System.out.println("------------------");
+		A a1=new A();
+		System.out.println(a1 instanceof A); //true
+		System.out.println(a1 instanceof B); //false
+	}
+}
+
+Finctioanal interface
+-------------------------
+the interface having only one abstract method is called functioanal interface and 
+the only abstract method inside functional interface is known as functionality of functional
+interface, and there is such rule on static method,default method and private method.
+@FunctionalInterface is used to inform compiler that specific interface is functional
+@FunctionalInterface
+public interface DemoFinctionalInterface {
+	void m1(); //functioality of functional interface
+
+}
+
+Marker interface
+--------------------------
+the interface having no method is called marker interface.
+public interface DemoMarkerInterface {
+}
+
+Use of interface
+--------------------------
+1. used as mediater between client and software service provider
+2. used to achive 100 % abstarction
+3. functioal interface can be used in landa expression or to achive specific property or behavour
+4. marker interface used as to mark the object and intentify their behavour
+
+Note-do not consider interface in terms of multiple inheritence(because interface does not
+ have property and concrete behavour).
+ consider interface as polymorphism.
+
+problem in direct access of data by user
+------------------------------------------
+if user can directly access the data then user may missuse the opertunity, user may assign some 
+invalid data, this is one of the biggest problem in java programming.
+to remove this problem encapsulation introduced in java.
+public class Student {
+	String name;
+	int age;
+
+}
+public class Driver {
+	public static void main(String[] args) {
+		Student s=new Student();
+		s.age=-20;   //invalid age
+		s.name="****"; //invalid name
+	}
+
+}
+
+definition of encapsulation
+------------------------------
+encapsulation is a mechanism to bind or wrap the data members and member methods into a single
+unit to provide security and better accessability of authentic data
+
+The principal of encapsulation
+----------------------------------
+1.user should not access the data outside of class means make the variable as private
+2. because the data member private thatswhy to initialize and access the data we are using set
+   of public method called setter and getter method.
+3. the setter  mrthod also known as data updater or data initialzer.
+4. the getter method is known as accesser. 
+5. the setter method should be public ,non static and return type is void ,and the argument type
+  should be same as the specific variable we need to initialize. the name name of the setter
+  method will be like setXxx(argument) ,xxx is the name od the variable
+6. setter method may contain data validation logic.
+7.the getter method is used to return or access the data from a object
+8. getter method is always public ,non static , the return type is same as we want to 
+   provade access the data. the name like getXxx() , xxx is the name of the variable
+   and getter method do't have any argument.
+public class Student {
+	String name;
+	int age;
+	
+	public void setName(String name)
+	{
+		this.name=name;
+	}
+	public void setAge(int age)
+	{
+		if(age>0) //data validation logic
+			this.age=age;
+		else
+			System.out.println("invalid data");
+	}
+	public String getName()
+	{
+		return this.name;
+	}
+	public int getAge()
+	{
+		return this.age;
+	}
+
+}
+public class Driver {
+	public static void main(String[] args) {
+		Student s=new Student();
+		s.setAge(20);
+		s.setName("rajesh");
+		System.out.println(s.getName());
+		System.out.println(s.getAge());
+	}
+
+}
+
+advantage of encapsulation
+----------------------------
+1.we are preventing direct access to data by user.
+2.we can validate the data mean only authentic data can be assign
+3.providing security to data member by making them private
+4.code reusability can be achive by using encausulation
+
+pojo class(plain old java object)
+---------------------------------
+any java library class or any user defined class we can create object called pojo class . mean
+the abstract class is not a pojo class because we can not create object for pojo class.
+* thee pojo class should not member of any fromework(like hibernate,spring)
+
+java bean class
+----------------
+1. the class should have all private data
+2. for all private data there should setter and getter method
+3. the class should be implement Serializable interface.
+4. the class should have one no argument constructor(default or user defined)
+5. the class should be public
+if all the property followed by a class then the class called as java bean class.
+and if first two rule maintained by one java class then it called partial java bean class.
+public class Student implements Serializable{
+	private String name;
+	private int age;
+	
+	public Student() {
+		
+	}
+	public void setName(String name)
+	{
+		this.name=name;
+	}
+	public void setAge(int age)
+	{
+		if(age>0) //data validation logic
+			this.age=age;
+		else
+			System.out.println("invalid age data");
+	}
+	public String getName()
+	{
+		return this.name;
+	}
+	public int getAge()
+	{
+		return this.age;
+	}
+
+}
+
+perfect java class
+--------------------
+1.it should be java bean
+2. it should overirde .equals() method of Object class
+3. it should override .hashcode() method of Object class
+4. ir should override .toString() method of Object class
+5. clone method of Object class should be override(as per some book)
+
+polymorphism
+-----------------
+when a java object or java component showing different behavour in difeerent  condition that 
+behavour we are calling as polymorphism. mean one enetity have many behavour
+poly means- many 
+phism- form or behavour
+there is two type of polymorphism(compile time poly morphism and run time poly porphism)
+
+copile time poly morphism
+------------------------------
+when the behavour of java object going to decide at compile time is called compile time polymorphism.
+it is also known as early polymorphism or static polymorphism.
+example of compile time poly morphism is Contructor and method overloading because at the time 
+of compilation as per given instruction which method or contructor is going to execute decided
+by compiler ,thats why is called compile time poly morphism
+
+run time poly morphism
+------------------------------
+when behavour of a java object decided during run time by jvm is known as run time poly morphism
+then example of run time polymorphism is method overriding , because ine parent type reference can
+hold both parent and child type object , and which method will execute will be decided by jvm
+as per object type at run time.
+run time polymorphism also known as late polymorphism or non static polymorphism.
+
+Pillers of oops
+--------------------
+any programming language based on 4 fundamental idea of writing programm
+1.inheritence
+2.abstraction
+3.encapsulation
+4.polymorphism
+
+design pattern
+-------------------
+while working with any object oriented programming language some common problen faces by developers
+ like
+1.data inconsistency
+2.duplicate data
+3.security problem
+4.parallel execution
+to avoid this type of problem a group of developers given 21/22 common solution for any programming
+language following object oriented concept among them the mostly used design pattern is 
+factry design pattern, singleton class
+
+
+
+
+
+
+
+
+
+factry method
+----------------------
+factry method is a method who can return any type of object as output, the object may be userdefined
+class ,or predefined class, or interrelated ,may not interrelated. also the factry method can be 
+both static and non static but highly recomanded to be static . factry method not a design pattern but
+used in design pattern
+
+        public String getInstance()
+	{
+		return new String("java");
+	}
+	public static Student getStdent()
+	{
+		Student s=new Student();
+		s.name="raja";
+		s.roll=101;
+		return s;
+	}
+
+
+Factry design pattern
+---------------------------
+A class having factry method returning object inter related class as output. interrelated class mean 
+then thave common parent class or super type interface.
+public class FactryDegignPattern {
+	public static BakeryItem getBakeryItem(String type)
+	{
+		switch (type) {
+		case "biscuit": return new Biscuit();
+		case "cookies": return new Cookies();
+		case "bread" : return new Bread();
+		case "pattis" : return new Pattis();
+		default :System.out.println("no valid product");
+		return null;
+		}
+	}
+}
+interface BakeryItem
+{
+}
+class Biscuit implements BakeryItem
+{
+}
+class Cookies implements BakeryItem
+{
+}
+class Bread implements BakeryItem
+{
+}
+class Pattis implements BakeryItem
+{
+}
+public class Driver {
+	public static void main(String[] args) {
+		BakeryItem b=FactryDegignPattern.getBakeryItem("bread");
+		System.out.println(b);
+		
+	}
+}
+
+
+single ton design pattern
+-------------------------------
+when jvm allowed maximum one object creation for one class to prevent data overlap is called 
+single ton design pattern , the class for which maximum one object creation happen caled single
+ton class.
+1. private component can not access out side of the class. that why we should make the constructor
+   as private so that user can not create object out side of the class.
+2. one static factry method should provide to user so,by using that factry method they can access
+   object.
+3. one private static reference variable should be create to hold the object. intially it
+   should be null so that minimum zero and maximum one object can be create.
+public class BookMyShow {
+	private int noOfSeat=100;
+	private static BookMyShow instence=null;
+	
+	private BookMyShow() {
+	} //restrict the object creation out side of class 
+	
+	public static BookMyShow getInstaence()
+	{
+		if(instence==null)
+		{
+			instence =new BookMyShow();
+			return instence;
+		}
+		else
+			return instence;
+	}
+	
+	public void reserveSeat(int requestedSeat)
+	{
+		if(requestedSeat > noOfSeat) System.out.println("Not possible for booking ,"
+				+ "asking seat is more then available");
+		else
+		{
+			noOfSeat-=requestedSeat;
+			System.out.println(requestedSeat+" seats is booked");
+			System.out.println("Available seat "+noOfSeat);
+		}
+	}
+
+}
+
+Object class
+--------------------
+object class is the super most class in java, all the java classes in this universe need some common
+property an dehavour to execute the smoothly , but writing those code in all class increse
+complexity, thatswhy java peoplle developed one class name as Object and implemented all common code
+and made a rule that all clsses in java are child class of object class directly or indirectly
+
+methods of object class
+-------------------------------------
+there are somem common method in object class needed for all java class in the world
+
+1.  public final native Class getClass();
+-------------------------------------------
+this method is going to return all the detaild of the class for which object is created.
+it is a native method mean the implementation bring from other programming language
+public class Driver {
+	public static void main(String[] args) {
+		Demo d=new Demo(10, 20); 
+		System.out.println(d.getClass());
+	}
+
+}
+
+
+2.  public native int hashCode();
+----------------------------------
+it is a native method who returns one interger value generated from address of the object , but this
+is not the actual address, it is just a number generated from address but not the address.
+this hashCode() method used to hashing the object in hash table
+* we can override the method in subclass to new implementation of hashCode() method
+public class Driver {
+	public static void main(String[] args) {
+		Demo d=new Demo(10, 20); 
+		System.out.println(d.hashCode());
+	}
+
+}
+
+
+
+
+
+3.  public boolean equals(Object obj);
+-------------------------------------------------
+equals meethod is used to compare the object content but the default implementation of euals() is 
+to compare object address.
+public class Student {
+	String name;
+	int age;
+	int marks;
+	public Student(String name, int age, int marks) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.marks = marks;
+	}
+	
+	
+}
+public class Driver {
+	public static void main(String[] args) {
+		Student s1=new Student("raja", 25, 81);
+		Student s2=new Student("raja", 25, 81);
+		System.out.println(s1.equals(s2)); // false because object class .equals() returning
+                                                   // result of address compareing
+	}
+
+}
+
+* to compare the object content we need  to override the .equals() method in student class
+public class Student {
+	String name;
+	int age;
+	int marks;
+	public Student(String name, int age, int marks) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.marks = marks;
+	}
+	
+	
+	@Override
+	public boolean equals(Object obj) {
+		Student s1=(Student)obj;
+		boolean b= name.equals(s1.name) && (age==s1.age) && (marks == s1.marks);
+		return b;
+	}
+	
+	
+}
+public class Driver {
+	public static void main(String[] args) {
+		Student s1=new Student("raja", 25, 81);
+		Student s2=new Student("raja", 25, 81);
+		System.out.println(s1.equals(s2)); //true because .equals() overidden inside
+                                                   //student class
+	}
+
+}
+
+4.public java.lang.String toString();
+--------------------------------------------
+it is a method which returning the output as format 
+  <fully qualified class name> @ < hexa decimal format of hashcode>
+fully qualified class name --> packagename.ClassName
+                               com.jsp.pack1.Student(fully qualified class name)
+but the real implementation is to return the object data in form of string
+for that we have to override the toString() method
+
+public class Student {
+	String name;
+	int age;
+	int marks;
+	public Student(String name, int age, int marks) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.marks = marks;
+	}
+	
+	@Override
+	public String toString() {
+		String result= name+" "+age+" "+marks;
+		return result;
+	}
+	
+}
+public class Driver {
+	public static void main(String[] args) {
+		Student s1=new Student("raja", 25, 81);
+		
+		System.out.println(s1.toString());
+		System.out.println(s1);  // System.out.println(s1.toString());
+	}
+
+}
+
+
+5.protected void finalize() throws Throwable;
+-----------------------------------------------
+this method used by garbaze collector,
+before destroy any object the garbage collector calles this and destroys the object.
+this method not overrides generally. and generally normal developer not executes this method.
+
+
+clone
+-------
+In Java, cloning refers to creating an exact copy of an object. This is typically done using 
+the clone() method, which is part of the Object class. When you clone an object, you create a
+ new instance of that object with the same data as the original. or by using copy constructor
+we can clone the object.
+
+6.protected native java.lang.Object clone() throws CloneNotSupportedException;
+----------------------------------------------------------------------------------------
+this method is a native method- mean implemented in other programming language
+this method is a protected method , so it is recomanded to overridde the clone() and
+make it public.
+
+
+
+1. either during override clone method or during call of clone method programmer need to do downcast
+2. clone method throws one checked exception(CloneNotSupportedException) , that why programmer need 
+   to handle it
+3. the class need to implement one marker interface Clonable which indicates the object of this class 
+   going to clone otherwise we are going to get CloneNotSupportException while call the clone method.  
+   Clonable interface proviedes infromation to jvm that the object might be clone in near 
+   future and the clone() method may be overridden.
+
+
+
+internal flow of cloning
+------------------------------
+a.first jvm going to check the class is implementing Clonable interface or not. if not
+  implementing then CloneNotSupportException ,if implementing then the process of
+  cloneing going to start
+b.jvm is going to allocate some memory for all non static variable of parent class and current class
+ as a pat of obect creation and made then blank variable(initize with default value)
+c.then copy the value from original object and assign to the newly cloned object
+d.return the reference address for newly created object and assign to reference variable
+5.execute the business logic by using duplicate cloned object
+
+
+
+note- cloning mean creating duplicate object in heap memory , cloning does not
+      share the same object among all the references. mean all coloned object
+      have saperate merory in heap.
+
+
+public class A implements Cloneable{
+	int i;
+	int j;
+	
+	@Override
+	public A clone() throws CloneNotSupportedException {
+		
+		return (A)super.clone(); //down cast to A and return the object
+	}
+	
+	@Override
+	public String toString() {
+		
+		return i+" "+j;
+	}
+
+}
+public class DemoClone {
+	public static void main(String[] args) throws CloneNotSupportedException {
+		A a1=new A();
+		a1.i=10;
+		a1.j=20;
+		
+		System.out.println("a1 "+a1);
+		
+		A a2= a1.clone();
+		System.out.println("a2 "+a2);
+		a2.i=999; //not going to effect a1 becase they are indepandent
+		a2.j=9999;
+		System.out.println("-------------------");
+		System.out.println("a1 "+a1);
+		System.out.println("a2 "+a2);
+		
+		
+	}
+
+}
+
+
+
+there are two types of cloning 1. shallow cloning or shallow copy , 2.deep cloning
+                               or deep copy
+
+
+shallow cloning
+-----------------------
+when there is an exestence of has a relation , then during clone of container object , same 
+component object is share by both original and duplicate object . in this case the modification
+on component object through any container object is going to effect both original and duplicate
+object , this type of cloning called shallow cloning, if we used object class clone method
+then shallow cloning is by-default available, and this type of cloning no proper cloning
+
+public class Address {
+	int pin;
+	String city;
+	String landmark;
+	
+	
+	
+	public Address(int pin, String city, String landmark) {
+		super();
+		this.pin = pin;
+		this.city = city;
+		this.landmark = landmark;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Address [pin=" + pin + ", city=" + city + ", landmark=" + landmark + "]";
+	}
+	
+	
+}
+public class Person implements Cloneable{
+	String name;
+	int aadhar;
+	Address ad;
+	
+	
+	
+	public Person(String name, int aadhar, Address ad) {
+		super();
+		this.name = name;
+		this.aadhar = aadhar;
+		this.ad = ad;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", aadhar=" + aadhar + ", ad=" + ad + "]";
+	}
+	
+	@Override
+	protected Person clone() throws CloneNotSupportedException {
+		return (Person)super.clone();
+	}
+	
+	
+
+}
+public class DemoClone {
+	public static void main(String[] args) throws CloneNotSupportedException {
+		Address add=new Address(123456, "Bengaluru","near bsnl tower");
+		Person p1=new Person("raja", 2342, add);
+		System.out.println(p1);
+		Person p2=p1.clone();
+		System.out.println(p2);
+		p2.ad.landmark="near airtel tower";
+		System.out.println("----------------------");
+		System.out.println(p1);
+		System.out.println(p2);
+	}
+
+} 
+
+2.Deep cloning
+---------------
+if the container object have a component object then during clone of container object one
+dulicate copy of component object will create and will assign to cloned container object , so that
+any modifination of one component object will not effect other container object , that called
+deep cloning. by override clone method properly we can do the deep cloning.
+
+Note- when there is only primitive type of data then go for shallow cloning ,
+      when there is any non primitive type of data then go for deep cloning
+
+public class Address {
+	int pin;
+	String city;
+	String landmark;
+	
+	
+	
+	public Address(int pin, String city, String landmark) {
+		super();
+		this.pin = pin;
+		this.city = city;
+		this.landmark = landmark;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Address [pin=" + pin + ", city=" + city + ", landmark=" + landmark + "]";
+	}
+	
+	
+}
+
+public class Person implements Cloneable{
+	String name;
+	int aadhar;
+	Address ad;
+	
+	
+	
+	public Person(String name, int aadhar, Address ad) {
+		super();
+		this.name = name;
+		this.aadhar = aadhar;
+		this.ad = ad;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", aadhar=" + aadhar + ", ad=" + ad + "]";
+	}
+	
+	@Override
+	protected Person clone() throws CloneNotSupportedException {
+		//create duplicate address object
+		Address add2=new Address(this.ad.pin, this.ad.city, this.ad.landmark);
+		//create duplicate person object
+		Person p=new Person(this.name, this.aadhar, add2);
+		return p;
+	}
+	
+	
+
+}
+public class DemoClone {
+	public static void main(String[] args) throws CloneNotSupportedException {
+		Address add=new Address(123456, "Bengaluru","near bsnl tower");
+		Person p1=new Person("raja", 2342, add);
+		System.out.println(p1);
+		Person p2=p1.clone();
+		System.out.println(p2);
+		p2.ad.landmark="near airtel tower";
+		System.out.println("----------------------");
+		System.out.println(p1);
+		System.out.println(p2);
+	}
+
+} 
+
+
+  public final native void notify();
+  public final native void notifyAll();
+  public final void wait() throws java.lang.InterruptedException;
+  public final void wait(long) throws java.lang.InterruptedException;
+  public final void wait(long, int) throws java.lang.InterruptedException;
+The above 5 methods used in multi threading for parallel execution
+
+Binding
+---------
+the linking and loading between method call and method declaration  or
+the linking and loading between variable call and variable declaration   
+is called binding.  
+there is two type of binding that is static or early binding and another
+one is late or run time binding.
+
+static or early binding
+---------------------------
+the binding at compile time is called static binding like satic method,
+and any type of variable,
+
+non static or run time binding
+------------------------------
+the binding done done at run time is called late binding like non static
+method binding
+
+Recurence relation
+-------------------
+current problem solution depending on the solution on previous similar problem
+5!= 5* 4! -> the solution of 5! depending on the soution of 4!.
+
+recurence relation is the mathmatical problem and in computer science recarunce relation 
+known as recursion
+
+Definition of recursion
+----------------------------
+when a method called itself called recursion, mean recursive call
+syntax 
+-----------
+void m1()
+{
+m1();
+}
+
+
+programm to print 1 to 10
+----------------------------
+public class DemoRecursion1 {
+	
+	public static void main(String[] args) {
+		m1(1);
+	}
+	
+	//recursion to print 1 to 10
+	static void m1(int count)
+	{
+		System.out.println(count);
+		count+=1;
+		m1(count);
+	}
+	
+
+}
+
+the above programm will create StackOverflowError , during execution m1(n) calling m1(n+1)
+continuesly calling recursie call waste stack frame each time, then a point comes
+when no stack space available is called stack overflow , also it makes undesired output
+of program
+
+to make the control of recursive call and get disired output and to prevent stack overflow
+one cindition is used known as base condition in recursion. the base condition is a
+return satement used to prevent unnessary recusive call 
+
+//recursion to print 1 to 10 with base condition
+----------------------------------------------------
+public class DemoRecursion1 {
+	
+	public static void main(String[] args) {
+		m1(1);
+	}
+	
+	//recursion to print 1 to 10
+	static void m1(int count)
+	{
+		System.out.println(count);
+		if(count==10) //base condition
+		{
+			return;
+		}
+		count +=1;
+		m1(count); //recursive call
+	}
+	
+
+}
+  
+ 
+
+
+
+//recursion to print 10 to 1
+---------------------------------
+public class DemoRecursion1 {
+	
+	public static void main(String[] args) {
+		m1(10);
+	}
+	
+	//recursion to print 10 to 1
+	static void m1(int count)
+	{
+		System.out.println(count);
+		if(count==1) //base condition
+		{
+			return;
+		}
+		count -=1;
+		m1(count); //recursive call
+	}
+	
+
+}
+  
+
+recursion to print sum of first n natural number
+-------------------------------------------------
+public class DemoRecursion1 {
+	
+	public static void main(String[] args) {
+		int sum= m1(10);
+		System.out.println(sum);
+	}
+	
+	static int m1(int val)
+	{
+		
+		if(val ==1) return 1;
+		else 
+		{
+			
+			return val + m1(val-1);
+		}
+		
+	}
+	
+
+}
+
+program to add all digits of a number
+---------------------------------------
+public class DemoRecursion1 {
+	
+	public static void main(String[] args) {
+		int sum=0;
+		int n=236;
+		
+		while(n>0) {
+			int rem=n%10;
+			sum=sum+rem;
+			n=n/10;
+		}
+		
+		System.out.println(sum);
+	}
+
+}
+
+programm to add all the digits of a number by using recursion
+---------------------------------------------------------------
+public class DemoRecursion1 {
+	
+	public static void main(String[] args) {
+		
+		int n=236;
+		int sum=digitSum(n);
+		System.out.println(sum);
+	}
+	
+	static int digitSum(int n)
+	{
+		if(n<=9) return n;
+		else
+		{
+			return (n%10) + digitSum(n/10);
+		}
+	}
+}
+
+
+fibbonacci in a sequence without recursion
+--------------------------------------------
+input- 10
+output- 0 1 1 2 3 5 8 13 21 34
+
+public class FibonacciWithOutRecursion {
+	public static void main(String[] args) {
+		int a=0;
+		int b=1;
+		int sequence=10;
+		System.out.print(a+" "+b);
+		for(int i=3;i<=sequence;i++)
+		{
+			int c=a+b;
+			a=b;
+			b=c;
+			System.out.print(" "+c);
+		}
+	}
+
+}
+
+fibbonacci in a sequence with recursion
+--------------------------------------------
+public class FibonacciWithOutRecursion {
+	public static void main(String[] args) {
+		fib(0, 1, 1, 5); // base condition
+		
+		
+	}
+	
+	static void fib(int a,int b,int count ,int sequence) // fib(first number, second number, count of sequence , limit)
+	{ 
+		if(count>sequence) return; // if sequence is greater then limit then return 
+		System.out.println(a);     // print thee given number
+		fib(b, a+b, count+1, sequence);  // replace a with b
+		                                 // replace b with a+b
+		                                 // call th recursion with increse the count
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

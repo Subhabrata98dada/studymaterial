@@ -1,0 +1,1583 @@
+Disadvantages of array
+--------------------------
+1. need to specify the size of array before use it , and no extra element out of the 
+size we can add it.
+2. array is homogenious collection of element ,mean array can not add multiple 
+   type of element on a array
+3. array does not provide any utility methods for better operations on data.
+
+advantage of array
+------------------------
+it is fastest way to store multiple element on a single variable at a time, also
+provide faster access by using index
+
+
+
+
+
+
+
+to remove disadvantage of array Collection framework is introduced
+-------------------------------------------------------------------
+1. collection framework allows as many element we want to add with out thinking
+   about size mean growable in nature.
+2. collection framework allows heterogenious element on a single variable
+   mean at a time different kind of element can be Store
+3. collection Frameworks provides the utility methods for various operations
+4. all data in collection stores in from of object thats why more object oriented
+   feature can be implemetnt
+
+disadvantages of colection
+--------------------------
+1. slow compare to array in terms of store, retrive and update the value.
+2. can not store the primitive value , mean the primitive nature is missing in 
+   in collection framework.
+
+
+Collections
+---------------
+Collections is a framework which having all the utility data structure mean , all data 
+structure is already implemented programmer is need to just use those implementation 
+and call utility method, collections have two library or interface 
+      1. Collection 
+      2. Map
+framework mean all the common work is already implemented programer only need to use the 
+features.
+
+Collection - Collection is a interface which having so many child interfaces and classes
+             to implement the common data structure feature on single value.
+
+
+
+                          Methods of Collection interface
+                         ----------------------------------
+public boolean add(Object obj)
+-------------------------------
+this method used to add or store one element in the collection object,once element 
+added it returns true otherwise returns false
+
+public boolean addAll(Collection c)
+-------------------------------------
+this method used to store or add a group of element from a collection. if the method
+failed to store atleast one elememnt then the method will return false , otherwise true
+
+public boolean remove(Object obj)
+-------------------------------------
+this method used to delete one element from the collection , if the element not present
+then it returns false
+
+public boolean removeAll(Collection c)
+---------------------------------------
+removes all element present inside collection , which is present inside given input 
+parameter collection
+
+public int size()
+------------------
+returns number of element inside current collection object
+
+public void clear()
+-------------------
+used to remove all element inside collection object
+
+public boolean isEmpty()
+-------------------------
+returns true if the collection is empty, mean no element present , otherwise return false
+
+public Object[] toArray()
+----------------------------
+returns array of Object[] to convert collection to array
+
+public boolean contains(Object obj)
+------------------------------------
+this method returns true if the ginven input parameter element present inside collection 
+otherwise returns false
+
+public boolean contailnesAll(Collection c)
+------------------------------------------
+this methods returns true if all the elements present inside the given input collection is
+present otherwise returns false.
+
+public boolean retainsAll(Collection c)
+----------------------------------------
+this method keeps the element in original collection which is common in both original and
+given input collection , otherwise remove the elements
+
+
+
+
+
+
+
+
+
+
+
+                             List
+----------------------------------------------------------
+when the element or data need to Store and access in index wise and the insertion order
+should be maintain then go for list.
+* list allows heterogenious element and duplicate value.
+* list is ondex based mean by using list both insertion and deletion can be done by using
+  index order
+* the index in list starting from 0 , like array and String
+
+public void add(int index,Object obj)
+-------------------------------------------
+add a element in a specific index, mean the object is going to store in the given input
+para meter index.
+
+public void set(int index,Object o)
+------------------------------------------
+update the element in the given index , if the index is invalid then it going to throw
+Exception
+
+
+
+
+public Object get(int index)
+----------------------------
+it removes the element at the given index, if the index not present then it going to
+throw one exception
+
+public Object remove(int index)
+------------------------------
+it removes the element at the given index and return the removed element , for invalid 
+index it throws exception
+
+public int indexOf(Object o)
+-------------------------------
+it returns the index of given input element , incase the element it not present then 
+it going to return -1, copares from first to last
+
+pulic int lastIndexOf(Object) 
+---------------------------------
+returns the index of an elemet in the parameter from last to first. for the input which
+is not present returns -1;
+
+
+
+public List subList(int start, int end)
+------------------------------------------
+returns the list from start index to just before last index like sub String
+
+
+ArrayList
+----------
+it it the implementation class of List and used growable array as underlying data
+structure.
+when the element or data need to Store and access in index wise and the insertion order
+should be maintain then go for list.
+* list allows heterogenious element and duplicate value
+
+Constructor of ArrayList
+-----------------------
+public ArrayList()
+public ArrayList(int initialcapacity)
+Public ArrayList(Collection c)
+
+
+
+LinkedList
+----------
+it it the implementation class of List and used double linked listg as underlying data
+structure.
+when the element or data need to Store and access in index wise and the insertion order
+should be maintain then go for list.
+* list allows heterogenious element and duplicate value
+
+Constructor of LinkedList
+-----------------------
+public LinkedList()
+Public LinkedList(Collection c)
+
+methods of LinkedList
+------------------------
+public void addFirst()- add elements at starting of LinkedList
+public void addLast()- add element at the last of LinkedList
+public Object getFirst() - get first element of LinkedList
+public Object getLast()  - get last element of LinkedList
+Object removeFirst() - remove first element of LinkedList
+Object removeLast() - remove last Element of LinkedList
+
+
+
+starting program for arraylist
+-------------------------------
+import java.util.ArrayList;
+import java.util.List;
+
+public class DemoList {
+	public static void main(String[] args) {
+		ArrayList al= new ArrayList();
+		al.add(10);
+		al.add(20);
+		al.add("Hello");
+		al.add(25.5);
+		System.out.println(al);
+		al.add(2, "middle");
+		System.out.println(al);
+		al.remove(new Integer(20));
+		System.out.println(al);
+		al.remove(1);
+		System.out.println(al);
+	}
+
+}
+
+
+addAll() removeAll()
+-------------------------
+import java.util.ArrayList;
+import java.util.List;
+
+public class DemoList {
+	public static void main(String[] args) {
+		ArrayList al= new ArrayList();
+		al.add(10);
+		al.add(20);
+		al.add(30);
+		ArrayList al2=new ArrayList();
+		System.out.println(al);
+		al2.add(30);
+		al2.add(40);
+		al2.add(50);
+		al.addAll(al2);
+		System.out.println(al);
+		al.removeAll(al2);
+		System.out.println(al);
+	}
+
+}
+
+size() , isEmpty(), toArray() , clear()
+---------------------------------------
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class DemoList {
+	public static void main(String[] args) {
+		ArrayList al= new ArrayList();
+		al.add(10);
+		al.add(20);
+		al.add(30);
+		System.out.println(al.size());
+		System.out.println(al.isEmpty());
+		Object ob[]= al.toArray();
+		System.out.println(Arrays.toString(ob));
+		al.clear();
+		System.out.println(al);
+	}
+
+}
+
+containes() , containesAll() , retainsAll()
+------------------------------------------------
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class DemoList {
+	public static void main(String[] args) {
+		ArrayList al= new ArrayList();
+		al.add(10);
+		al.add(20);
+		al.add(30);
+		System.out.println(al.contains(20));
+		ArrayList al2= new ArrayList();
+		al2.add(20);
+		al2.add(30);
+		al2.add(40);
+		al2.add(50);
+		System.out.println(al.containsAll(al2));
+		al.retainAll(al2);
+		System.out.println(al);
+	}
+
+}
+
+set() ,get() , indexOf() ,lastIndexOf() of list
+------------------------------------------------
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class DemoList {
+	public static void main(String[] args) {
+		ArrayList al= new ArrayList();
+		al.add(10);
+		al.add(20);
+		al.add(30);
+		al.add(20);
+		System.out.println(al);
+		al.set(2, 999);
+		System.out.println(al);
+		System.out.println(al.get(1));
+		System.out.println(al.indexOf(20));
+		System.out.println(al.indexOf(88));
+		System.out.println(al.lastIndexOf(20));
+		
+	}
+
+}
+
+methods specific to linkedlist
+---------------------------------------
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+public class DemoList {
+	public static void main(String[] args) {
+		LinkedList l1=new LinkedList();
+		l1.add(10);
+		l1.add(20);
+		l1.add(30);
+		System.out.println(l1);
+		l1.addFirst(-10);
+		l1.addLast(100);
+		System.out.println(l1);
+		System.out.println(l1.getFirst());
+		System.out.println(l1.getLast());
+		System.out.println(l1.removeFirst());
+		System.out.println(l1.removeLast());
+		System.out.println(l1);
+		
+	}
+
+}
+
+Stack
+--------
+Object push()- this method add one element on the top of Stack and after add it returns
+added element.
+
+Object pop() - this method removes the last inserted element from the top of the Stack.
+               and returns the deleted the element.
+Object peek()- this methods retuerns the top element without delete the top element, it
+               just informs which element is on top currently
+
+import java.util.Stack;
+
+public class DemoList {
+	public static void main(String[] args) {
+		Stack s=new Stack();
+		System.out.println(s.push(10));
+		s.push(20);
+		s.push(30);
+		System.out.println(s);
+		System.out.println(s.pop());
+		System.out.println(s);
+		System.out.println(s.peek());
+		System.out.println(s);
+	}
+
+}
+                         Queue
+------------------------------------------------------
+Queue is a interface in collection framework , which allowed duplicate elememnt
+* queue maintain insertion order
+* queue not maintain the index ,mean queue is not index based .
+* queue maintain FIFO or LILO 
+  FIFO- first in first out
+  LILO- last in last out
+  The realtimem Queue implementation is ticket counter line in railway system
+
+boolean add()- this method used to add one element on queue
+Object poll()- this method is used to remove the element inserted at first ,
+               after the removing the element it returns the deleted element.
+peek()- this method is used return the current oldest element mean , the element is 
+going to delete first as current situation without delete the element
+
+
+import java.util.ArrayDeque;
+import java.util.Queue;
+
+public class DemoQueue1 {
+	public static void main(String[] args) {
+		Queue q=new ArrayDeque();
+		q.add(10);
+		q.add(20);
+		q.add(30);
+		q.add(40);
+		q.add(50);
+		System.out.println(q);
+		System.out.println(q.poll());
+		System.out.println(q);
+		System.out.println(q.poll());
+		System.out.println(q);
+		System.out.println(q.peek());
+		System.out.println(q);
+	}
+}
+
+Dequeue
+----------
+Dequeue is a sub interface of Queue which allows to do operation on both side of 
+queue . but it normally maintain FIFO order.
+void addFirst() - add element at the start of Dequeue
+void addLast()-   add element at the last of the Dequeue
+Object removeFirst()- remove first element from the Dequeue
+Object removeLast() - remove last element from the Dequeue
+Object peekFirst() - returns first elment present in Dequeue
+Object peekLast()- returns lastElement present in Dequeue
+Object pollFirst() - remove first element from Dequeue
+Object pollLast() - remove last element from Dequeue
+
+import java.util.Deque;
+import java.util.LinkedList;
+
+public class DemoQueue1 {
+	public static void main(String[] args) {
+		Deque d=new LinkedList();
+		d.add(10);
+		d.add(20);
+		d.add(30);
+		d.addFirst(-100);
+		d.addLast(100);
+		System.out.println(d);
+		d.removeFirst();
+		d.removeLast();
+		System.out.println(d);
+		System.out.println(d.peekFirst());
+		System.out.println(d.peekLast());
+		System.out.println(d.pollFirst());
+		System.out.println(d.pollLast());
+		System.out.println(d);
+	}
+}
+
+Comparable , comparator
+--------------------------
+when user defined data or non primitive data need to be sort then programmer going
+to use Comparable and Comparator interface , which is functional interface,
+Once we implemented the Comparable or Comparator interface then by Arrays.sort()
+we can arrange the elememnt as per required condition.
+
+Comparable
+-------------
+Comparable is a functional interface which having method
+public int compareTo(Object o) - 
+ if return value is +ve mean current instance is bigger then gien input.
+if return value is 0 then current object same as input object
+if return value is -ve then current object is less then input object.
+
+Arrays().sort() going to call compareTo() method and sort the array in assending
+order. Sorting object or data by using Comparable interface and Arrays.sort() is
+known as natural ordering
+
+
+
+
+
+
+
+import java.util.Arrays;
+
+public class Employee implements Comparable {
+	int salary;
+	String name;
+	public Employee(int salary, String name) {
+		super();
+		this.salary = salary;
+		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "(salary=" + salary + ", name=" + name+")";
+	}
+	@Override
+	public int compareTo(Object o) {
+		Employee e=(Employee)o;
+		return this.salary-e.salary;
+	}
+	
+}
+
+import java.util.Arrays;
+
+public class DemoComparable {
+	public static void main(String[] args) {
+		Employee e[]=new Employee[5];
+		e[0]=new Employee(20000, "a");
+		e[1]=new Employee(15000, "b");
+		e[2]=new Employee(23000,"c");
+		e[3]=new Employee(21000, "d");
+		e[4]=new Employee(22000, "e");
+		Arrays.sort(e);
+		System.out.println(Arrays.toString(e));
+	}
+}
+
+
+Comparator
+----------
+Comparator is a functional interface used to sort the element or compare the element
+, Comparator interface has a method that is
+int compare(Object o1,Object o2);
+if compare() returns +ve then o1 > o2
+if compare() returns 0 then o1= o2
+if compare() returns -ve then o1< o2
+
+if the requirement is to comare the objects outside of the current class then go 
+for Comparator implementation. 
+During sort by using Arrays.sort() and Comparator interface then along with array
+the comparator type object should be pass.
+
+public class Employee{
+	int salary;
+	String name;
+	public Employee(int salary, String name) {
+		super();
+		this.salary = salary;
+		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "(salary=" + salary + ", name=" + name+")";
+	}
+	
+	
+}
+
+
+import java.util.Comparator;
+
+public class EmployeeCompare implements Comparator{
+
+	@Override
+	public int compare(Object o1, Object o2) {
+		Employee e1=(Employee)o1;
+		Employee e2=(Employee)o2;
+		return e1.salary - e2.salary;
+	}
+
+}
+
+public class DemoComparator {
+	public static void main(String[] args) {
+		Employee e[]=new Employee[5];
+		e[0]=new Employee(20000, "a");
+		e[1]=new Employee(15000, "b");
+		e[2]=new Employee(23000,"c");
+		e[3]=new Employee(21000, "d");
+		e[4]=new Employee(22000, "e");
+		EmployeeCompare ecompare=new EmployeeCompare();
+		Arrays.sort(e,ecompare);
+		System.out.println(Arrays.toString(e));
+	}
+}
+
+Type safety problem
+------------------------
+for a specific requirement the need is a collection of fixed data type object, but 
+collection can store all type object(heterogenious object) , this creates
+the scarcity of type safety problem , mean the type safe ness now reduces.
+
+import java.util.ArrayList;
+import com.jsp.comarable.Employee;
+
+public class Demo {
+	public static void main(String[] args) {
+		ArrayList al=new ArrayList();
+		al.add(10);
+		al.add(10.5);
+		al.add(20.5f);
+		al.add('d');
+		al.add(new Employee(2000, "raja"));
+		al.add("hello");
+		System.out.println(al);
+	}
+}
+
+downcasting problem
+----------------------
+each element in collection stores as object type elememnt ,mean during get the object 
+from collection and to access the specific property the programmer need to downcast 
+the object every time, this is a burden to programmer.
+
+to remove the problem of type safety and downcasting one mechanism is used , that is 
+nothing but Generics
+
+
+                            Generic
+                         ----------------
+Generics is a mechanism which allows to class to do operation on a soecicific types 
+of data , means the data which is not supporting generic data type that data 
+can not be used in generic class data operation.
+By using generic we avoiding type safety and downcasting problem.
+
+public class Demo {
+	public static void main(String[] args) {
+		ArrayList<String> al=new ArrayList<String>();
+               // al object can take only String type of data
+		al.add("hello");
+		al.add("how");
+		al.add("are");
+		al.add("you");
+		String s= al.get(2);
+		System.out.println(s);
+		System.out.println(al);
+		}
+}
+                  Set
+-------------------------------------------
+Set is a sub interface of Collection used to store unique element, mean duplicate element
+not allows in Set.
+Set is not index based, set is arranged as per hashcode value generared by hashcode()
+method.
+set does not maintain insetion order.
+
+import java.util.HashSet;
+public class DemoSet {
+	public static void main(String[] args) {
+		HashSet<Integer> hs= new HashSet<Integer>();
+		hs.add(30);
+		hs.add(12);
+		hs.add(90);
+		hs.add(13);
+		hs.add(78);
+		System.out.println(hs);
+		System.out.println(hs.remove(12));
+		System.out.println(hs);
+	}
+}
+
+
+LinkedHashSet is a set where all the insertion order is maintained
+
+import java.util.LinkedHashSet;
+public class DemoSet {
+	public static void main(String[] args) {
+		LinkedHashSet<String> hs= new LinkedHashSet<String>();
+		hs.add("raja");
+		hs.add("suresh");
+		hs.add("mahesh");
+		hs.add("ramesh");
+		hs.add("jajenesh");
+		System.out.println(hs);
+	}
+}
+
+SortedSet is the sub interface of set used to sort the element. by using coparable
+implementation SortedSet sorts the elements , the implementation classes of sorted set
+is TreeSet
+
+import java.util.TreeSet;
+public class DemoSet {
+	public static void main(String[] args) {
+		TreeSet<Integer> set= new TreeSet<Integer>();
+		set.add(23);
+		set.add(10);
+		set.add(9);
+		set.add(51);
+		set.add(54);
+		set.add(37);
+		System.out.println(set);
+	}
+}
+
+                Iterator
+--------------------------------------------
+Iterator is a invisible cursor to visit each element of a Collection, 
+hashNext() - it moves the cursor , if any element present then it returns true otherwise 
+returns false.
+next() - it returns the element present in current cursor.
+
+import java.util.ArrayList;
+import java.util.Iterator;
+public class DemoSet {
+	public static void main(String[] args) {
+		ArrayList<Integer> a=new ArrayList<Integer>();
+		a.add(20);
+		a.add(45);
+		a.add(23);
+		a.add(32);
+		a.add(90);
+		Iterator<Integer> i= a.iterator();
+		while(i.hasNext())
+		{
+			System.out.println(i.next());
+		}
+	}
+}
+
+
+              ListIterator
+------------------------------------------
+ListIterator is a sub interface of Iterator which is having some extra functionality
+like moving forward and backword , also it have feature to add element and remove the
+element from List
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+public class DemoSet {
+	public static void main(String[] args) {
+		ArrayList<Integer> a=new ArrayList<Integer>();
+		a.add(20);
+		a.add(45);
+		a.add(23);
+		a.add(32);
+		a.add(90);
+		ListIterator<Integer> i=a.listIterator();
+		while(i.hasNext())
+		{
+			System.out.println(i.next());
+		}
+	}
+}
+
+moving backward by using ListIterator
+-----------------------------------------------------
+import java.util.ArrayList;
+import java.util.ListIterator;
+public class DemoSet {
+	public static void main(String[] args) {
+		ArrayList<Integer> a=new ArrayList<Integer>();
+		a.add(20);
+		a.add(45);
+		a.add(23);
+		a.add(32);
+		a.add(90);
+		
+		ListIterator<Integer> i= a.listIterator(a.size());
+		while(i.hasPrevious())
+		{
+			System.out.println(i.previous());
+		}
+		
+	}
+}
+
+Add one element by using ListIterator
+-------------------------------------------
+import java.util.ArrayList;
+import java.util.ListIterator;
+public class DemoSet {
+	public static void main(String[] args) {
+		ArrayList<Integer> a=new ArrayList<Integer>();
+		a.add(20);
+		a.add(45);
+		a.add(23);
+		a.add(32);
+		a.add(90);
+		
+		ListIterator<Integer> i= a.listIterator(a.size());
+		while(i.hasPrevious())
+		{
+			if(i.previous()== 23)
+				i.add(89);
+		}
+		System.out.println(a);
+	}
+}
+
+remove element by using iterator
+---------------------------------------
+import java.util.ArrayList;
+import java.util.ListIterator;
+public class DemoSet {
+	public static void main(String[] args) {
+		ArrayList<Integer> a=new ArrayList<Integer>();
+		a.add(20);
+		a.add(45);
+		a.add(23);
+		a.add(32);
+		a.add(90);
+		
+		ListIterator<Integer> i= a.listIterator(a.size());
+		while(i.hasPrevious())
+		{
+			if(i.previous()== 23)
+				i.remove();
+		}
+		System.out.println(a);
+	}
+}
+
+                Map
+-------------------------------------
+Map is the Interface whcich is comes under Collections Framework but a saperate
+interface from Collecction .
+Map Stores the values in form of key and value pair. mean for each key there is
+a saperate value is present
+
+put(Object key,Object value)- insert the data in form of key and value pair.
+map does not follow insertion order. Map can take null as key value but only one value
+allowd as key value.
+There can be any number of null as the associate value of key.
+if we add multiple value on the same key then last added value will be consider as 
+updated value,
+map does not follow insertion order.
+
+
+
+
+
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class DemoMap {
+	public static void main(String[] args) {
+		HashMap<Integer, String> m=new HashMap<Integer, String>();
+		m.put(20, "twenty");
+		m.put(22, "twenty two");
+		m.put(10, "ten");
+		m.put(12, "twelve");
+		m.put(30, "thirty");
+		m.put(null,"null");
+		m.put(null, "value");
+		System.out.println(m);
+	}
+}
+
+
+get(Object key)- if the key is present in the Map then the get() returns the value
+                 present inside map , if the key is not present inside map 
+                 then the get() methoods returns null.
+
+import java.util.HashMap;
+import java.util.Map;
+public class DemoMap {
+	public static void main(String[] args) {
+		HashMap<Integer, String> m=new HashMap<Integer, String>();
+		m.put(20, "twenty");
+		m.put(22, "twenty two");
+		m.put(10, "ten");
+		m.put(12, "twelve");
+		m.put(30, "thirty");
+		m.put(null,"null");
+		System.out.println(m);
+		System.out.println(m.get(32));
+		System.out.println(m.remove(12));
+		System.out.println(m);
+	}
+}
+
+put(Object key,Object value)- used to add one element in Map.
+get(Object key)- used to fetch one elment from Map
+remove(Object key) used to remove one element from the Map
+
+
+            LinkededHashMap
+---------------------------------
+LinkedHashMap is a sub class of HashMap used store the element in insertion order
+import java.util.LinkedHashMap;
+public class DemoMap {
+	public static void main(String[] args) {
+		LinkedHashMap<Integer, String> m=new LinkedHashMap<Integer, String>();
+		m.put(20, "twenty");
+		m.put(22, "twenty two");
+		m.put(10, "ten");
+		m.put(12, "twelve");
+		m.put(30, "thirty");
+		m.put(null,"null");
+		System.out.println(m);
+	}
+}
+
+SortedMap
+----------------
+SortedMap is a sub interface of Map used to store the element in sorted order
+as per key value. The key value should be same type and comparable type. Inside 
+sorted map the null value not allowed ,inside sorted map if programmer put
+null value then programmer will get NullPointerException
+
+import java.util.TreeMap;
+
+public class DemoMap {
+	public static void main(String[] args) {
+		TreeMap<Integer, String> m=new TreeMap<Integer, String>();
+		m.put(20, "twenty");
+		m.put(22, "twenty two");
+		m.put(10, "ten");
+		m.put(12, "twelve");
+		m.put(30, "thirty");
+		System.out.println(m);
+	}
+}
+
+keySet() ,entrySet() of Map
+--------------------------------
+ Set entrySet()- this method returns the all key-value pair in from of Set.
+ Set keySet()- this method retuns all the key in form of set;
+
+import java.util.Set;
+import java.util.TreeMap;
+
+public class DemoMap {
+	public static void main(String[] args) {
+		TreeMap<Integer, String> m=new TreeMap<Integer, String>();
+		m.put(20, "twenty");
+		m.put(22, "twenty two");
+		m.put(10, "ten");
+		m.put(12, "twelve");
+		m.put(30, "thirty");
+		System.out.println(m);
+		Set s= m.entrySet();
+		System.out.println(s);
+		Set<Integer> s2=m.keySet();
+		System.out.println(s2);
+	}
+}
+
+iterate each element from Map
+--------------------------------
+
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class DemoMap {
+	public static void main(String[] args) {
+		TreeMap<Integer, String> m=new TreeMap<Integer, String>();
+		m.put(20, "twenty");
+		m.put(22, "twenty two");
+		m.put(10, "ten");
+		m.put(12, "twelve");
+		m.put(30, "thirty");
+		Set<Integer> s=m.keySet();
+		Iterator<Integer> i=s.iterator();
+		while(i.hasNext())
+		{
+			Integer key=i.next();
+			String value=m.get(key);
+			System.out.println(value);
+		}
+	}
+}
+
+                     Java 8 feature
+----------------------------------------------------------
+If one class implementing an interface and and new feature added in form of abstract
+method() ,then immediately the implementation classes need to override the method
+immediately or make implementation clases as Abstract, thatwhy default method 
+in interface is introduced , that indicated the override of default method is optional .
+
+* default method always prefixed with the keyword default.
+if the implemetation class not override the default method , then the default method
+form interface will inherite from interface to Implementation classes
+
+public interface Interface1 {
+  default void m1() {
+	  System.out.println("default method");
+  }
+}
+
+public class ImplementClass1 implements Interface1{
+	
+	public static void main(String[] args) {
+		ImplementClass1 ic=new ImplementClass1();
+		ic.m1();
+	}
+}
+
+static method inside interface
+-----------------------------------
+in java 8 static method is introduced inside interface to provide rull and regulation
+to implementation classes and provide description about interface.
+The static method of interface will not inherite from Interface to Implementation
+class.
+
+public interface Interface1 {
+  public static void m1() {
+	  System.out.println("static method of interface");
+  }
+}
+
+public class ImplementClass1 implements Interface1{
+	
+	public static void main(String[] args) {
+		ImplementClass1 ic=new ImplementClass1();
+//		ic.m1(); Compile time error
+		Interface1.m1();
+	}
+}
+
+java 9 - private method inside interface
+------------------------------------------
+in java 9 private method have been added inside interface ,if many default method
+having same common logic then it is recomamnded to write the common logic inside
+a private method and call that private method from default method.
+
+public interface Interface1 {
+  private void m1()
+  {
+	  System.out.println("hello");
+  }
+  default void m2()
+  {
+	  m1();
+  }
+}
+
+Functional Interface
+----------------------
+A inteface having only abstract method is known as functional interface
+and the single abstract method inside interface is known as functionality
+of functional interface.
+On the top of functioanal interface we can use @FunctionalInterface annotation,
+this annotation informs compiler that the interface is a functional interface
+Functioanal interface can have any number of static,private,default method
+
+@FunctionalInterface
+public interface Interface1 {
+  void m1(); 
+  default void m2() {
+	  
+  }
+  private void m3() {
+	  
+  }
+  static void m4() {
+	  
+  }
+}
+
+                Optional class
+--------------------------------------------
+Optional class is a class introduced in java 8 to handle the null pointer exception
+properly.
+Optional is a Contailer class which is used to hold the other object
+Optioanl is a generic class. 
+Optional.of(Object obj) is a static method used to inject the component object
+to Optioanl class.
+
+boolean isPresent()- this method returns true if the Optional Object contains any 
+                     object otherwise retuns false.
+boolean isEmpty()- this method returns false if the Optional Object contains any 
+                     object otherwise retuns true.
+Object get()- this method returns the object containes by Optional class object, if
+              the optional class Object is empty then it throws Exception
+Optional.empty() - this method is used to provide empty value to Optional class
+                   Object
+import java.util.Optional;
+
+public class ImplementClass1 {
+	public static void main(String[] args) {
+		Optional<String>  opt=Optional.empty();
+		if(opt.isPresent())
+			System.out.println(opt.get());
+		else
+			System.out.println("OPtional is empty");
+	}
+}
+
+Landa Expression
+---------------------
+A method without name and return type is known as lamda expression
+mean lamda expression is a annonymous function(method)
+-> is knwn as lamda closure to indicate or inform compiler that lamda expression is 
+used in program.
+void m1()             ()->
+{                     {
+            ---->
+}                     }
+
+1. lamda expression does not have any name and return type
+2. curly braces is optioanal when there is only one statement in lamda expression
+3. the data type of parameter in lamda expression is optional
+4. if the lamda expression have only one statement and that is return statement
+   then return keyword is not needed.
+   if we are using {} in lamda expression then return keyword is mandatory.
+5. To call or execute any lamda expression we need functional interface.
+6. the lamda expression written by programmer is consider as overridden form of single 
+   abstract method inside anonymous class
+7. if there is only one parameter in method then () is optional
+
+
+
+
+
+
+@FunctionalInterface
+public interface DemoInterface1 {
+    void m1();
+}
+
+public class Demo {
+	public static void main(String[] args) {
+		DemoInterface1 d= ()->System.out.println("hello");
+		// create anonymous class implementing DemoInterface1 and
+		// crete the object of Anonymous class store the object into
+		// d variable  by using upcasting
+		d.m1();
+	}
+}
+
+
+
+
+------------------------------------------------------------
+public class Demo {
+	public static void main(String[] args) {
+		MathOperation add= (a,b)->System.out.println("a+b="+(a+b));
+		MathOperation sub= (a,b)->System.out.println("a-b="+(a-b));
+		MathOperation mul= (a,b)->System.out.println("a*b="+(a*b));
+		MathOperation div= (a,b)->System.out.println("a/b="+(a/b));
+		add.math(10, 20);
+		sub.math(35, 15);
+		mul.math(4, 3);
+		div.math(56, 5);
+	}
+}
+
+
+@FunctionalInterface
+interface MathOperation{
+	void math(int a,int b);
+}
+
+
+
+Predefined Functioanal interface
+----------------------------------------
+1. Runnable
+
+package java.lang;
+@FunctionalInterface
+public interface Runnable {
+
+    void run(); // no arg and no return type
+}
+public class Demo {
+	public static void main(String[] args) {
+		Runnable r= ()-> System.out.println("This is runnable interface");
+		r.run();
+	}
+}
+
+
+
+
+
+
+
+
+2. Predicate<T> present in package java.util.function package. <T> is generic type argument
+   predicate have bollean test() having the speciality to test the begavour of T argument
+
+@FunctionalInterface
+public interface Predicate<T> {
+    boolean test(T t);
+    }
+import java.util.function.Predicate;
+public class Demo {
+	public static void main(String[] args) {
+		Predicate<Integer> p=(i)-> i%2==0;
+		System.out.println(p.test(10));
+		System.out.println(p.test(11));
+	}
+}
+
+
+
+
+
+3. Function<T,R> T-argument type R- return value type,present in package 
+java.util.function package
+it takes the input T as argument and returns the result R
+
+@FunctionalInterface
+public interface Function<T, R> {
+
+    R apply(T t);
+}
+import java.util.function.Function;
+public class Demo {
+	public static void main(String[] args) {
+		Function<Integer, Integer> f= (i)-> i*i;
+		System.out.println(f.apply(11));
+	}
+}
+
+
+
+
+
+
+4. Consumer - this takes some input and returns nothing.Only does some operation
+
+@FunctionalInterface
+public interface Consumer<T> {
+    void accept(T t);
+}
+
+import java.util.function.Consumer;
+public class Demo {
+	public static void main(String[] args) {
+		Consumer<String> c= i->System.out.println(i.length());
+		c.accept("java");
+	}
+}
+
+
+
+
+5. Supplier
+
+@FunctionalInterface
+public interface Supplier<T> {
+
+    T get();
+}
+
+import java.util.function.Supplier;
+public class Demo {
+	public static void main(String[] args) {
+		Supplier<Integer> s= ()-> 10;
+		System.out.println(s.get());
+	}
+}
+
+
+
+
+
+6. BiPredicate -used to do some operation on and return boolean value
+
+@FunctionalInterface
+public interface BiPredicate<T, U> {
+
+    boolean test(T t, U u);
+
+}
+
+import java.util.function.BiPredicate;
+public class Demo {
+	public static void main(String[] args) {
+		BiPredicate<Integer, Integer> b= (i,j)-> i==j;
+		System.out.println(b.test(10, 10));
+		System.out.println(b.test(10, 11));
+	}
+}
+
+
+
+
+
+7. BiFunction<T, U, R>
+
+public interface BiFunction<T, U, R> {
+
+    R apply(T t, U u);
+}
+
+import java.util.function.BiFunction;
+public class Demo {
+	public static void main(String[] args) {
+		BiFunction<String, String, String> b=(i,j)-> i+j;
+		String s=b.apply("hello ", "world");
+		System.out.println(s);
+	}
+}
+
+
+
+
+
+8. BiConsumer
+@FunctionalInterface
+public interface BiConsumer<T, U> {
+
+    void accept(T t, U u);
+}
+import java.util.function.BiConsumer;
+
+public class Demo {
+	public static void main(String[] args) {
+		BiConsumer<Integer, Integer> b=(i,j)-> System.out.println(i+" "+j);
+		b.accept(10, 20);
+	}
+}
+
+
+
+9. UninaryOperator -it is a sub interface of Function used for unnary operation;
+
+@FunctionalInterface
+public interface UnaryOperator<T> extends Function<T, T> {
+}
+import java.util.function.UnaryOperator;
+
+public class Demo {
+	public static void main(String[] args) {
+		UnaryOperator<Integer> u= i-> ++i;
+		System.out.println(u.apply(10));
+	}
+}
+
+
+10. BinaryOperator
+
+@FunctionalInterface
+public interface BinaryOperator<T> extends BiFunction<T,T,T> {
+}
+import java.util.function.BinaryOperator;
+public class Demo {
+	public static void main(String[] args) {
+		BinaryOperator<Integer> b= (i,j)-> i+j;
+		System.out.println(b.apply(10, 20));
+	}
+}
+
+
+                       Stream<T>
+                 ------------------------
+Stream is a interface which is used to do some operation on data collected from 
+Arrays and Collection . Before doing operation the data should be convert 
+to stream type , for that one method stream() is used.
+
+Convert list to Stream
+---------------------------
+import java.util.ArrayList;
+import java.util.stream.Stream;
+
+public class DemoClass1 {
+	public static void main(String[] args) {
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		list.add(12);
+		list.add(31);
+		list.add(12);
+		list.add(78);
+		list.add(89);
+		list.add(11);
+		list.add(12);
+		System.out.println(list);
+		Stream<Integer> s= list.stream();
+	}
+}
+
+Stream can do two types of Operations 
+terminal- the end of one operation ,after that the operation stops
+          like print of each element, convert into arrays etc
+intermediate operation- this kind of operation is like filtering,sorting,dplicate 
+                        remove etc and returns a Stream.
+
+void forEach(Consumer)- this method can perform the terminal operation on each
+                   element one by one
+
+import java.util.ArrayList;
+public class DemoClass1 {
+	public static void main(String[] args) {
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		list.add(12);
+		list.add(31);
+		list.add(12);
+		list.add(78);
+		list.add(89);
+		list.add(11);
+		list.add(12);
+		list.stream().forEach(i->System.out.println(i));
+	}
+}
+
+Stream filter(Predicate)
+-------------------------
+this method used to create a Stream after statisfy some condition .
+internally filter() used Predicate
+
+import java.util.ArrayList;
+public class DemoClass1 {
+	public static void main(String[] args) {
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		list.add(12);
+		list.add(31);
+		list.add(12);
+		list.add(78);
+		list.add(89);
+		list.add(11);
+		list.add(12);
+		list.stream().filter(i->i%2==0).forEach(i->System.out.println(i));
+	}
+}
+
+Stream map(Function)- this method converts one element to another element
+and returns the newly created Stream
+import java.util.ArrayList;
+public class DemoClass1 {
+	public static void main(String[] args) {
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		list.add(12);
+		list.add(31);
+		list.add(12);
+		list.add(78);
+		list.add(89);
+		list.add(11);
+		list.add(12);
+		list.stream().map(i->i*i).forEach(i->System.out.println(i));
+	}
+}
+
+
+Stream sorted()
+--------------------
+this method returns the sorted Stream of given element
+import java.util.ArrayList;
+public class DemoClass1 {
+	public static void main(String[] args) {
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		list.add(12);
+		list.add(31);
+		list.add(12);
+		list.add(78);
+		list.add(89);
+		list.add(11);
+		list.add(12);
+		list.stream().sorted().forEach(i->System.out.println(i));
+	}
+}
+
+Stream distinct()
+---------------------
+this method removes the duplicate element and return the Stream of unique element
+
+import java.util.ArrayList;
+public class DemoClass1 {
+	public static void main(String[] args) {
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		list.add(12);
+		list.add(31);
+		list.add(12);
+		list.add(78);
+		list.add(89);
+		list.add(11);
+		list.add(12);
+		list.stream().distinct().forEach(i->System.out.println(i));
+	}
+}
+
+collect()
+------------
+it used to collect the element from the String in form of Collection
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+public class DemoClass1 {
+	public static void main(String[] args) {
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		list.add(12);
+		list.add(31);
+		list.add(12);
+		list.add(78);
+		list.add(89);
+		list.add(11);
+		list.add(12);
+		List<Integer> l= list.stream().filter(i->i%2==0).collect(Collectors.toList());
+		System.out.println(l);
+	}
+}
+
+long count()
+-----------------
+this method returns the number of element in Stream
+
+import java.util.ArrayList;
+
+public class DemoClass1 {
+	public static void main(String[] args) {
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		list.add(12);
+		list.add(31);
+		list.add(12);
+		list.add(78);
+		list.add(89);
+		list.add(11);
+		list.add(12);
+		Long l= list.stream().filter(i->i%2==0).count();
+		System.out.println(l);
+	}
+}
+
+Object[] toArray()
+----------------------
+it converts the Stream element into Object[]
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class DemoClass1 {
+	public static void main(String[] args) {
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		list.add(12);
+		list.add(31);
+		list.add(12);
+		list.add(78);
+		list.add(89);
+		list.add(11);
+		list.add(12);
+		Object[] l= list.stream().filter(i->i%2==0).toArray();
+		System.out.println(Arrays.toString(l));
+	}
+}
+
+
+example program
+----------------
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+public class DemoClass1 {
+	public static void main(String[] args) {
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		list.add(12);
+		list.add(31);
+		list.add(12);
+		list.add(78);
+		list.add(89);
+		list.add(11);
+		list.add(12);
+		List<Integer> l=list.stream().filter(i->i%2!=0).sorted().collect(Collectors.toList());
+		System.out.println(l);
+	}
+}
+
+
+                      Date and Time API
+                  ------------------------------
+One organization called JODA developed java based date and time API ,this same API
+included in java 8 version thatwhy it is also known as JODA api.
+
+LocalDate - it is a clas of DATE and TIME api which stores the information the local time 
+zone date,year,month information. This class present in java.time package
+
+import java.time.LocalDate;
+import java.time.Month;
+
+public class Demo1 {
+	public static void main(String[] args) {
+	    LocalDate ld=LocalDate.now();
+	    System.out.println(ld.getDayOfMonth());
+	    System.out.println(ld.getDayOfYear());
+	    System.out.println(ld.getDayOfWeek());
+	    System.out.println(ld.getMonthValue());
+	    System.out.println(ld.getYear());
+	    Month m= ld.getMonth();
+	    System.out.println(m);
+	}
+}
+
+
+LocalDateTime - This is a class of JODA api used to store the information of current time
+alone with date infromation
+import java.time.LocalDateTime;
+
+public class Demo1 {
+	public static void main(String[] args) {
+		LocalDateTime ld=LocalDateTime.now();
+		System.out.println(ld.getDayOfMonth());
+		System.out.println(ld.getDayOfYear());
+		System.out.println(ld.getDayOfWeek());
+		System.out.println(ld.getMonth());
+		System.out.println(ld.getMonthValue());
+		System.out.println(ld.getYear());
+		System.out.println(ld.getHour());
+		System.out.println(ld.getMinute());
+		System.out.println(ld.getSecond());
+		System.out.println(ld);
+	}
+}

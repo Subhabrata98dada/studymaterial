@@ -1,0 +1,74 @@
+clone
+-------
+In Java, cloning refers to creating an exact copy of an object. This is typically done using 
+the clone() method, which is part of the Object class. When you clone an object, you create a
+ new instance of that object with the same data as the original. or by using copy constructor
+we can clone the object.
+
+6.protected native java.lang.Object clone() throws CloneNotSupportedException;
+----------------------------------------------------------------------------------------
+this method is a native method- mean implemented in other programming language
+this method is a protected method , so it is recomanded to overridde the clone() and
+make it public.
+
+
+
+1. either during override clone method or during call of clone method programmer need to do downcast
+2. clone method throws one checked exception(CloneNotSupportedException) , that why programmer need 
+   to handle it
+3. the class need to implement one marker interface Clonable which indicates the object of this class 
+   going to clone otherwise we are going to get CloneNotSupportException while call the clone method.  
+   Clonable interface proviedes infromation to jvm that the object might be clone in near 
+   future and the clone() method may be overridden.
+
+
+
+internal flow of cloning
+------------------------------
+a.first jvm going to check the class is implementing Clonable interface or not. if not
+  implementing then CloneNotSupportException ,if implementing then the process of
+  cloneing going to start
+b.jvm is going to allocate some memory for all non static variable of parent class and current class
+ as a pat of obect creation and made then blank variable(initize with default value)
+c.then copy the value from original object and assign to the newly cloned object
+d.return the reference address for newly created object and assign to reference variable
+5.execute the business logic by using duplicate cloned object
+
+
+
+note- cloning mean creating duplicate object in heap memory , cloning does not
+      share the same object among all the references. mean all coloned object
+      have saperate merory in heap.
+
+
+
+
+there are two types of cloning 1. shallow cloning or shallow copy , 2.deep cloning
+                               or deep copy
+
+
+shallow cloning
+-----------------------
+when there is an existence of has a relation , then during clone of container object , same 
+component object is share by both original and duplicate object . in this case the modification
+on component object through any container object is going to effect both original and duplicate
+object , this type of cloning called shallow cloning, if we used object class clone method
+then shallow cloning is by-default available, and this type of cloning no proper cloning
+
+
+
+2.Deep cloning
+---------------
+if the container object have a component object then during clone of container object one
+dulicate copy of component object will create and will assign to cloned container object , so that
+any modifination of one component object will not effect other container object , that called
+deep cloning. by override clone method properly we can do the deep cloning.
+
+Note- when there is only primitive type of data then go for shallow cloning ,
+      when there is any non primitive type of data then go for deep cloning
+
+
+
+
+
+

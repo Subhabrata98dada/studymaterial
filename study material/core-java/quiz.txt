@@ -1,0 +1,23 @@
+Unit testing
+----------------
+test all individul unit testing called unit testing. all components are working properly
+{
+    "phone":"7653828858",
+	"name":"Priyanka",
+	"email":"priyanka1996@gmail.com",
+	"role": "hr",
+	"specificRole":"hr"
+}
+
+{
+    "role":"trainer",
+	"specificRole":"java"
+}
+
+
+{
+    "generator":"7653828858",
+	"trainer":"9348338693",
+	"duration":4
+	
+}

@@ -1,0 +1,43 @@
+section A
+---------------
+1. check the number is prime or not by taking dynamic input.
+2. print all automorphic numbers in range.
+3. find a year is leapyear or not.
+4. print the pattern
+     1  2  3  4  5
+     10 9  8  7  6
+     11 12 13 14 15
+     20 19 18 17 16
+     21 22 23 24 25
+5. print alternate neon number in a range
+
+section B
+---------------
+1.check the number is armstrong or not by taking dynamic input.
+2.print all prime number in range
+3.find second biggest number among 3 numbers
+4. print the pattern
+          *
+         ***
+        *****
+       *******
+      *********
+       *******
+        *****
+         ***
+          *
+5. print last 3 strong number in range
+
+section C
+---------------
+1.check the number is strong or not by taking dynamic input
+2.print all neon number in a range
+3.take input a number and find corrosponding day by using switch statement
+  input: 1 output: monday
+4.print the pattern
+   A 2 3 4 5
+   1 B 3 4 5
+   1 2 C 4 5
+   1 2 3 D 5
+   1 2 3 4 E
+5 print last 3 prime number in range

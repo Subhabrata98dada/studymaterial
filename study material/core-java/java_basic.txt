@@ -1,0 +1,490 @@
+Indentifier
+-----------------
+indentifier is a name in java program used to indentify a java component like class,variable,methods etc.
+
+rules for indentifier
+-----------------------
+1. allowed character A-Z, a-z , 0-9 ,$ , _(underscore) , accept allowed character if we take any other character then
+   compile time error.
+2. indentifier name should not be start with digits. (start with A-Z , a-z ,$ ,_) but recomanded to use
+   A-Z or a-z.
+3. any keyword can not be used as indentifier but keyword can be used as part of indentifier.
+4. the nam eof indentifier can be of any length but recomanded to use with in 16 character.
+5. indentifier nam eshould be meaning full so that all the member of that project can understand the code.
+
+
+
+Java Keyword
+------------------
+keyword is some word reserved in java for better writing of programm. the all keyword have a fixed meaning 
+in java programm, in whole life time of programm we can not change the menaing of keyword
+
+
+abstract	continue	for	new	switch
+assert***	default	goto*	package	synchronized
+boolean	do	if	private	this
+break	double	implements	protected	throw
+byte	else	import	public	throws
+case	enum****	instanceof	return	transient
+catch	extends	int	short	try
+char	final	interface	static	void
+class	finally	long	strictfp**	volatile
+const*	float	native	super	while
+
+
+note- true,false,null are called reserve value, mean they can be used as a value to variable.
+
+why java is called compiled and interpretted programming language ?
+-------------------------------------------------------------------------
+because to execute a java programm first the programm need to compile then interprete thats why java is known as 
+both compiled and interpreted programming language.
+
+
+Data types in java
+------------------------
+To store and process the relevent data or information java providing a bunch of data type to store and work
+with different different data like number,string,boolean etc.
+
+data types are two types 1>primitive 2>non-primitive data/derived data
+
+primitive data
+--------------------
+the data we can no break into multiple sub unit called primitive data , 
+mean primitive data is the smallest unit of information.
+
+non primitive data
+-------------------
+the we can break into multiple smallest sub unit value called non primitive data. In other word non primitive
+data is the collection of primitive data.
+
+"Hello" is a String type non primitive data can be break into multiple sub unit - 'H','e','l','l','o'
+
+
+Variable
+---------------
+Variable is a conteiner or indentifier to reserve some memory and store the value in that memory.
+variable has 3 property that is name,  type, value.
+
+Syntax -  1. <dataType> <variableName>=<value>; declaration and initialization of variable
+          2. <dataType> <variableName>;  decleration of variable
+             <variableName>=<value>;     initialization of variable
+
+Types of variable
+------------------------
+1. primitive variable
+    the variable holding primitive data called primitive variable
+2. non-primitive or reference variable
+    the variable holding non primitive data called non primitive variable or reference variable
+3. local variable
+    The variable declared inside one method or block called local variable
+4. static variable
+    The variable declared inside class outside of method with static keyword called staic variable
+5. non-static variable
+    The variable declared inside class outside of method with out static keyword called non-staic variable
+
+
+Litrals
+---------
+One constant value assigned to a varibale called litrals.
+int a=10;
+double d=10.5;
+String s="jspider";
+
+Note-
+---------
+when we store some non primitive value to a variable , internally the value stored in some places in memory and the variable 
+contains the address of the value.
+
+java operators
+-------------------
+Arithmatic operators- +,-,*,/,%
+
+
+why java is called strictly types programming language
+----------------------------------------------------------
+any variable declared by programmer must be have one primitive or non primitive data types that why java is called strictly
+types programming language. otherwise we will get compile time error.
+
+
+Defining non primitive data
+-------------------------------
+* when the information inside object or entity is different object to object like name,roll,marks of students then take the 
+  variable as non static 
+* when the onformation inside object or entity is common or same like university name for students then take the variable as 
+  static 
+* for non static variable each time during object creation saperate copy of non static variable will create in heap memory.
+* for static variable only one copy of memory will create and will shared by all objects
+* non primitive data mainly defining by using class.
+
+Assignment operator
+------------------------
+int i=10;
+String s="jspider"; = is known as simple assignment operator
+
++=,-=,*=,/=,%=  complex assignment operator
+
+String concat operator
+---------------------------
++ can be used as string concat operator mean merge of two string.
+
+Any data+ string= String;
+String + Any data =String;
+String + String =String 
+
+relational operator(used to comare the values)
+---------------------
+< less then, <= less then or equal to 
+> greater then , >= greater then or equal
+== double equal , != not equal
+
+the return type of comparision operator is boolean true or false
+
+logical operator
+-------------------
+the disadvantage of comparision operator is at a time we can compare only one condition
+at a time , to avoid that disadvantage java provides logical operator that is combination of
+multiple comparision at a time
+
+types - logical and(&&),logical or(||) , logical not(!)
+
+logical and(&&)
+-------------------
+when all condition need to be true at a time then logical and is mandatory,
+when all conditions are true then only logical and going to return true otherwise
+returns false.
+
+logical or(||)
+-------------------
+when any one condition among all posiible condition need to be true at a timem then 
+programmer used logical or operator , logical or returns true if any one condition is
+true and returns false when all condition is false at a time.
+logical not
+------------
+it is a unary operator which is going to alter the boolean result
+!true-----> false
+!false----> true
+
+unary operator- the operator performs operation on single operand called unary operator
+                eg- !, ++ ,--.
+binary operator- the operator performs operation on two operands called binary operator
+                eg +,-,*,% etc.
+turnery operator- the operator performs operation on three operand called turnery operator
+                  eg - conditional operator( ?:)
+
+increment and decrement operator
+-----------------------------------
+during programm execution when needed for increse or decrese the value of a variable by one
+that time increment and decrement operator used . this is unary operator
+*** This operator only works on variable not on litrals value.
+
+pre increment- first increment the value of the variable then use.
+post increment- first use the value of the variable then increment the value.
+
+pre decrement- first decrement the value of the variable then use.
+post decrement- first use the value of the variable then decrement the value.
+
+
+switch
+------------
+it is just an extended version of else- if ladder
+mean combination of multiple block in other way
+
+Syntax
+----------
+switch(data /variable/ expression)
+{
+  case 1:
+        code
+        break;
+  case 2:
+        code
+        break;
+  case 3:
+        code
+        break;
+        .
+        .
+
+ case n:
+        code
+        break;
+ default:
+        code
+        break;
+}
+
+
+
+note- 1.the break and default statemnt is optional
+      2. the allowed data in switch is byte,shrot,int,char and their wrapper classes along with String
+
+note: 1. the switch will compare the given data with each case and the matched case will execute .
+      2. if the given data not matched with any cases then the dafault block will exceute if present
+      3. if we remove the break; then the mached case will get take next case also ,till meet with next break or
+         the switch block ends.
+
+
+Dynamic input
+----------------------
+During program execution the input given by users called dynamic input . By using dynamic input we can get two benifit
+avoid recompile the programm while change the input and can take input during programm execution during run time.
+
+For dynamic input one predefined class used that is Scanner class present in java.util package.
+before using Scanner class the java.util package need to be include in programm . for that import statement is  used
+eg - import java.util.*; // now we can use all the classes inside util package
+
+Scanner class objecrr creation for dynamic input:
+-------------------------------------------------
+Scanner sc=new Scanner(System.in);
+
+different types of input taking
+------------------------------------
+                int n=sc.nextInt();
+		byte b= sc.nextByte();
+		short s=sc.nextShort();
+		long l=sc.nextLong();
+		float f=sc.nextFloat();
+		double d=sc.nextDouble();
+		boolean b2=sc.nextBoolean();
+		String s2=sc.next(); // or sc.nextLine();
+		char c= sc.next().charAt(0);
+
+              sc in above example is Scanner class object
+
+nested dession making statement
+------------------------------------
+inside one decission making statement we can put any numbers of deission making statement with out problem, this is known as 
+nested decission making statement.
+
+eg - if{
+         if/if-else/else-if ladder / switch
+        }
+
+ Iterative or looping statement
+----------------------------------
+when a line or group of code need to execute again and again , then this type of statements called iterative ststements in java
+there are three iterative statements in java
+1. for-loop
+2. while loop
+3. do-while loop
+
+for loop
+--------
+when a group of statememnt need to execute again and again but programmer know the iteration times then for loop used.
+
+syntax-
+
+for(initialization ; condition ; updation)
+{
+   //loop body or statements
+}
+
+initialization indicates the starting condition of loop
+condition indicates the end of loop
+updation indicates the each time steps need to cover
+
+while loop
+----------
+when a group of statements need to executes again and again but the programmer do't know the execution time then while loop used.
+
+syntax
+----------
+
+initialization
+while(condition)
+{
+  //loop body
+  //updation
+}
+
+if the programmer not used correct updation then loop might go into infinite loop
+
+
+do- while
+-----------
+when a loop body need to execute atleast one time irrespective of condition true or false then the programmer need to use
+do-while loop
+
+syntax
+---------
+initialization
+do {
+
+  //loop body
+  //updation
+
+}while(condition);
+
+
+* First one time loop body will execute without checking condition .
+* After execute loop body one time the contion will check for second time execution permission.
+
+
+Default value
+----------------
+when a static ,non static variable not assigned with any value then jvm(java virtual machine) going to assign some default value 
+to that variable.
+Default value only asigned to class level variable(static and non static). Default value not applicable to local variable
+Before use any local variable the programmer need to assign the local variable explisitly otherwise compile time error.
+
+
+data type                their-default value
+---------------------------------------------
+byte---------------------> 0
+short--------------------> 0
+int ---------------------> 0
+long --------------------> 0
+float--------------------> 0.0
+double ------------------> 0.0
+boolean -----------------> false
+char --------------------> '\u0000' (null character)
+Any non primitive -------> null
+
+
+Method
+----------------
+writine all the codes inside main method is reduces code readability. thats why method concept is used.
+
+
+Definition
+-------------
+set of instruction in a block used to perform some specific task , the method used to execute when some other method call
+the desired method. The method breaks one complex logic into small small sub logic and reduce the complexity. 
+Therefore the mofication of code become easy and feasible
+
+Syntax
+-------------
+access_modifier modifier return_type name(arguments or parameters)
+{
+    //method body
+}
+
+where we can declare a method
+------------------------------
+inside a class ,interface we can declare a method. declaring mean creating one method.
+
+* untill programmer call the method the method is not going to execute. to execute the method it it mandatory to call the method.
+
+caller/source method
+-----------------------
+the method calling other methods caller caller or source method
+
+called/ destination method 
+------------------------------
+the method calling by other method is known as called or destination method
+
+* after defining onen method we can reuse the method as much we can , mean reusability is possible
+
+
+Adavntages of methods
+----------------------
+1. one big complex problem can be broke into multiple small sub problem and solve.
+2. reusability of code.
+3. increse readability of code
+
+types of methods as per availability
+--------------------------------------
+1. user defined method
+------------------------
+the method declared by programmer and also used by programmer is called user defined method.
+
+2. predefined or library methods
+----------------------------------
+The method created by java library developers and used by programmer when it needed is called predefined method.
+
+
+types of method as per argument or parameter
+------------------------------------------------
+1. no argument method
+------------------------
+when the method not accepting any data from caller method that type of method calling no argument method. no argument mean empty
+braces() method
+
+2. method with argument
+------------------------
+when the method accepting some data from caller methods while call the method that is called argument.
+Syntax
+----------
+ publi cstatic voidd m1(int a) // the method m1() takes int data while call the method
+{
+
+  // method body
+}
+
+the variable accepting argument working as local variable to that method mean outside of that method we can not access the variable.
+
+
+formal argument
+---------------------
+during method declaration the argument specifying by programmer with data type is called formal argument
+
+actual argument
+-----------------
+during method call the value passed by programmer is called actual argument.
+
+Note- during method call the formal argument and the actual argument sequence should be same otherwise compile time error.
+      the parameter used as passing data while call a method from caller method to called memthod.
+
+
+
+
+                         Return value
+----------------------------------------------------------------------
+after executing the method , the called method may return some value to caller method is known as retuern value, the return value may 
+be primitive or non primitive . to return value programmer used the keyword return .
+
+the return value and the return type declared with method should be same , otherwise compile time error
+
+as per return value the methods are of two types 1. method without return value.
+                                                 2. methods with return value
+
+the method prefixed with void keyword in place of return type, those methods are known as method with out return value.
+
+
+as per scope the methods are of two type 1. static method
+                                         2. non static method.
+
+static method
+----------------------
+the method which is declared with prefix static keyword called as static method also known as class level methods. 
+to call static method Object creation is not mandatory. Programmer can call static method in 3 way
+                               a/ by using className.methodName(); (recomanded)
+                               b/ directly call by name inside same class
+                               c/ by using objecr referece (not recomanded)
+
+non static method
+------------------------
+the method which is not declared with prefix static keyword called as non static method also known as Object level methods.
+the only way to call the method is objectreference.methodName() .
+without creating object we can not call the non static method. if programmer used any other approache to call the non static method
+then it will throw one compile time error.
+
+native method
+-------------
+the method which is developed in some other programming language but used in java , that type of method known as native method.
+
+
+                                                flow control staments
+----------------------------------------------------------------------------------------------------------------
+there are three flow control statements  break, continue, return
+
+break
+------------------
+break is a flow control statement used to terminate any types of loop under a certain condition, once the break statement executes 
+then next iteration will not execute.
+
+continue
+-----------
+continue is a flow control statement used to skip the execution , once the continue executes it not breaks the loop , it just
+avaoid current loop execution.
+
+
+                                                nested loop
+                                       ----------------------------------
+loop inside another loop is known as nested loop .
+in nested loop if the outer loop is going to execute x times and inner loop going to execute y timems then total number of execution
+of inner loop statements is x*y times . mean for one time outer loop execution y times innter loop going to execute
+
+
+
+

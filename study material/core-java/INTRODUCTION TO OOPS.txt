@@ -1,0 +1,2333 @@
+Object
+--------------
+A real world entity which having some data/information/status
+ and behavour is known as object
+
+data-member/staus/information/property
+-----------------------------------------
+the information field which contain some information
+about object called property
+
+behavour/member-function or method/functionality
+-------------------------------------------------
+a work of object mapped with some logical method is known
+as behavour
+
+during creation of one object if the data memeber not 
+initialized then jvm will assign default value to 
+it's data memeber or property
+**actual technical meaning of object creation mean 
+allocate memory for non static variable.
+
+when we should use static variable
+--------------------------------------
+when the data is common for all the object then use 
+static variable because for static variable only 
+one memory will create and share to all the object
+
+
+
+
+
+
+
+
+
+
+when we should use non static variable
+---------------------------------------
+when for each object the data is different then 
+go for non static variable , beacuse for each object 
+saperate memory for non static variable created
+
+NOTE- another name of object is instance
+      and creating object is called instaceciation.
+
+
+class Loading
+-----------------
+The copy of byte code of a class from Hard disk(Secondary
+storage) to RAM or primary memory when a class uses
+first time is called class loading . Once a class is loaded 
+then no needed for load the same class when is needed again
+
+During class loading the byte code of a class copied 
+inside JVM(method area)
+method area- it is a memory location
+
+
+
+class loader sub-system
+----------------------------
+class loader sub system is a program present inside jvm
+is helps to load the class from storage device to RAM.
+the class loader subsystem is a predefined program
+
+once .clss file or byte code copied into jvm some task 
+or work should ve complete by class loader subsystem
+i.e. memory allocation for static variable and
+     execution of sttaic block;
+     in life time execution of a program class loaded only
+once thats why memory allocation for static variable
+ and static block execution happened only once
+(Till the current program execution)
+
+NOTE-
+ 1. When only refernce variable declared that time
+    class not loaded
+ 2. when a reference declared with object creation that 
+    time class loaded
+ 3. when a static method is called or a static variable 
+    called that time also if the call is first time then
+    class loaded
+
+
+
+
+
+
+
+practical view of class loading
+----------------------------------
+class Demo 
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("hello world"); 
+		
+		
+	}
+}
+
+javac Demo.java - convert cource code into byte code
+java Demo -
+           1. Load Demo.class to jvm
+           2. call or invoke main() by jvm
+           3. While execute main() load
+               System.class 
+            4. invoke println() method
+
+method signatute-  method name and parameter list
+   public void m1(int i) --> m1(int)
+
+method protottype- access modifiers ,modifiers ,retun type with 
+                   method signature.
+                    public void m1(int)
+
+Example of calling non static method
+------------------------------------
+
+class A 
+{
+	void m1()
+	{
+		System.out.println("m1() method of class A");
+	}
+
+	static void m2()
+	{
+		System.out.println("static method m2() of class A");
+	}
+}
+
+A a; //drclareing reference variable a of A type
+a=new A(); //create a object of A type and assign refernce 
+          // address to a
+a.m1(); // calling instance method for object stored in heap 
+       // and the object address stored in variable a
+
+
+
+example of caling static method
+-------------------------------
+A.m2() -> check class A is loaded or not.
+once class A loaded then it will directly execute A.m1();
+
+a.m2()---> A.m2()- same rule aply for A.m2()
+
+accessing of variable from non static method
+----------------------------------------------
+non static method can be access or execute both static and non static variable of same class
+
+accessing of variable from static method
+-------------------------------------------
+static variable alloed to access inside static method but non stattic variable not allowd in
+static method ,because memory allocation for non static variable will happen during object 
+creation, but one static method can be call before object creation by using class name
+if we use non static variable in static method then error
+
+
+
+
+
+
+when we will go for static method declaration
+--------------------------------------------
+when the work done by method depends on parameter and static variable only that time we 
+should go for static method.
+or when the output is not depending on non static data member then we can go for static method
+
+ static method only can access the static variable, if a static method try to access the non static 
+variable then compile time error, because the non static variable memory allocation happened during
+object creation , before object creation programmer may called static method with the name of class.
+
+when we should go for non static method
+---------------------------------------
+when work done by method depending on non static variable or on both static and non static
+variable then we should go for non static method
+non static method can access both static and non-static variable because after object creation both
+static and non static variable available inside JVM. and without object creation programmer
+can not access the non static method.
+
+* static method can call another same class static method , but static method can not call another 
+  non static method of same class.
+* non static method can access both static and non-static method of same class
+
+
+
+
+
+
+
+
+
+
+abundant object or free object
+----------------------------------
+   new A().m1(); //abundant object
+The object created but the reference address not stored inside any reference variable
+is called abundent or free object for one time use only.
+Advantage of abundant object is to save some memory while program execution
+Dis advantage is once object become abundunt then programmer can not access it further.
+once the use of abundant object is finished then garbage collector destroys the object
+from heap memory this is called clean up by Garbage Collector
+Garbage collector is a componant of jvm used for efficeant memory management
+
+Note
+----
+                A a1=new A();
+		a1.m1();
+		a1=null; // making object abundunt by force
+		         //Garbage collector will destroy the abundunt object
+
+*one object can be refer by multiple reference variable
+*if atleast one reference variable refering that object then the object is not abundent object
+*one reference variable can hold multiple object reference address in different time
+   once a reference variable hold address of new object then old object become abundant and
+   garabage collector will destroy that object if the old object not refered some other 
+   reference variable
+
+note - the common use of abundunt object is to one time logic execution.
+
+
+Object As argument to a method
+------------------------------
+we can use a object as argument to a method
+
+        public static void m2(A a)  // pass a object of a type while call m2()
+	{
+		a.m1();
+	}
+        call m2()
+--------------------
+        1 st approach- A a1=new A(); // creating object and store the reference address
+                          m2(a1);  // pass the reference address to m1 by help of a1
+        2nd approach-  m2(new A()); // directly create object and pass the reference
+        3rd approach-  m2(null);  // pass null value in place of object
+
+
+
+method returning object
+--------------------------
+             public   static   A   m1() -- return object A type
+              {
+                 A a1=new A();
+                 return a1;
+                 // return new A()
+                 // return null;
+
+              }
+
+Note
+----
+inside static and non static method we can create object of same class 
+nothing wrong about that
+
+class A 
+{
+	void m1()
+	{
+	   A a1=new A();
+	}
+
+	static void m2()
+	{
+           A a2=new A();
+	}
+	
+}
+
+
+
+
+
+
+
+NullPointerExcaption
+-------------------------
+it is a Exception or run time speed breaker.
+At run time if a reference variable holding null value and by using null reference address
+if we want to access any object componant(variable or method) on that time we will get 
+NullPointerException
+                A a1=null;
+		System.out.println("a1.i"+a1.i); //NullPointerException
+		a1.m1(); //NullPointerException
+
+
+
+class A
+{
+    int i;
+    void m1()
+    {
+    }
+}
+
+
+Class
+-----------
+in early before creating object jvm should know the detailsinformation about
+data memeber and memeber function.
+so that during object creation jvm have knowledge that how much memory need to 
+allocate to my object,
+ it like before making home we need one detaild map of our home
+
+
+Definition- A blue print of object used by jvm while creating object
+            or common object definition is known as class
+
+the property and behavour used by object should be define inside class;
+the class is a logical entity and it does not need any memory 
+
+but the cobject is a real time physical entity and need memory at heap
+
+when a section of infromation is common for all object then declare the 
+information as static with datatype for memory saving perpous
+
+when a section of information is not common then make the information as non
+satic.
+when a behavor is depending on static variable or input argument then declare
+this method as static
+when a behavour is depenting on non static information then declare that
+method as non static 
+
+
+
+
+
+Unicode
+---------------
+High level programming language is a sequence of character , converting that 
+sequence of character into binary language is complex task for compiler, that why
+each character converted into standard fixed decimal value , that standard decimal
+value known as unicode in java
+eg A--> 65, a-->97 
+becasu of different unicode value java is case sensitive programming language
+mean java programming language can understand the difference between upper 
+and lower case character
+
+class Demo
+{
+	public static void main(String[] args) 
+	{
+		for(int i=1;i<=130;i++)
+		{
+			System.out.println(i+" "+(char)i);
+		}
+	}
+}
+
+
+
+class Demo
+{
+	public static void main(String[] args) 
+	{
+		char ch='A'; // store char- A into ch by using unicode 65
+		int i=ch;    // store 65 into int variable i
+		System.out.println(i); //output-65
+	}
+}
+
+
+
+
+
+
+
+
+
+
+TYPE CASTING
+-------------------
+converting one data ,information,object from one data type to another data type
+is called type casting
+
+there is two type of type casing
+   1.premitive type casting
+     conversion of one premitive data type information to another 
+     premitive data type information
+A- Widening
+------------------
+*Converting small memrory value into bigger mamory value is called widening
+class Demo
+* widening is implisit mean automatically done by compiler , no human intraction
+  needed
+* no chance of lossing information
+{
+	public static void main(String[] args) 
+	{
+		byte b=10; // allocate 1 Byte memory to store 10;
+		int a=b;   // store 1 Byte information into 4 Byte memory
+		System.out.println(a); //10
+	}
+}
+
+
+
+B--Narrowing
+------------------
+*store the big memory value into small memory is called narrowing in primitive
+data type.
+* During narrowing the conversion should be done by programmer exeplisitly
+  mean human intraction needed other wise compile time error 
+  possible loss of pression
+* During narrowing programmer must lost the authentic original data,information
+
+class Demo
+{
+	public static void main(String[] args) 
+	{
+		int i=1042; // store 1042 into 4 Byte memory
+		byte b=(byte)i; // convert 4 Byte to 2 Byte information
+		System.out.println(b); //18 because of data loss during narrowing
+	}
+}
+
+NOTE:-
+----------
+Long is 8 Bytes and float is 4 Byte then conversion from long to float is w
+widening because long store data into normal binary format but flaot and double
+store the data in form of IEEE754 format which is mantissa and exeponant
+formal thats why float can store larger value then long
+
+
+
+   2. non premitive type castinh
+     conversion of one non primitive data type object to another non primitive
+     data type object 
+
+Symbol Table
+----------------
+for each class a symbol table created by java compiler during compilation
+in symbol table for each method all the information stored in tabler way.
+the main indentifiction of a method is method signature.
+Sysbol table is a sub componant of byte codes
+
+
+
+Method Overloading
+----------------------------
+when same work need to be done on different data type then we should go for method 
+overloading
+
+* creating different method with same name but different argument for same kind
+  of behavour is known as method overloading.
+by using method overloading we can reduce the complexity of while using the method.
+
+during compile time as per calling argument and matched argument the method resoloution
+will decide. Method resoloution means which method will execute at run time of programm.
+method during overloading the method resoloution decided by compiler as per method 
+signature
+
+* Any method call not matched with present method signature at sumbol table that will 
+  give compile time error
+
+
+
+
+
+class Demo 
+{
+	public static void main(String[] args) 
+	{
+		m1(); // m1() no arg method
+		m1(10); //m1(int)
+		m1(true); //m1(boolean)
+		//m1(23.6); m1(double)  COMPILE TIME ERROR
+	}
+	public static void m1()
+	{
+		System.out.println("no argument method");
+	}
+
+	public static void m1(int a)
+	{
+		System.out.println("integer argument");
+	}
+
+	public static void m1(boolean b)
+	{
+		System.out.println("boolean argumant");
+	}
+
+}
+
+
+** Both static and non static method can be overload
+-------------------------------------------------------
+class Demo 
+{
+	public static void main(String[] args) 
+	{
+		Demo d=new Demo();
+		d.m1();
+		d.m1(10);
+		d.m1(true);
+		
+	}
+	public void m1()
+	{
+		System.out.println("no argument method");
+	}
+
+	public void m1(int a)
+	{
+		System.out.println("integer argument");
+	}
+
+	public void m1(boolean b)
+	{
+		System.out.println("boolean argumant");
+	}
+
+}
+
+
+
+**Overloaded method can be in both static and non static form
+if programmer call the method by using correct syntax then no error and
+no exception because method call will be based on method signature at compile time
+class Demo 
+{
+	public static void main(String[] args) 
+	{
+		Demo d=new Demo();
+		d.m1();
+		d.m1(10);	
+	}
+	public void m1()
+	{
+		System.out.println("no argument method");
+	}
+
+	public static void m1(int a)
+	{
+		System.out.println("integer argument");
+	}
+}
+ static method can be call by class name also by using object reference but class
+ name is recomanded
+ non static method can be access only by using object reference
+
+
+
+
+
+
+
+* the whole number constant by default consider as int type in java
+class Demo 
+{
+	public static void main(String[] args) 
+	{
+		m1(10); // m1(int) bydefault
+		long l=10;
+		m1(l); // m1(long)
+		
+	}
+	public static void m1(long l)
+	{
+		System.out.println("long argument method");
+	}
+
+	public static void m1(int a)
+	{
+		System.out.println("integer argument");
+	}
+}
+
+
+
+
+
+
+
+
+** the real floating point number constant will be consider as double in java
+class Demo 
+{
+	public static void main(String[] args) 
+	{
+		m1(10.5); // m1(double)
+		float f=10.5f;
+		m1(f);  //m1(float)
+
+		
+	}
+	public static void m1(float f)
+	{
+		System.out.println("float argument method");
+	}
+
+	public static void m1(double d)
+	{
+		System.out.println("double argument");
+	}
+}
+
+
+
+
+
+* During method overloading the return type have no presence while taking decission,because
+ method overloading done based on method singnature, but we can change the return type
+ during method overloading ,method return type have no importence on method overloading
+
+class Demo 
+{
+	public static void main(String[] args) 
+	{
+		m1();
+		int i=m1(10);
+		System.out.println(i);
+
+		
+	}
+	public static void m1()
+	{
+		System.out.println("no argument method");
+	}
+
+	public static int m1(int a)
+	{
+		System.out.println("int argument method");
+		return 22;
+	}
+}
+
+
+
+
+
+** by changing number of argument ,sequence of argument, data type of
+   argument we can overload the method
+
+class Demo 
+{
+	public static void main(String[] args) 
+	{
+		m1(10,10); //m1(int ,int);
+		m1(10,20.5); //m1(int ,double);
+		
+	}
+	public static void m1(int a,int b)
+	{
+		System.out.println("int-int argument method");
+	}
+
+	public static void m1(int a,double f)
+	{
+		System.out.println("int-double argument method");
+	}
+}
+
+
+
+
+
+
+* when a method call matched with both normal method and var-arg method then compiler
+will give priority to normal method to make portable with old java software
+class Demo 
+{
+	public static void main(String[] args) 
+	{
+		m1(10); //m1(int)
+		m1(10,20); //m1(int...)
+		
+	}
+	public static void m1(int a) // java 1.1
+	{
+		System.out.println("int argument method");
+	}
+
+	public static void m1(int... a) //java 1.5
+	{
+		System.out.println("var- argument method");
+	}
+}
+
+
+
+
+
+
+
+
+* In primitive type argument the compiler will try to promote the argument to nearest
+  possible widening data if no proper matched found till the double .
+  Even after automatic promotion till double if no matched found then Compile time 
+  error.
+class Demo 
+{
+	public static void main(String[] args) 
+	{
+		m1('a'); //m1(int) auto promotion to nearest wide data type
+		//m1(true); CTE
+		
+	}
+	public static void m1(int a) 
+	{
+		System.out.println("int argument method");
+	}
+
+	public static void m1(long a) 
+	{
+		System.out.println("long argument method");
+	}
+}
+
+
+
+
+
+
+** main() method also can be overload but jvm will call the main() having signature
+   --main(String[])
+class Demo 
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("String[] main()");
+		
+	}
+	public static void main(String s)
+	{
+		System.out.println("String main()");
+	}
+	
+}
+
+
+
+
+
+
+------------------------------
+class Demo 
+{
+	public static void main(String[] args) 
+	{
+		m1(10,10); // m1(int,double) and m1(double,int) matched
+                           // CTE because of ambiguity or confusion
+		
+	}
+	
+	public static void m1(int i,double d)
+	{
+		System.out.println("int-double");
+	}
+	public static void m1(double i,int d)
+	{
+		System.out.println("double-int");
+	}
+	
+}
+
+
+                     Constructor
+-------------------------------------------------------
+1.class Student
+{
+   String name;
+   int roll;
+}
+ then the object of student class having name as value null and
+ the roll value as 0;(default value)
+
+2. class Student
+   {
+      String name="chintu";
+      int roll=101;
+   }
+  for each created object the name will be chintu and roll will be 101
+  this is not a good programming practice
+
+3. class Student
+   {
+       String name;
+       int roll;
+    }
+ for each creating object by using object reference we can assign value 
+ but it will increase the size of code unnecessery
+
+the solution is contructor
+
+
+
+
+Definition
+-----------
+ A non static method which name is same as class name,used to initialize object
+ during creation of object. The contructor is invoked or call by jvm.
+
+** Contuctor is a non static multiline initializer of object, invoked by jvm
+   during object creation to initialize the object.
+
+
+ Contructor has no operation during object creation, once object created than
+ it initialize the object.
+
+ mean fist object creation happened then execute the constructor by jvm then
+ return the reference value to the reference variable.
+
+
+
+
+
+
+class Student 
+{
+
+	String name;
+	int roll;
+
+	Student(String s,int i)
+	{
+
+		name=s;
+		roll=i;
+
+	}
+	
+}
+class Demo 
+{
+	public static void main(String[] args) 
+	{
+		Student s1=new Student("A",101);
+		System.out.println(s1.name);//A
+		System.out.println(s1.roll); //101
+		System.out.println("------------------------");
+		Student s2=new Student("B",102);
+		System.out.println(s2.name); //B
+		System.out.println(s2.roll); //102
+	}
+}
+
+
+Rule to declare contructor
+------------------------------
+1. Name of the contructor must be same as class name.
+2. the only allowed mofifier and access modifier to constructor is
+   public,private,protected,default. For remining we will get compile 
+   time error.
+3. contructor should not have any return type.if we return any return type
+   even void then compiler will consider as normal method;
+   mean we can create a method same name as class name but this is not 
+   reconanded.
+4. During object creation the jvm must call a contructor otherwise
+   the object creation phase will not complete . The contructor either user
+   defined or default contructor.
+
+
+
+
+
+
+
+User defined non parameterized contructor
+----------------------------------------------
+class Student 
+{
+
+	String name;
+	int roll;
+
+	Student() // user defined non parameterized contructor
+	{         // it is not a default contructor
+
+	}
+}
+  ** Student s=new Student(); //user defined non parameterized consructor
+                            // invoked by jvm
+
+User defined parameterized constructor
+---------------------------------------
+class Student 
+{
+
+	String name;
+	int roll;
+
+	Student(Sting s,int i) // user defined- parameterized contructor
+	{
+
+	}
+}
+ ** Student s=new Student("A",10);// parameterized constructor called
+
+
+
+
+Default contructor
+----------------------
+if programmer does not declare any constructor then compiler will add a
+no argument constructor to the class that is called default constructor
+* Default constructor added by compiler only not jvm, because jvm work only
+  execute the code not modify the code.
+  1. Default constructor is a non argument contructor
+  2. Access modifier same as class modifier
+  3. Default contructor has only one code ->super();
+
+
+
+
+
+Note
+--------------
+Contructor execution happen during object creation , ans constructor can access both 
+static and non static variable and can initialize them. Constructor call is
+known as auto invokation
+class Test 
+{
+	static int i;
+	int j;
+	Test()
+	{
+		i=10;
+		j=20;
+		System.out.println(i);
+		System.out.println(j);
+	}
+
+
+	public static void main(String[] args) 
+	{
+		Test t=new Test();
+	}
+}
+
+
+
+
+ Constructor Overloading
+------------------------------
+Like a method we canstructor in same class.
+** When object initialization done by taken data from different source then we have
+   to go for constructor overloading
+** main operation of constructor is initialize the object
+** Accept return type all rule of method overloading is allowd for constructor also
+   because constructor do't have return type
+class  Student
+{
+	int roll;
+	String name;
+	Student()
+	{
+		System.out.println("no arg constructor");
+	}
+	Student(int i)
+	{
+		System.out.println("int argument constructor");
+	}
+	Student(int i,String s)
+	{
+		System.out.println("int-String argument constructor");
+	}
+
+	public static void main(String[] args)
+	{
+		Student s1=new Student(); //no args constructor
+		Student s2=new Student(10); //int args contructor
+		Student s3=new Student(10,"hello"); //int-string arg contructor
+		//Student s4=new Student(10.5); CTE because Student(double) not declared
+	}
+}
+
+
+
+
+Copy constructor
+------------------------
+The constructor which have the ability to make a copy of a object of current class that
+consructor is known as copy constructor.
+
+
+
+
+
+
+class Rectangle 
+{
+	int length;
+	int breadth;
+
+	Rectangle(int i,int j)
+	{
+		length=i;
+		breadth=j;
+	}
+	Rectangle( Rectangle r) //copy constructor
+	{
+		length=r.length;
+		breadth=r.breadth;
+	}
+	void dimension()
+	{
+		System.out.println("length="+length);
+		System.out.println("breadth="+breadth);
+	}
+	public static void main(String[] args) 
+	{
+		Rectangle r1=new Rectangle(25,13);
+		r1.dimension();
+		System.out.println("---------------------------------");
+		Rectangle r2=new Rectangle(r1); // passing r1 to copy constructor
+		r2.dimension();
+	}
+}
+
+
+
+Note- like non static method ,contructor can access both static and non static variable
+class Demo 
+{
+	int i;
+	static int j;
+	Demo(){
+		i=10;
+		j=25;
+	}
+
+	public static void main(String[] args) 
+	{
+		Demo d=new Demo();
+		System.out.println(d.i+"  "+d.j);
+	}
+}
+
+
+
+Note- If a non static method having local variable ,name same as non static variable then
+      the method will give priority to local variable
+class Demo 
+{
+	int a=10;
+	int b=20;
+	void m1()
+	{
+		int a=555;
+		int b=666;
+		System.out.println("a="+a); // 555 preference to local variable
+		System.out.println("b="+b); // 666 preference to local variable
+	}
+
+
+	public static void main(String[] args) 
+	{
+		Demo d=new Demo();
+		d.m1();
+	}
+}
+
+
+
+
+** if a method having parameter name same as non static variable then , preference
+   will go to parameter , because parameter consider as local variable
+class Demo 
+{
+	int a=10;
+	int b=20;
+	void m1(int a,int b)
+	{
+		System.out.println("a="+a); // 555 preference to local variable
+		System.out.println("b="+b); // 666 preference to local variable
+	}
+
+
+	public static void main(String[] args) 
+	{
+		Demo d=new Demo();
+		d.m1(555,666);
+	}
+}
+
+
+
+
+
+
+
+
+** In case of constructor if non static and local variable having duplicate name
+   then it will give preference to local variable , all the duplicate name variable
+   solution is this keyword
+class Demo 
+{
+	int a=10;
+	int b=20;
+	Demo(int b)
+	{
+		int a=555;
+		System.out.println(a);  //555 preference to local
+		System.out.println(b);  //666 preference to parameter
+	}
+	public static void main(String[] args) 
+	{
+		Demo d=new Demo(666);
+		
+	}
+}
+
+
+
+
+
+
+
+
+                      "this" keyword
+-----------------------------------------------------------
+this is a keyword which is used to access current object variable 
+while naming confusion came due to duplicate variable name betwen local
+and non static.
+this indicates current object reference.
+
+class Demo 
+{
+	int a=20;
+	int b=30;
+
+	void m1(int a)
+	{
+		int b=666;
+		System.out.println(this.a+" "+this.b); // non static variable access
+		                                       // by this.variable_name
+		System.out.println(a+"  "+b); // local variable access
+	}
+	public static void main(String[] args) 
+	{
+		Demo d=new Demo();
+		d.m1(555);
+		
+	}
+}
+
+
+** thsi keyword can be used to call current object non static method also
+class Demo 
+{
+	void m1()
+	{
+		System.out.println("m1() method");
+		this.m2();
+	}
+	void m2()
+	{
+		System.out.println("m2() method");
+	}
+
+	public static void main(String[] args) 
+	{
+		Demo d=new Demo();
+		d.m1();
+		
+		
+	}
+}
+
+
+
+
+
+
+** By using this keyword we can access both static and non static componant 
+   from non static area(method, block , constructor)
+
+class Demo 
+{
+	static int i;
+	void m1()
+	{
+		System.out.println("m1"); //m1
+		this.i=10;
+		this.m2(); //m2
+		System.out.println(this.i); //10
+	}
+
+	static void m2()
+	{
+		System.out.println("m2");
+	}
+	
+
+	public static void main(String[] args) 
+	{
+		Demo d=new Demo();
+		d.m1();
+		
+		
+	}
+}
+
+
+
+** From static area(method,
+block) we can not use or access this keyword, if like this happen
+   it will give compile time error.
+   Becasuse before creation of object satic area can be execute but, before creation 
+   of object non static execution not possible
+class Demo 
+{
+	static void m1() // static method
+	{
+		System.out.println("static method");
+		this.m2(); // by using this calling non static method from static area
+		           // CTE
+	}
+
+	void m2() // non static method
+	{
+		System.out.println("non static method");
+	}
+
+	public static void main(String[] args)
+	{
+
+	}
+}
+
+
+
+
+  standard initialization approach of object
+---------------------------------
+class Student 
+{
+	int roll;
+	String name;
+	Student(int roll,String name)
+	{
+		this.roll=roll;
+		this.name=name;
+	}
+
+
+	public static void main(String[] args) 
+	{
+		Student s=new Student(10,"A");
+		System.out.println("roll-number-"+s.roll);
+		System.out.println("name-"+s.name);
+	}
+}
+
+
+
+
+
+
+call to this / this()
+---------------------------
+** Call to this is call of same class contructor from other contructor by using
+   method call like this(), this is known as call to this
+class Demo 
+{
+	Demo()
+	{
+		this(20); // Demo(int)
+		System.out.println("no arg constructor");
+	}
+	Demo(int i)
+	{
+		System.out.println("int arg constructor");
+	}
+	Demo(double d)
+	{
+		System.out.println("double arg constructor");
+	}
+	public static void main(String[] args)
+	{
+		Demo d1=new Demo();
+		
+	}
+}
+
+
+
+** We can not create multiple call to this from same contructor
+   only one call this() possible from another constructor
+   otherwise CTE
+class Demo 
+{
+	Demo()
+	{
+		this(20); // Demo(int)
+		this(20.5); // Demo(double) CTE
+		System.out.println("no arg constructor");
+	}
+	Demo(int i)
+	{
+		System.out.println("int arg constructor");
+	}
+	Demo(double d)
+	{
+		System.out.println("double arg constructor");
+	}
+	public static void main(String[] args)
+	{
+		Demo d1=new Demo();
+		
+	}
+}
+
+
+
+** Call to this must be first line of a contructor otherwise CTE
+class Demo 
+{
+	Demo()
+	{
+		System.out.println("no arg constructor");
+		this(20); // Demo(int)
+	}
+	Demo(int i)
+	{
+		System.out.println("int arg constructor");
+	}
+	Demo(double d)
+	{
+		System.out.println("double arg constructor");
+	}
+	public static void main(String[] args)
+	{
+		Demo d1=new Demo();
+		
+	}
+}
+
+
+
+
+
+
+
+** From a method call to this will give compile time error
+class Demo 
+{
+	Demo()
+	{
+		System.out.println("no arg constructor");
+		
+	}
+	void m1()
+	{
+		//this(); ->  Demo(); CTE
+	}
+	public static void main(String[] args)
+	{
+		Demo d1=new Demo();
+		
+	}
+}
+
+
+
+
+
+use of call to this() is prevent same code rewriting and achive reusability
+class Student 
+{
+	int roll;
+	String name;
+	Student(int i)
+	{
+		this.roll=i;
+	}
+	Student(int i,String name)
+	{
+		this(i); // reuse the code Demo(int)
+		this.name=name;
+	}
+
+
+	public static void main(String[] args) 
+	{
+		Student s=new Student(10,"A");
+		System.out.println("roll-number-"+s.roll);
+		System.out.println("name-"+s.name);
+	}
+}
+
+ PILLERS of OOPS concept
+----------------------------
+   1.inheriance
+   2.Polymorphism
+   3.Abstraction
+   4.Encapsulation
+
+
+   Inheritance - Is A Relatioship
+------------------------------------------------------
+definition
+----------
+Deriving a class from broowing exesting class is called in heritance. and the relationship
+between then is called is a relation.
+The class form which all property and behavour brought called parent class or super class.
+The class to which all parent class property and behavour transfered called chils or sub class.
+The sub_class= all parent property+ new derived property,  mean child have all property of 
+parent mean child also is a parent(is a relatioship)
+
+the benifits of inheritance is code reusability and improve readability of code
+
+
+
+
+
+
+
+
+
+
+class Parent 
+{
+	int a=20;
+}
+class Child extends Parent
+{
+	int b=200;
+}
+class Driver 
+{
+	public static void main(String[] args) 
+	{
+		Child c=new Child();
+		System.out.println(c.a);// access parent property 20
+		System.out.println(c.b); // child specific proprty 200
+	}
+}
+
+
+Note
+-----
+Sub class can access both parent and child class property and behavor , but Super class can 
+access only parent specific property and behavor otherwise compile time error, this rule 
+applicable for both static and non static variable and method
+
+
+
+
+
+class Parent 
+{
+	static int a=10;
+	static void m1()
+	{
+		System.out.println("m1 method of parent");
+	}
+}
+class Child extends Parent 
+{
+	static int b=20;
+	static void m2()
+	{
+		System.out.println("m2 method of child");
+	}
+}
+class Driver 
+{
+	public static void main(String[] args) 
+	{
+		Parent p=new Parent();
+		Child c=new Child();
+		System.out.println(c.a);
+		System.out.println(c.b);
+		c.m1();
+		c.m2();
+		System.out.println("----------------------");
+		System.out.println(p.a);
+		p.m1();
+		//p.m2(); CTE child class behavour
+		//System.out.println(p.b); CTE ,child class property
+	}
+}
+
+
+
+
+
+non static variable
+-----------------------
+non static variable inherits from super class to sub class
+
+non static method
+----------------------
+non static method also inherits from super class to sub class
+
+static method
+----------------------
+static method inherits from super class to sub class
+
+***static variable
+----------------------
+static variable will inherite from super class to sub class.
+but there will be only one copy for static variable for both parent and child
+which is inherited from parent. mean any updation on static variable will effect 
+both parent and child
+
+
+
+
+
+class Parent 
+{
+	static int i=20;
+}
+class Child extends Parent 
+{
+	
+}
+class Driver 
+{
+	public static void main(String[] args) 
+	{
+		Parent p=new Parent();
+		Child c=new Child();
+		System.out.println(p.i);
+		System.out.println(c.i);
+		c.i=300;
+		System.out.println("-----------------------");
+		System.out.println(p.i);
+		System.out.println(c.i);
+	}
+}
+
+Note- Contructor and block will not inherite from parent to child, there are saperate
+      execution mechanism to execute constructor and block.
+
+
+Types of inheritance
+-----------------------
+ 1. single level (simple) inheritence
+ 2. mutilevel inheritence
+ 3. hierarchical inheritance
+ 4. multiple inheritence
+ 5. hybrid inheritence
+ 
+ type 1,2,3 is supported in java
+ type 4,5 is not supported in java
+
+
+
+
+
+
+
+
+simple or single level inheritence
+------------------------------------
+from super class directly child class inherits property by using extend keyword
+class Parent
+{
+
+}
+class Child extend parent
+{
+
+}
+
+
+
+
+
+
+
+
+
+multilevel inheritence
+-------------------------------------
+in between parent and child another class is present which is working as child to 
+parent class and parent to child class
+
+class GrandParent 
+{
+	int i=10;
+}
+
+class Parent extends GrandParent 
+{
+	int j=20;
+} // have both GrandParent and Parent property
+
+class Child extends Parent
+{
+	int k=30;
+} // have GrandParent, parent and child property
+
+class Driver
+{
+	public static void main(String[] args) 
+	{
+		Child c=new Child();
+		System.out.println(c.i); // inheris form hrand parent 10
+		System.out.println(c.j); // inherits from parent 20
+		System.out.println(c.k); // self property 30
+	}
+}
+
+
+
+
+hierarchical inheritence
+---------------------------------
+when one super class acts as parent class of multiple child class is known as hierarchical inheritence
+mean multiple sub clss have common super class.
+And all sub class have some common property and behavour
+
+class Parent 
+{
+	int i=10;
+}
+
+class Child1 extends Parent
+{
+	int j=20;
+}
+
+class Child2 extends Parent
+{
+	int k=30;
+}
+
+class Driver 
+{
+	public static void main(String[] args) 
+	{
+		Child1 c1=new Child1();
+		Child2 c2=new Child2();
+		System.out.println(c1.i); //10
+		System.out.println(c1.j); //20 specific to Child1
+		System.out.println("---------------------");
+		System.out.println(c2.i); //10
+		System.out.println(c2.k); // specific to Child2
+	}
+}
+
+
+NOte
+----------
+Multiple and Hybrid inheritence is not supported in java because of diamond problem.
+
+
+**All the overloaded form of method will be trandfer to sub class during is a relationship. 
+  if the method is not public
+class Parent 
+{
+	public void m1()
+	{
+		System.out.println("no arg method");
+	}
+	public void m1(int a)
+	{
+		System.out.println("int arg method");
+	}
+}
+class Child extends Parent
+{
+
+}
+class Driver
+{
+	public static void main(String[] args)
+	{
+		Child c=new Child();
+		c.m1(); // parent class m1() inherits to child
+		c.m1(10);// // parent class m1(int) inherits to child
+	}
+}
+
+
+
+
+Super most class(Object class)
+----------------------------------
+any class directly or indirctly child or sub class of java.lang.Object class. 
+If programmer not exetended any super class then compiler will add extend to
+java.lang.Object thatswhy java.lang.Object is known as supermost class
+
+Class Load with respect to inheritence
+-----------------------------------------
+When we are using sub class first time , then jvm will scan the class one time
+if super class not loaded then it will load super class first then sub class will load
+to jvm. As per this concept at execution start of any java program , object class will
+load first to jvm.
+
+
+
+
+
+                      Method() overriding
+-----------------------------------------------------------
+definition- One parent class method or behavour re implemented(re writing)
+ inside sub class for new updated code, is class method over riding
+
+class Spalender  //1970 model
+{
+	void start() //overridden method
+	{
+		System.out.println("kick start");
+	}
+}
+class ShineSp extends Spalender //2020 model
+{
+	void start() // overriding method
+	{
+		System.out.println("self start");
+	}
+}
+class BikeDriver 
+{
+	public static void main(String[] args) 
+	{
+		ShineSp s=new ShineSp();
+		s.start();
+	}
+}
+
+
+
+
+Note- only non static method can be override , static method can't be override.
+Overridden method- The super class method which is going to get new implementation in
+sub class called overridden method
+
+Overriding method- The new implemented method in sub class is class overriding method
+
+private- more secure and less visible
+default
+protected
+public- less secure but more visible
+
+Rules for method overriding
+------------------------------
+1. Parent class method signature and child class method signature should be same during method
+   overriding
+2. private, static ,final method can not over ride.
+3. The access modifier should be same or wider
+   default---> default,proted,public
+   protected-->protected,public
+   public-----> public
+4. covarience return type
+------------------------------
+If any method returning non primitive data in super class 
+then the sub class overriding method can return same non primitive data ot child type
+non primitive data(covarience return type)
+In method over riding the change of return type with respect to primitive data not possible
+
+Native method
+------------------
+A method implemented in some other programming language and used in java is called native 
+method.
+To use native method the specific native library need to be register.
+public->clone() it is taken from c++ pl
+
+static block
+---------------
+the block which is declared inside class with static keyword is called static block
+the static block will execute once in a life time of a programm during class loading.
+we can declare multiplee static block in a class
+
+non static block
+---------------------
+thee block which is declared without static keyword.
+and the non static block will execute each time the object is created.
+we can create multiplel non static block in a class
+
+
+
+               final
+----------------------------------
+final is a modofier that use in class level,method level,variable level
+* when a class is final we can not make the class as super class 
+  otherwise compile time error
+final class  A
+{
+	
+}
+
+class B extends A //compile time error
+{
+}
+    
+
+
+
+
+
+
+
+* if parent class non static method is final then in sub class we can not over ride
+  it otherwise compile time error.
+class  A
+{
+	final void m1()
+	{
+		System.out.println("parent class m1()");
+	}
+}
+
+class B extends A 
+{
+	void m1() //CTE becase override final method of super class
+	{
+		System.out.println("child class m1()");
+	}
+}
+
+
+
+
+* We can create object of final class ,there is no such restrictions on object creation
+final class  A
+{
+	final void m1()
+	{
+		System.out.println("parent class m1()");
+	}
+	public static void main(String[] args)
+	{
+		A a1=new A();
+		a1.m1();
+	}
+}
+
+
+
+* super classfinal method() can not override but 
+super class final method can inherite to sub class , and can be access by using sub 
+class object reference
+class  A
+{
+	final void m1()
+	{
+		System.out.println("final method of parent");
+	}
+}
+
+class B extends A
+{
+}
+class Driver 
+{
+	public static void main(String[] args) 
+	{
+		B b1=new B(); //sub type object creatin
+		b1.m1(); // calling super class final method
+	}
+}
+
+** final static variable mandatory to initialize mean either during declaration
+   or in static block final variable need to be initialze
+   final variable indicates one constant
+class  A
+{
+	static final int i=10;
+	static {
+		//i=10;
+	}
+}
+
+** final non static variable mandatory to initialize, the final non static variable
+   can be initialize either in non static block or in constructor or during declaration time
+class  A
+{
+	final int i=10;
+	{
+		//i=20;
+	}
+
+	A()
+	{
+		//i=20;
+	}
+	
+}
+
+* final is the only modifier which is allowed to local variable. before use
+  fianl local variable we have to initialze that final local variable
+class  A
+{
+	void m1()
+	{
+		final int i=10;
+		i=20;
+		System.out.println(i);
+	}
+	
+}
+
+Blank final field
+----------------------
+a final variable with out initialze it called black final field or blank
+final variable.
+Final variable we can assign only once in a life time of a program
+
+
+
+
+why multiplel inheritence not supported in java
+---------------------------------------------------
+if a class extends multiple super class and they have a method with common signature
+then during method resoloution which method going to execute is in ambiguity 
+thats why multiplel inheritence not suppord in java
+
+Diamond Problem
+--------------------
+when a super class method re implemented in multiple sub class, and the sub classes
+working as a super class to some other class , then ambiguity problem occur that 
+called diamond problem
+
+
+
+
+
+
+
+
+** One static method of parent class can not over ride as non static method of child
+if programmer tyies to do that ,then CTE
+class Parent 
+{
+	static void m1()
+	{
+		System.out.println("parent class method");
+	}
+}
+class Child extends Parent
+{
+	void m1() // CTE parent class method is static
+	{
+		System.out.println("child class method");
+	}
+}
+
+
+
+
+**if parent class non static method is iverridden as static method inside child class
+then compile time error
+class Parent 
+{
+	void m1()
+	{
+		System.out.println("parent class method");
+	}
+}
+class Child extends Parent
+{
+	static void m1() // m1() is non static in parent CTE
+	{
+		System.out.println("child class method");
+	}
+}
+
+
+
+              Method hiding
+----------------------------------------
+parent class static method reimplemented inside child class as static method is 
+konown as method hiding.
+in static method overriding is not possible the method hiding is possible
+class Parent 
+{
+	static void m1()
+	{
+		System.out.println("parent class method");
+	}
+}
+class Child extends Parent
+{
+	static void m1() //method hiding
+	{
+		System.out.println("child class method");
+	}
+}
+
+note- private ,non -static, final method can not participate in methodd hiding
+rest all the rule same as method overriding
+
+the priority of resoloution variable with same name
+------------------------------------------------------
+1. local variable
+2. current class variable
+3. super class variable
+
+
+                  super keyword
+-----------------------------------------------------
+super is a keyword which is used to access the immediate parent class method and 
+variable
+
+1. Acessing immediate super class variable
+-----------------------------------
+class Parent 
+{
+	int i=10;
+}
+class Child extends Parent
+{
+	int i=30;
+	void m1()
+	{
+		int i=60;
+		System.out.println("i="+i);
+		System.out.println("i="+this.i);
+		System.out.println("i="+super.i);
+	}
+}
+
+2. accessing immediate super class method
+---------------------------------
+class Parent 
+{
+	void p1()
+	{
+		System.out.println("p1() method of parent");
+	}
+}
+class Child extends Parent
+{
+	int i=30;
+	void m1()
+	{
+		System.out.println("m1() method of cild");
+		super.p1();
+	}
+}
+
+
+
+
+3. By using super keyword we can access immediate super class static variable also
+class Parent 
+{
+	static int j=25;
+}
+class Child extends Parent
+{
+	
+	void m1()
+	{
+		System.out.println("i="+super.j); //25
+		
+	}
+}
+
+
+
+
+
+4. by using super keyword we can access the immediate super class static method inside
+   sub class
+class Parent 
+{
+	static void p1()
+	{
+		System.out.println("parent class p1() method");
+	}
+}
+class Child extends Parent
+{
+	
+	void m1()
+	{
+		super.p1();
+		
+	}
+}
+
+
+
+
+
+
+5. from static area if we access static or this , compiler will give compile time
+  error. because before object creation static area may execute
+class Parent 
+{
+	void p1()
+	{
+		System.out.println("parent class p1() method");
+	}
+}
+class Child extends Parent
+{
+	
+	static void m1()
+	{
+		super.p1(); // compile time error,access super from static area
+		
+	}
+}
+  
+
+
+
+
+ 
+     chaining
+----------------------
+the interlinking calling between one java componant to another java componant
+is called chaining
+there is two types of chaining
+1. constructor chaining
+      a- call to this()
+      b- call to super()
+2. method chaining
+
+
+Note
+-----------
+class Parent 
+{
+	int a;
+}
+class Child extends Parent
+{
+	int b;
+	Child(int b)
+	{
+		this.b=b;
+	}
+}
+class  Driver
+{
+	public static void main(String[] args) 
+	{
+		Child c=new Child(10);
+		System.out.println(c.a); // parent class variable 0
+		System.out.println(c.b); // child class variable 10
+	}
+}
+The above program parent class variable not initializing -this is one problem
+the solution is call to super()
+
+
+call to super()
+--------------------
+call to super() is calling of parent class constructor from child class constructor
+to initialize parent class property while creating child class object
+class Parent 
+{
+	int a;
+	Parent(int a)
+	{
+		this.a=a;
+	}
+}
+class Child extends Parent
+{
+	int b;
+	Child(int b)
+	{
+		super(30); // call to super(initialize parent class variable)
+		this.b=b;
+	}
+}
+class  Driver
+{
+	public static void main(String[] args) 
+	{
+		Child c=new Child(10);
+		System.out.println(c.a); // parent class variable 30
+		System.out.println(c.b); // child class variable 10
+	}
+}
+
+
+
+** call to super should be first line of the sub call constructor
+class Parent 
+{
+	int a;
+	Parent(int a)
+	{
+		this.a=a;
+	}
+}
+class Child extends Parent
+{
+	int b;
+	Child(int b)
+	{
+		
+		this.b=b;
+		super(30); // compile time error
+	}
+}
+
+
+
+
+** after compilation if exeplisitly call to super not created then compiler 
+will add one call to super() with no parameter , then if there are no argument
+contructor in super class then we will get compile time error.
+ it is recomaneded to add no argument constructor to all class
+class Parent 
+{
+	Parent(int a)
+	{
+		
+	}
+}
+class Child extends Parent
+{
+	
+	Child()
+	{
+	   //super(); compile time error	
+	}
+}
+
+* call to super chained till object class no -argument constructor
+class  A
+{
+	A()
+	{
+		super();// calling object class no- argument constructor
+	}
+}
+
+
+
+
+execution flow of static block, non static block, constructor
+------------------------------------------------------------------
+1. parent class static block execution
+2.child class static block execution
+3. parent class non static block execution
+4. parent class constructor execution
+5. child class non static block execution
+6. child class constructor execution.
+
+step 1,2 will execute only one time during class loading
+step 3,4,5,6 will execute all the time while object creation
+
+
+
+
+
+
+
+
+
+class Parent 
+{
+	static 
+	{
+		System.out.println("parent class static block");
+	}
+	{
+		System.out.println("non static block of parent");
+	}
+	Parent()
+	{
+		System.out.println("parent class constructor");
+	}
+}
+class Child extends Parent
+{
+	
+	static 
+	{
+		System.out.println("child class static block");
+	}
+	{
+		System.out.println("non static block of child");
+	}
+	Child()
+	{
+		System.out.println("child class constructor");
+	}
+}
+class  Driver
+{
+	public static void main(String[] args) 
+	{
+		Child c=new Child();
+		
+	}
+}
+
+
+
+
+** At a time from sub class constructor either call to super() or call to this()
+   will be present , if both taken at a time we will get compile time error.
+class Parent 
+{
+	Parent()
+	{
+	}
+}
+class Child extends Parent
+{
+	Child()
+	{
+		super();
+		this(10);
+	}
+	Child(int i)
+	{
+
+	}
+}
+
+* each constructor will have either call to this or call to super to 
+maintain constructor chaining
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

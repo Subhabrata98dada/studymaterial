@@ -1,0 +1,472 @@
+Exception
+------------------
+during normal flow of one program some unexpected event occured and jvm is not capable
+to handle the situation this type of scenerio makes unexpected turminate of 
+executing programm, this is known as exeception .
+The exception no way related to compilation of programm , it it totally run time event.
+
+public class DemoException1 {
+	public static void main(String[] args) {
+		int a=10;
+		int b=0;
+		System.out.println(a/b);
+	}
+
+}
+The above programm do-not have any compile time error, but it has exception that is
+ArithmaticException division by zero.Exeception mean the logic eritten by programmer 
+can not be execute because of some problem which is avoided by compiler.
+
+Stack activation of exetion of program
+------------------------------------------
+when a method called happenes, then for that called method one stack frame created .
+that stack frame is known as activation record. once the called method execution 
+completed that time the stack frame deleted from memory and control comes to caller
+method. in case of main() methos control comes to JVM and deleted the whole stack
+by jvm.
+
+Note- when some unexpected event happened than as per the event the different kind 
+of exception object is created by jvm.
+
+Risk Code
+---------------
+the line of code which may create exception is called risk code.
+
+
+
+
+Default exception handler
+-----------------------------
+when a exception object created the the exception object transfered to the caller method
+till the main method comes into picture . once main() method got the exception object
+the exception object transfered to JVM by main method and whole stack destroyed by jvm.
+then jvm trsnsfered the exception to a programm called Defalult exception handler.
+and default exception handler prints three statements that is
+a. Name of the exception
+b. Description of the exception
+c. The effected method because of exception
+and terminates the programm abnormally.
+
+means jvm handling the exception but the termination or the execution of fprogramm
+is not smooth .
+
+
+Error
+------------------
+The child of Throwable class , which occures not because of programmer , it happens
+in multiple reason memory sortage,server slow down, power cut, network problem etc.
+the maintainence or support system people going to take case of that.
+Programmer do not have any responsibity to handle the error. Programmer obly responsible
+to handle the exception
+
+
+
+
+Checked Exception
+----------------------
+The exception they are child of Exception class (directly or indirectly) but not child of 
+Runtime exception is called checked exception. Compiler always aware about those exception
+because those type of excpetion are common in real time project development . if there is a
+possibility to to create checked exception then compiler not going to allow to create byte 
+code and compoulsury we need to handle the exception then only compiler is going
+to create byte code. Exception is no way related to compilation , it is related to runtime 
+programm execution. It is just awareness of compiler
+public class DemoException1 {
+	public static void main(String[] args) {
+		DemoException1 d1=new DemoException1();
+		DemoException1 d2=(DemoException1)d1.clone();
+		// CloneNotSupportException is checked exception thatswhy compiler 
+		//will not allow to create byte code for this code
+	}
+
+}
+
+
+Unchecked Exception
+----------------------
+The exception which is child of RunTimeException called unchecked excpetion. Compiler is now 
+aware about that exception because this type of exception generally not occured this
+much during project development. In case of unchecked exception it is not mandatory to 
+handle unchecked exception. we programmer handle the unchecked exception then good, if
+not then default exception handler going to handle this, But in real time project by
+using of debugging and testing phase the checked exception handled.
+
+public class DemoException1 {
+	public static void main(String[] args) {
+		DemoException1 d1=null;
+		System.out.println(d1.hashCode());
+		
+	}
+
+}
+
+methods of exception
+---------------------
+
+1.printStackTrace()
+--------------------
+this method going to print the exception name ,description , effected method for the created
+exception
+2. toString()
+--------------------
+it will return name of the exception and description of the exception , but not
+the method effected by the exception
+3.getMessage()
+--------------------
+this method will return only the description of the exception not name, and effected 
+method
+
+public class DemoException1 {
+	public static void main(String[] args) {
+		try {
+			DemoException1 d=null;
+			d.hashCode();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("-------------------------------------");
+			System.out.println(e.toString());
+			System.out.println("--------------------------------------");
+			System.out.println(e.getMessage());
+		}
+	}
+
+
+Exception Handling
+----------------------
+During normal ececution if the exception occured then the program is going to terminate 
+abnormally without smooth execution, but the user and developers need smooth execution
+because of the fear of application crash. So we have to handle the exception.
+The exception handling does not mean avoiding the exception . Exception handling mean
+face the exception and provide alternative logic to execute for smooth termination
+of the programm.
+
+eg- once exception happened during UPI transsfer then ans a exception handling the money
+    should be get back to the traction initiator.
+
+To handle the exception we used 5 keywords try,catch,finally,throw,throws
+
+
+try
+----
+it a block of code use dto contain the risk code
+
+catch
+-----
+it is block of code which provides alternative logic if the exception created
+
+finally
+-----------
+it is a block of code used to contain the clean up code
+
+
+
+Syantax for exception handling
+--------------------------------
+                try {
+			//risk code(code may create excpetion)
+		} catch (Exception e) {
+			//alternative code for smooth execution
+		}
+		finally {
+			//clean up code
+		}
+Note- finally block is optional
+try block contain the risk code. and the catch block contain alternative logic
+
+
+eg-01
+-------
+public class DemoException1 {
+	public static void main(String[] args) {
+		try {
+			System.out.println("try begin");
+			System.out.println(10/0);
+			System.out.println("try ends");
+		} catch (ArithmeticException e) {
+			System.out.println("exception occured sucessfully and handled");
+			System.out.println("Alternative logic");
+		}
+		
+	}
+
+}
+          flow of execution
+-------------------------------------------
+once a exception object created in try block then rest of the line in try block not going 
+to execute, the newly created exception object going to assign  catch block having mached 
+exception declaration , then the catch block is going to execute.
+
+if the generated exception and the exception declared inside catch block not matched then
+the abnormal termination is going to happen like no handling code, to handle this kind
+of situation try with multiplel catch is  best suitable.
+
+
+
+
+
+public class DemoException1 {
+	public static void main(String[] args) {
+		try {
+			
+			System.out.println("try begin");
+			System.out.println(10/0);
+			System.out.println("try ends");
+			
+		} catch (NullPointerException e) {
+			
+			System.out.println("Handled null pointer exception");
+			
+		}
+		catch (ArithmeticException e) {
+			System.out.println("Handled arith matic exception");
+		}
+		catch(Exception e)
+		{
+			System.out.println("Handle normal exception");
+		}
+		
+	}
+
+}
+
+Note- Once exception object ceated inside try block then the object is going to match
+with each available catch block from top to buttom , the matched exception object in catch
+block going to execute otherwise again abnormal termination. it is mandatory to take multiple
+catch block having Exception from child to Parent type (top to buttom)
+otherwise compile time error.
+
+try {
+			
+			System.out.println("try begin");
+			System.out.println(10/0);
+			System.out.println("try ends");
+			
+		}
+		catch(Exception e) 
+		{
+			System.out.println("Handle normal exception");
+		}
+		catch (NullPointerException e) { //CTE
+			
+			System.out.println("Handled null pointer exception");
+			
+		}
+		catch (ArithmeticException e) { //CTE
+			System.out.println("Handled arith matic exception");
+		}
+
+
+finally block
+-------------------
+case 1: if try block contain the clan up code and some exception created in try block then
+        the clean up code may not execute.
+
+case 2: if the catch block contain clean up code and the is no exception created inside
+        try block then also the clean upcode not going to execute
+clean up code- the expensive operation donen by programm like data base connection close.
+               socket programming close etc ,at any situation the clean up code should
+               be execute.
+               The solution for execute clean up code is finally block.
+
+Syntax of finally block
+--------------------------------
+                try {
+			//risk code
+		} catch (Exception e) {
+			//alternative logic
+		}
+		finally {
+			//clean up code
+		}
+
+At any situation of programming mean the exception created or not crated in try block,
+the finally block is always going to execute.
+
+public class DemoException {
+	public static void main(String[] args) {
+		try {
+			System.out.println("try begin");
+			System.out.println(10/0);
+			System.out.println("try end");
+		} catch (Exception e) {
+			System.out.println("catch begin");
+			System.out.println("catch end");
+		}
+		finally {
+			System.out.println("clean up code");
+		}
+		
+	}
+}
+
+finally vs return statement
+---------------------------
+in normal programm execution once the return statement executed then no other statement 
+in current method not going to to execute, but in case of finally block the statement
+the try or catch any block contain return statement not going to stop excution of finally
+block , mean basic idea of return statement is violated here
+
+public class DemoException {
+	public static void main(String[] args) {
+		try {
+			System.out.println("try block code");
+			System.out.println(10/2);
+			return;
+		} catch (Exception e) {
+			System.out.println("catch block code");
+			return;
+		}
+		finally {
+			System.out.println("finally block code");
+		}
+		
+	}
+}
+
+throws keyword
+-----------------
+if one method do not want to handle the exception but decided to progate the exception to 
+caller method then we are using throws keyword.
+throws keyword used along with method declaration and the Name of the exception.
+throws also a exception handling procedure by propagate the exception.
+public class DemoException {
+	public static void main(String[] args)  {
+		DemoException d=new DemoException();
+		try {
+			d.m1();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public void m1() throws CloneNotSupportedException
+	{
+		m2();
+	}
+	public void m2() throws CloneNotSupportedException
+	{
+		m3(); 
+	}
+	public void m3() throws CloneNotSupportedException
+	{
+		Object o=	this.clone();
+		System.out.println(o);
+		
+	}
+}
+
+note- if the code producing unchecked exception then throws statements are optional
+public class DemoException {
+	public static void main(String[] args)  {
+		DemoException d=new DemoException();
+		d.m1();
+	}
+	
+	public void m1() 
+	{
+		m2();
+	}
+	public void m2() 
+	{
+		m3(); 
+	}
+	public void m3() 
+	{
+		System.out.println(10/0); //unchecked
+	}
+}
+
+throw keyword
+---------------------
+to create user defined risk code and generate one exception we used throw keyword.
+throw keyword transfer the Exception type object from caller to called method.
+throw keyword can create and transfer checked, unchecked, pre defined, user defined all 
+types of exception
+
+public class DemoException {
+	public static void main(String[] args)  {
+		DemoException d=new DemoException();
+		d.m1();
+	}
+	
+	public void m1() 
+	{
+		int a=10;
+		int b=0;
+		if(b==0)
+		{
+			ArithmeticException e=new ArithmeticException();
+			throw e;
+		}
+		else
+		{
+			System.out.println(a/b);
+		}
+	}
+	
+}
+
+
+
+Exception va override
+----------------------
+if child class overridden method throws one checked exception then it is mandatory to
+parent class method should throws same or parent type exception. but so such rule
+in case of unchecked exception
+
+public class Parent {
+	
+	public void m1() throws Exception
+	{
+		System.out.println("parent class m1()");
+	}
+
+}
+public class Child extends Parent{
+	
+	@Override
+	public void m1() throws CloneNotSupportedException
+	{
+		System.out.println("child class m1()");
+	}
+
+}
+
+
+User Defined Excpetion
+-----------------------
+we can create user defined exception by extending any exception class. but recomanded 
+to create checked exception extends the Exception class and for unchecked exception
+recomanded to extends RuntimeException class
+
+public class InsufficiantBalanceException extends Exception{
+	public InsufficiantBalanceException()
+	{
+		super("asked ammount is greather then current balance");
+	}
+}
+public class Account {
+	int balance=5000;
+	public void withdraw(int amount) throws InsufficiantBalanceException
+	{
+		if(amount > balance)
+		{
+			throw new InsufficiantBalanceException();
+		}
+		else {
+			balance =balance-amount;
+			System.out.println("current balance=  "+balance);
+		}
+	}
+
+}
+public class DemoException {
+	public static void main(String[] args) throws InsufficiantBalanceException  {
+		Account ac=new Account();
+		ac.withdraw(7000);
+	}
+}
+
+
+
+

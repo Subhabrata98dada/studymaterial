@@ -1,0 +1,30 @@
+create branch- git branch branch_name
+check branch- git branch
+switch branch - git checkout branch_name or git switch branch_name
+push the new branch- git push -u origin branch_name
+
+push the code
+----------------------
+check branch - git branch
+stage change- git add . or git add file name
+commit change- git commit -m "commit message"
+push change to repote repository- git push origin <branch name>
+
+pull the code
+----------------------------
+check the branch- git branch
+change the branch- git checkout branch_name or git switch <branch_name>
+pull the code - git pull origin <branch name>
+
+
+to check status- git status
+
+changes have been merge by running- git log
+
+
+clone the code
+-----------------
+git clone <ripository url>
+
+clone - get the full code from repote location to local machine
+pull- want modified code cjange done by others
