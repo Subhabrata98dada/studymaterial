@@ -1,0 +1,398 @@
+Sovan, 17:39
+Ashish Rout    	 	Finonyx	L-1 				18th Dec 2024      		 
+1. What are the datatypes? 
+2. What is collection? 
+3. Difference between hashset and hashmap? 
+4. In which scenario have you used hashset and hashmap in your project? 
+5. Tell me about rest API 
+request- header+payload+query string+path variable+method type+hosting id
+response- header+statuscode+ status+ response payload
+6. Explain about JWT - JWT(header+payload+signature)
+payload-contain additional meta data
+header-contain info about token
+signature- used to check authentiity of token by using encoded token,header,secret-key and pass through a hashing algo
+7. Differentiate between put and patch- put for major update and patche for minor update 
+8. Can we use post mapping while retrieving data? -yes but not recomanded
+9. Explain Logs and what is the default level of logs? -trace,debug,info,warn,error,fatal
+10.Explain your past project roles  
+11. Differentiate between Microservice vs monolithic 
+12. Explain the advantages of micro services 
+13. Differentiate Post Vs Get  
+14. Scenario based question about Synchronization 
+15. How to handle request? 
+16. What are all CRUD operations do in REST API? 
+17. What is header? request header+response header
+
+
+Sovan, 17:59
+ Aniket Suryawanshi    	 	Finonyx	L-1 				18th Dec 2024       
+1.What is an abstract class? 
+2.Why do we need a function without implementation? 
+3.Is abstract a class or method? 
+4.Is there an abstract interface? 
+5.Why do we need abstract methods? 
+6. Tell me a real-time example of abstract class. 
+7.What is a singleton class? 
+8. Tell me a real-time use case of singleton class. 
+9.What is the difference between class and interface? 
+10.Why do we use an interface? 
+11.What is an abstract method? 
+12.Do we need an abstract class if we are implementing an interface? 
+13.Why do we use an abstract class? 
+14.Why do we need a function without implementation?  
+15.What is the difference between HashMap and HashSet? 
+16.What is a REST API? -Representational State Transfer Application Programming Interface
+17.What does it mean that a REST API does not store data? 
+18.How will you send a response to a request in a REST API? 
+19.What is the difference between GET and POST in REST APIs? 
+20.Can you provide example of using POST to retrieve data in a REST API? 
+21.In an e-commerce website (like Amazon), where you can filter products based on parameters like RAM and Processor, how would you send the filtered data to the user on the UI? 
+get request- ram size,min price,max price,company,example or criteria or jpql, paging and sorting, sent as collection of object
+22.Why would you use POST in such a scenario? 
+23.Can I use a GET request and pass parameters as query parameters? 
+24.If GET can pass parameters, why would we use POST in this case? 
+25.If three parameters are being used, why does it make using POST difficult? 
+26.Can you explain the differences between PUT and PATCH in a table format? 
+27.Can you give a real-time example of the difference between PUT and PATCH? 
+
+
+Sovan, 18:07
+Sushma K N		AHANA IT (L-1)				18th Dec 2024
+Interview Panelist: Akash 
+1.Self-Introduction 
+2.Explain types of joins in SQL ----inner,left,cross join,
+3.Differentiate between Hashset and Hashmap 
+4.Explain Spring JWT flow with role based authentication
+- log in, create jwt with role, configure security, do role based autherization
+5.Can Hashset and Hashmap store null value? 
+6.What is spring actuator? 
+predefined endpoint to monitor springboot app running on server
+health-
+matrix- for memory,garbage collector
+env- for info about current executing envo
+info- for current application info
+thread,logger,trace
+7.What is API Gateway? Tell me the uses of API Gateway 
+common access point between multiple services
+8.What is Integration testing? -
+check end to end functionalaty after the whole application merge into single unit
+9.Explain deployment process - dev ,testing,merge the app, integration testing, packing ,cicd pipeline(zenkins),deploy in cloud,uat,handover
+10.Explain NoSQL with an example
+
+
+Sovan, 19:09
+Komala C C 	MSOL TECHNOLOGIES     L-1  			18th Dec 2024 
+1. Self-Introduction
+2. Explain the core concepts of Java
+3. Explain Polymorphism with types and where have you implemented these in your project?
+4. Why String is immutable? security,threadsafety,final char array
+5. What is Array and why do we need it? 
+6. In how many ways can we declare an array?
+7. What are the methods in String? 
+8. Explain the types of Arrays with examples
+9. Explain Stream APIs and what are the functions you know in stream API? Also tell its advantages
+10. Differentiate between abstract class and interface. Scenario based questions on the same
+11. What is the difference between DELETE and TRUNCATE?
+12. What are Joins and explain its types             -inner,cross,left,right,full
+13. Explain queries related left joins and inner joins 
+14. WAJP to add the elements in array and after reverse an array
+15. Do you have any idea about frontend technologies?
+16. Explain some HTML tags and attributes
+17. What you know in CSS?
+18. Do you have any knowledge on Angular? 
+
+
+Sovan, 18:24
+Paresh Kumar Giri 	MSOL TECHNOLOGIES     Screening	19th Dec 2024
+1. Introduce yourself 
+2. What are the annotations used in Spring boot?  
+3. Differentiate Volatile Vs Transient 
+volatile- if a varibale modified then it is visisble to all other thread
+transient- it prevents to modify the object into serialization
+4. What is Microservices? 
+5. Have you worked on Deployment? 
+6. What is Github? How are its main branches are working? 
+7. Differentiate Vector Vs Map 
+
+Ashish Rout 	MSOL TECHNOLOGIES     Screening	19th Dec 2024
+1. How to apply security?  
+2. How JWT works?   
+3. Name some annotations and what is its use in spring boot?  
+4. Differentiate between @primary and @qualifier 
+5. If there are multiple implementation classes then which object will be used in spring? 
+6. Differentiate between array and map 
+7. If one http and one https request is coming at the same time then how can we handle only https request?
+either block http request or convert http request to https
+
+Ibtisam		MSOL Technologies Screening		19th Dec 2024 
+1. Self-Introduction 
+2. How to create Rest API and their annotations? 
+3. Do you have any idea on version controlling system like git? 
+4. How do we push and pull code in git? 
+git pull orgin branch-name
+git push origin branch-name
+5. What is microservices? 
+6. Have you worked on deployment? 
+
+
+Sovan, 18:40
+Arpitha N			MSOL Technologies L-1			19th Dec 2024 
+1. Self-Introduction 
+2. Tell me the roles and responsibilities of your project. 
+3. Differentiate between Hibernate and JPA. 
+4. What design patterns do you know? 
+5. What is the difference between singleton and prototype? 
+6. What is the difference between DTO and DAO? 
+7. Can you describe the APIs you created in the project? 
+8. How do we secure the rest API? 
+9. Differentiate between Spring and Spring Boot. 
+10. What is dependency Injection? Explain the type of dependency Injection 
+11. How do we inject the dependency from an external source? 
+12. Differentiate between @Primary and @Qualifier annotation. 
+13. Differentiate between @RestController and @Controller annotation. 
+14. Explain the steps of spring security. 
+15. Differentiate between Authentication and Authorization. 
+16. When loading a Maven project, is the default configuration file.properties or .yml? 
+17. How to create the yml file in your project? 
+18. Suppose both the properties file and the yml file are present; which one is loaded first? 
+19. How table is created in the database? 
+20. While sending the API URL request, should it be HTTP or HTTPS? 
+21. What is the default port number of HTTP and HTTPS? 
+22. Are you familiar with any databases other than MySQL? 
+23. What is a rate limiter? 
+24. Explain the steps to limit requests using a rate limiter.
+
+Yeshwanthrao M G		Sourcebae 	Screening			19th Dec 2024
+Panel: Navneet Singh 
+1. Brief Introduction 
+2. Give me an overview of your recent project. 
+3. Describe about your day to day activities of your project 
+4. Give me the overview of your previous project.
+
+
+Sovan, 18:56
+Aniket Suryawanshi	              MSOL Technologies Screening	                     19th Dec 2024 
+1.Self-Introduction 
+2. Explain the use of Git hub  - version control
+3. What is microservice?  -different service with different project having communication
+4. How Microservices are communicate? - synchronous,asynchronous
+5. Have you created any annotation?   - interface Retention,Targate annotation
+6. Have you ever deployed any application? 
+7. Suppose you have code in a different branch, how can you fetch that code? - switch the branch ,clone or pull the code
+8. Explain the Annotations in Spring Boot 
+9. How can we take beans with priority? - @Primary,@Qqualifier,@Order
+10. Differentiate between transient and volatile 
+11. If a method is made private, how can we create an instance of the class and call that method? 
+12. How can we make a Static private class? by using reflection api
+13. What is Super?  -keyword used to call immediate parent class variable,method,constructor
+14. Can you overload the super() constructor? -no because constructor can not inherite
+
+
+Sovan, 19:04
+Muztaba Ahmad		MSOL Technologies Screening	19th Dec 2024
+1. Introduce yourself  
+2. Tell me about your project structure.  
+3. How to join two tables using java code. - using @query ,@Param 
+4. What is microservices? -different service a different project
+5. How to create getter and setter method? - manually ,lombok
+6. How to communicate between two services?  -synchronous,asynchronous
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Paresh Kumar Giri	Aspire Systems   Level-1 
+
+1.	Introduce yourself and TechStacks that were you know? -dev stack, backend stack, full stack
+2.	Do you any Aws service and have knowledge on that? - is cloud service
+3.	Which version you have used in your Projects?
+4.	Explain me About Java 8 Features? functional interface, stream api, lamda expression, default method, static method ,optional class,date and time api
+5.	What are the Benefits of Using Stream API? - functional feature
+6.	Tell me About Operations in Stream Api? -
+intermediate filter(),map(),flapmap(),distinct(),sorted(),limit(),skip()
+terminal operation-foreach(),collect(),reduce(),count()
+7.	In Interface Why Default and Static Methods and what is the use of that?
+8.	Can you Explain How Do You Implement Custom Immutable class in java? 
+9.	Have you worked on Microservice Architecture?
+10.	Why we need ApiGateway?
+11.	Why we need Eureka Server?
+12.	In a RestApi how do you manage the transactions what are the things you will use? 
+        @Transctional
+        SagaDesignPattern
+13.	Where do you keep the @Transaction annotation? And Why don’t you keep this in @Controller Layer?
+        Controller only for request and response
+        Single responsibility
+        Transction initiated from service layer
+14.	Find the leaders in an array, The leader is an element which is greater than all the elements to the right side of it. (use Single loop)?
+Input: A [] = [16,17,4,3,7,2]
+Output: [17,7,2]
+
+
+Tejaswini Lokure   level-1   1) Self –Introduction
+2) What are the tech-Stack You know?
+3) What is mean by JPA?
+4) Generate a random number from 0 to 25 , int[] intA= new int[26];
+Without using collection, hint is use java.utils.Random   ,nextInt(26);
+5) print a lucky number from the  int[][] x= new Int[][]{{2,4,3},{6,7,8},{9,8,7}}; 
+Here lucky number  means Max in column and min in Row. And print lucky number.
+
+Yeshwanthrao M G		Aspire Systems   L-1		04th Nov 2024                                                                                       
+1. Why is the main method static in Java?                                                                                                                                      
+2. How do you call a static method from a different class?                                                                                                              
+3. What is the difference between static and final in Java?                                                                                                         
+4. If a list with two objects is declared as final, can we modify its contents?                                                                                
+5. What is an interface in Java? Explain its features and in-depth concepts related to interfaces.
+abstract method,
+variable,
+multiplel inheritence,
+polymorphism
+upcasting,
+functional interface,
+marker interface, 
+static, default,private method                                                      
+6. How does loose coupling work with interfaces in Java?                                                                                                           
+7. How can you remove duplicate keywords from an array in Java?                                                                                              
+8. Explain the internal working of HashSet. 
+a- generate hashcode
+b- mapped with hashingmethod to get bucket index
+c- check the object is present or not 
+d- do cllion resoloution technique                                                                                                                                         
+9. How does HashSet handle and remove duplicates?                                                                                                                   
+10. If two Employee objects with identical data are added to a HashSet, what will be the resulting size of the set? 
+depends on the override of hashcode() and equls method implement in sub class                                                                                                                                                                                                                             
+11. What is the purpose of the finally block in Java?  
+clean up code like cloud srver connection stop.
+database collection close.
+socket connection close.                                                                                                                     
+12. Explain the @Autowired annotation and its behavior compared to using the new keyword for object creation. 
+on the top of contructor on constructor injection
+on the top of reference variable on feild injection
+on the top of setter method on setter injection                                                                                                                                                                                                                                                                                                                          
+13. What is the difference between @PathVariable and @RequestParam in Spring?                                                                          
+14. Given a list of products, write a method to filter out only the products with Samsung and Apple brands using Java Streams. Also, define a corresponding repository method.
+
+Yeshwanthrao M G		Aspire Systems   L-1		04th Nov 2024                                                                                       
+1. Why is the main method static in Java?                                                                                                                                     
+2. How do you call a static method from a different class?                                                                                                              
+3. What is the difference between static and final in Java?                                                                                                         
+4. If a list with two objects is declared as final, can we modify its contents?                                                                                
+5. What is an interface in Java? Explain its features and in-depth concepts related to interfaces.                                                      
+6. How does loose coupling work with interfaces in Java?                                                                                                           
+7. How can you remove duplicate keywords from an array in Java?                                                                                              
+8. Explain the internal working of HashSet.                                                                                                                                         
+9. How does HashSet handle and remove duplicates?                                                                                                                   
+10. If two Employee objects with identical data are added to a HashSet, what will be the resulting size of the set?                                                                                                                                                                                                                              
+11. What is the purpose of the finally block in Java?                                                                                                                       
+12. Explain the @Autowired annotation and its behavior compared to using the new keyword for object creation.                                                                                                                                                                                                                                                                                                                           13. What is the difference between @PathVariable and @RequestParam in Spring?                                                                          14. Given a list of products, write a method to filter out only the products with Samsung and Apple brands using Java Streams. Also, define a corresponding repository method.
+
+Hi @all, kindly prepare on the questions shared here. These are questions asked in the client interviews.
+
+
+
+Sovan, 18:06
+Arpitha N		CHIMERA Screening		2+ YOE			02nd Dec 2024 
+1. Which company are you working now? 
+2. When does your project end? 
+3. What is the technology you know? 
+4. Tell me something about XSLT. 
+5. Tell me some core annotations in Spring Boot. 
+6. What is the advantage of using JSP? 
+7. Do you have an idea about testing? 
+8. How do you handle the exception in the JSP?
+
+
+EBIX Cash - Java.docx
+
+
+Aspire System - Java.docx
+
+
+FCI - Java.docx
+
+Hi @all Developers. PFA of some latest sample interview questions of various clients for your kind reference.
+
+Subhajit Saha	CHIMERA Screening		2+ YOE			02nd Dec 2024 
+1. What is the current organisation in which you are working? 
+2. What is your years of experience? 
+3. What are your tech stack? 
+4. What is JSP? 
+5. What is XSLT?
+
+
+Spoorthi, 18:20
+Subbashree         Chimera Screening        1+ YOE        02nd Dec 2024
+1. What is jsp?
+2. What are some tags in jsp?
+3. What is JVM?
+4. What is microservice architecture?
+5. What advantages of Jsp?
+6. What is current years of experience?
+7. What is your Present company?
+8. Are you ready to work for hybrid setting?
+9. Do you have knowledge on selenium?
+
+
+Sovan, 18:55
+Sukesh Kumar	    CHIMERA(Managerial)	2+ YOE		02nd Dec 2024  
+1. What is JSP and XSLT? 
+2. Explain any methods in XSLT to transform? 
+3. Explain the policy for a system where data is uploaded and users verify it. 
+4. How would you resolve payment failures caused by technical issues? 
+5. How to handle payment failure scenarios from a user’s point of view? 
+6. What should be done if the system is facing production issues related to payments? 
+7. How to raise a ticket for a payment gateway failure in SDMS? 
+8. Provide a scenario where a ticket might be raised in SDMS in Jira. 
+9. How would you troubleshoot a payment gateway timeout issue in SDMS? 
+10. How would you troubleshoot and resolve payment-related issues in production? 
+11.How would you conduct root cause analysis for a payment gateway timeout? 
+12. What actions would you take to resolve payment issues in production and minimize the impact? 
+13. How would you raise a Jira ticket for issues in SDMS related to payments? 
+14. Provide a scenario where you raise a ticket for payment failures in SDMS. 
+15. How would you troubleshoot payment gateway issues in SDMS? 
+16. How would you resolve a payment gateway timeout issue in production? 
+17. How would you figure out a payment failure due to a technical issue? 
+
+
+Sovan, 19:17
+Hi @all Developers 
+As per the instructions from the HR team, all resources are hereby instructed to kindly come in “COMPLETE FORMALS” tomorrow, Tuesday 03rd December 2024. Kindly adhere to proper dress code and also please wear your ID card without fail. 
+Thank You
+
+
+Spoorthi, 12:12
+Trupti L         Chimera Screening        1+ YOE        03rd Dec 2024
+1. What is jsp?
+2. What is xslt?
+3. What is JVM?
+4. Explain About your project?
+5. What is java bean?
+6. Difference between jsp and bean?
+7. What is your Present company?
+8. What is current years of experience?
+9. Do you have knowledge on testing?
+
+
+Sovan, 13:07
+Nareshkannan N	CHIMERA (Screening)		1+ YOE		03rd Dec 2024 
+1.Explain your tech stacks
+2.What is JSP?
+3.What is XSLT?
+4.Explain your project
+5.What is Session?
+
+

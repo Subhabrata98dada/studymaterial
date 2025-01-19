@@ -1,0 +1,197 @@
+1.	Introduce yourself and TechStacks that were you know?
+Front-End Tech Stack: ,backend,full stack, version control, data science stack ,mobile stack.
+2.	Do you any Aws service and have knowledge on that?
+No i do not have any knowledge on aws
+3.	Which version you have used in your Projects?
+springboot 3, java 17
+4.	Explain me About Java 8 Features?
+stream api, lamda expression, functional interace, default method, static method ,optional class,predefined function package,date and time
+api,method reference and contructor reference
+5.	What are the Benefits of Using Stream API?
+intermediate operation- filter(),map(),sorted(),sorted(Caomparator),limit(long maxsize),skip(int n)
+terminal operations- foreach(Consumer),collect(),reduce(),anymatch(),allmatch(),nomatch(),findFirst(),findAny(),count()
+6.	Tell me About Operations in Stream Api?
+7.	In Interface Why Default and Static Methods and what is the use of that?
+8.	Can you Explain How Do You Implement Custom Immutable class in java?
+9.	Have you worked on Microservice Architecture?
+10.	Why we need ApiGateway?
+11.	Why we need Eureka Server?
+12.	In a RestApi how do you manage the transactions what are the things you will use? 
+13.	Where do you keep the @Transaction annotation? And Why don’t you keep this in @Controller Layer?
+@EnableTransactionManagement on the top of springboot main class
+@Transactional on the top of service class or method of service class
+Controller Methods Are Typically Short-Lived
+violating the Single Responsibility Principle ,Transactions Should Start and End in Service Layer
+14.	Find the leaders in an array, The leader is an element which is greater than all the elements to the right side of it. (use Single loop)?
+Input: A [] = [16,17,4,3,7,2]
+Output: [17,7,2]
+
+		int a[]={16,17,4,3,7,2};
+		int max=Integer.MIN_VALUE;
+		for(int i=a.length-1;i>=0;i--)
+		{
+			if(a[i]>max)
+			{
+				max=a[i];
+				System.out.println(a[i]);
+			}
+		}
+
+-------------------------------------------------------------------------------------------------------
+ 1) Self –Introduction
+2) What are the tech-Stack You know?
+3) What is mean by JPA?
+JPA Annotations Overview
+@Entity: Marks a class as an entity that will be mapped to a database table.
+@Table: Specifies the name of the table in the database (optional).
+@Id: Denotes the primary key field of the entity.
+@GeneratedValue: Specifies how the primary key value is generated (e.g., auto-increment).
+@Column: Used to map an entity's field to a column in the database (optional if the column name matches the field name).
+@OneToMany, @ManyToOne, @ManyToMany, @OneToOne: Defines relationships between entities.
+4) Generate a random number from 0 to 25 , int[] intA= new int[26];
+Without using collection, hint is use java.utils.Random
+		int a[]=new int[26];
+		for(int i=0;i<a.length;i++)
+			a[i]=new Random().nextInt(26);
+		System.out.println(Arrays.toString(a));
+5) print a lucky number from the  int[][] x= new Int[][]{{2,4,3},{6,7,8},{9,8,7}}; 
+Here lucky number  means Max in column and min in Row. And print lucky number.
+
+----------------------------------------------------------------------------------------
+Why is the main method static in Java?  
+No Need to Create an Instance of the Class
+JVM Does Not Create Objects Automatically 
+Single Entry Point
+method signature at jvm                                                                                                                                  
+2. How do you call a static method from a different class?   
+By using class name , and object name                                                                                                           
+3. What is the difference between static and final in Java?  
+static is a keyword defined dependency of an java component over an object 
+fianl is a keyword defined the scaling and inheritence property of an component                                                                                                      
+4. If a list with two objects is declared as final, can we modify its contents?                                                                               
+5. What is an interface in Java? Explain its features and in-depth concepts related to interfaces. 
+definition, methods, variables, constructor,block,abstraction,ploymorphism,default method,static method,private method,
+@Functional interface , marker interface                                                    
+6. How does loose coupling work with interfaces in Java? 
+coupling, types of coupling,inheritence and upcasting , horizental scaling,vertical scaling                                                                                                          
+7. How can you remove duplicate keywords from an array in Java?
+		List<Integer> l=new ArrayList<Integer>(); // Arrays.asList(Array)
+		l.add(10);
+		l.add(20);
+		l.add(30);
+		l.add(10);
+		l.add(20);
+		Set<Integer> s=new HashSet<Integer>(l);
+		System.out.println(s);
+		l=new ArrayList<Integer>(s);
+		System.out.println(l);                                                                                              
+8. Explain the internal working of HashSet. 
+    calculate the hashcode by calling int hashCode()
+    map the hashcode with available bucket number in hashtable   
+    check at the same bucket other element is present then compare content is same or not by using boolean equals(Object o)
+    if the equals method return true then do not add the element in the hashset otherwise add the element to that bucket number
+    if multiple element mapped to a single bucket number then this is known as collision , on that case use collision
+    resoloution method like chaining,open addressing, double hashing etc
+                                                                                                                                      
+9. How does HashSet handle and remove duplicates?                                                                                                                   
+10. If two Employee objects with identical data are added to a HashSet, what will be the resulting size of the set?
+    case 1: if both equals() and hashcode() method overridden properly then object with duplicatte content will not added to the set
+    case 2: all other cases the hashSet will contain Object having same duplicate elements                                                                                                                                                                                                                           
+11. What is the purpose of the finally block in Java?  
+    clean up code like socket closed database closed before destroy the object by JVM                                                                                                                     
+12. Explain the @Autowired annotation and its behavior compared to using the new keyword for object creation. 
+    new keyword is responsible for allocate memory in heap and create the object while execute the program
+    @Autowired is a annotation used in spring core to inject the compenent object to container object after creating the object and store it in the internal cahe of 
+    IOC container
+    new keyword have the capability to create object , but do't have the capability to inject the component object to container object
+    @Autowired annotation ahve the capability to inject the component object to container object but do not vhave any role in Object creation                                                                                                                                                                                                                                                                                                                         
+13. What is the difference between @PathVariable and @RequestParam in Spring? 
+                                                                             
+14. Given a list of products, write a method to filter out only the products with Samsung and Apple brands using Java Streams. Also, define a corresponding repository method.
+		List<Product> l=new ArrayList<Product>();
+		l.add(new Product("s-24","samsung",150000.5));
+		l.add(new Product("iphone-16","apple",123000.6));
+		l.add(new Product("nirvana-anc","boat", 3000));
+		l.add(new Product("c-9pro","samsung",36000.6));
+		l=l.stream().filter(i->i.company.equals("samsung")).collect(Collectors.toList());
+		System.out.println(l);
+
+------------------------------------------------------------------------------
+1. Which company are you working now? 
+   Test yantra
+2. When does your project end? 
+   2 months before
+3. What is the technology you know? 
+   springboot,microservice,hibernate,junit,SL4j,etc
+4. Tell me something about XSLT. 
+5. Tell me some core annotations in Spring Boot. 
+   @Component @ComponentScan @Configuration ,@EnableAutoConfiguration,@SpringBootApplication,@Service,@Controller,@repository,
+   @Autowired ,@Value,@RestController,@ResponseBody, @Bean, @Scope, @Lazy, @Qualifier , @Primary,@PostConstruct ,@Predestroy
+   @Transctional ,@RequestMapping (post,get,put,delete,patch),@PathVariable,@RequestParam,@CookieValue,@ModelAttribute
+6. What is the advantage of using JSP? 
+7. Do you have an idea about testing?
+   Inly unit testing 
+8. How do you handle the exception in the JSP?
+   @ControllerAdvice or @RestControllerAdvice on the top of global exception handler class
+   @ExceptionHandler on the top of the method going to handle the exception
+   @Responsestatus(HttpStatus.NOT_FOUND) on the top of user defined exception to describe the status of that exception
+------------------------------------------------------------------------------------------
+1. What is the current organisation in which you are working? 
+2. What is your years of experience? 
+3. What are your tech stack? 
+4. What is JSP? 
+   jsp stands for java server pages ,jsp is combination of both html and java code together , jsp provides some inbuild tag, and implisit
+   objects by which one servlet application can be written in jsp with proper view frontend
+5. What is XSLT?
+-------------------------------------------------------------------------------------------
+1. What is jsp?
+2. What are some tags in jsp?
+Directive tag- that is global tag used to defined page level property
+-----------------------------------------------------------------------
+ <%@ page %>: Defines page-level properties.
+ <%@ include %>: Includes static content from another file
+ <%@ taglib %>: Declares a tag library to be used in the JSP page
+scriptlet tag- used to write java code
+-------------
+ <%
+    int sum = 5 + 3;
+    out.println("Sum: " + sum);
+%>
+expression tag
+-----------------
+<%= %>- to show something
+
+decleration tag
+-------------------
+<%! %>- global decleration tag
+3. What is JVM?
+-----------------
+java virtual machine provides readymate environment for execute java code without any any external support of os
+Class loader subsystem- loading linking initialization
+Memory area- method area,heap area,stack area,register area,native method stack area
+execution engine- git compiler,garbage collector,native method interace ,native method library
+4. What is microservice architecture?
+5. What advantages of Jsp?
+Both java and fromntend code written in same pages then it is easy to synchronize between java code and html code for better development
+6. What is current years of experience?
+7. What is your Present company?
+8. Are you ready to work for hybrid setting?
+9. Do you have knowledge on selenium?
+-------------------------------------------------------------------------------------------
+1. What is JSP and XSLT? 
+2. Explain any methods in XSLT to transform? 
+3. Explain the policy for a system where data is uploaded and users verify it. 
+4. How would you resolve payment failures caused by technical issues? 
+5. How to handle payment failure scenarios from a user’s point of view? 
+6. What should be done if the system is facing production issues related to payments? 
+7. How to raise a ticket for a payment gateway failure in SDMS? 
+8. Provide a scenario where a ticket might be raised in SDMS in Jira. 
+9. How would you troubleshoot a payment gateway timeout issue in SDMS? 
+10. How would you troubleshoot and resolve payment-related issues in production? 
+11.How would you conduct root cause analysis for a payment gateway timeout? 
+12. What actions would you take to resolve payment issues in production and minimize the impact? 
+13. How would you raise a Jira ticket for issues in SDMS related to payments? 
+14. Provide a scenario where you raise a ticket for payment failures in SDMS. 
+15. How would you troubleshoot payment gateway issues in SDMS? 
+16. How would you resolve a payment gateway timeout issue in production? 
+17. How would you figure out a payment failure due to a technical issue? 

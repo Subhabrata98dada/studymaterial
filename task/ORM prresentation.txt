@@ -1,0 +1,122 @@
+Disadvantage of jdbc
+------------------
+1.complexity
+2.lack of abstraction
+3.error prone
+4.manual resource management
+5.database portability
+6.lack of orm
+
+ORM
+----------------
+what is orm
+advantage
+---------
+1.simplified
+2.reduce boileerplate code
+3.database indepandent
+4.improve productivity
+5.maintainbility
+
+disadvantage
+--------------
+1. performence overhead
+2.limited control
+3.overhead for small project
+eg- hibernate
+
+Hibernate
+-----------------
+1.automatic table creation
+2. remove boiler plate code
+3.database indepandent
+4.HQL
+5.cacheing
+6.lazy loading
+7.transction management
+8.support for Annotation and xml configuration
+
+JPA
+---------
+what is jpa , why jpa is used
+
+Hibernate Architecture
+-----------------------
+steps- 1. add dependency driver,orm tool
+2. set up configuration persistence.xml
+3. create entity manager Factry
+4. create Entity manager
+5. create EntityTransctioon if DML operation going to happen
+7. close the entity manager factry if further crud operation not needed
+
+
+@Repository
+public class ArtistImplementattion {
+	
+	@Autowired
+	private JdbcTemplate template;
+	public List<Artist> getUser()
+	{
+		Query query=new Query();
+		query.addCriteria(Criteria.where("name").is("saharukh"));
+		query.addCriteria(Criteria.where("id").is("s1"));
+		return jbbcTemplate.find(query,Artist.class);
+	}
+}
+
+persist(employee);
+remove(employee);
+find(Class<T> entityClass, Object primaryKey)
+merge(Object entity)
+getTransaction();
+
+
+
+@Entity
+@NamedQuery(
+    name = "Employee.findBySalaryGreaterThan",
+    query = "SELECT e FROM Employee e WHERE e.salary > :salary"
+)
+public class Employee {
+    
+    @Id
+    private Long id;
+    private String name;
+    private Double salary;
+
+    // getters and setters
+}
+
+Query query = entityManager.createNamedQuery("Employee.findBySalaryGreaterThan");
+        query.setParameter("salary", salary);
+
+Query.setParameter(int position, Object value);
+
+
+1.Single Table Inheritance (@Inheritance(strategy = InheritanceType.SINGLE_TABLE))- single table will create both parent and child will have @Entity , any one of them should have @id
+On the top of parent class @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+
+2.Joined Table Inheritance (@Inheritance(strategy = InheritanceType.JOINED))- saperate table will create , subclass should not have any @id
+subclass table will use parent id as id and then will be used in join maeer, used foreign key
+
+Table Per Class Inheritance (@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS))-for all clas saperate table will create all have individual colum and no foreign key
+
+
+table creation with respect to inner class
+-------------------------------------------
+Non static inner class -Two saperate table will crete and inner class will have a foreign key column to refer outer class object
+static inner class - They are in aggrigation mean saperate table creation happened
+Embeded non static inner class- along with outer class column the inner class inner class coulmn will create no saperate table will create
+                                 @Embeddable @Embeded
+
+FetchType
+--------
+1.eger @OneToMany(fetch = FetchType.LAZY)
+2.lazy @OneToMany(fetch = FetchType.EAGER)
+3. fetch join 
+ SELECT e FROM Employee e JOIN FETCH e.projects WHERE e.id = :id
+
+4.sub select
+@OneToMany(fetch = FetchType.LAZY)
+@Fetch(FetchMode.SUBSELECT)
+private Set<Project> projects;
